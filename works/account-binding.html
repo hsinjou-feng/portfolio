@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FENG HSIN JOU｜Product Manager Portfolio</title>
+<meta name="description" content="Sr. Product Manager. Defining problems, shaping products, driving outcomes.">
+<link rel="icon" type="image/jpeg" href="../assets/avatar.jpg">
+<link rel="apple-touch-icon" href="../assets/avatar.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Improve the account linking flow｜FENG HSIN JOU Portfolio">
+<meta property="og:description" content="Sr. Product Manager. Defining problems, shaping products, driving outcomes.">
+<meta property="og:image" content="https://hsinjou-feng.github.io/portfolio/assets/avatar.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hsinjou-feng.github.io/portfolio/assets/avatar.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ============ 換色只需要改這裡 / Edit colors here ============ */
+:root {
+  --bg:       #EEF1F5;   /* 頁面底色 */
+  --surface:  #FFFFFF;   /* 卡片、縮圖底色 */
+  --ink:      #101828;   /* 主要文字 */
+  --muted:    #5B6676;   /* 次要文字 */
+  --line:     #D3D9E2;   /* 分隔線 */
+  --accent:   #2F4BFF;   /* 強調色（hover、按鈕） */
+  --accent-ink: #FFFFFF; /* 強調色上的文字 */
+  --shadow-card: 0 1px 2px color-mix(in srgb, var(--ink) 5%, transparent), 0 10px 30px color-mix(in srgb, var(--ink) 7%, transparent), 0 30px 70px color-mix(in srgb, var(--ink) 8%, transparent); /* 卡片陰影 */
+
+  --font: "PingFang CJK", "Noto Sans TC", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius: 20px;
+  --maxw: 1200px;
+  --pad: clamp(20px, 5vw, 56px);
+}
+
+
+/* ============ Fonts ============
+   英文：Noto Sans TC（Google Fonts）
+   繁體中文：蘋方體 PingFang TC（只套用在中日韓字元；沒有蘋方的裝置會自動改用 Noto Sans TC） */
+@font-face { font-family: "PingFang CJK"; font-weight: 300;
+  src: local("PingFang TC Light"), local("PingFangTC-Light");
+  unicode-range: U+2E80-2FFF, U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF, U+FE30-FE4F, U+FF00-FFEF; }
+@font-face { font-family: "PingFang CJK"; font-weight: 400;
+  src: local("PingFang TC Regular"), local("PingFangTC-Regular");
+  unicode-range: U+2E80-2FFF, U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF, U+FE30-FE4F, U+FF00-FFEF; }
+@font-face { font-family: "PingFang CJK"; font-weight: 500;
+  src: local("PingFang TC Medium"), local("PingFangTC-Medium");
+  unicode-range: U+2E80-2FFF, U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF, U+FE30-FE4F, U+FF00-FFEF; }
+@font-face { font-family: "PingFang CJK"; font-weight: 600 800;
+  src: local("PingFang TC Semibold"), local("PingFangTC-Semibold");
+  unicode-range: U+2E80-2FFF, U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF, U+FE30-FE4F, U+FF00-FFEF; }
+
+/* ============ Base ============ */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
+section { padding: clamp(72px, 12vw, 140px) 0; }
+h1, h2, h3, h4, p { margin: 0; }
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* ============ Nav ============ */
+.nav {
+  position: fixed; inset: 0 0 auto 0; z-index: 20;
+  background: color-mix(in srgb, var(--bg) 60%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav .brand { font-weight: 800; letter-spacing: -0.01em; white-space: nowrap; display: inline-flex; align-items: center; gap: 12px; }
+.nav .avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: none; background: var(--surface); }
+.nav .brand-text { display: flex; flex-direction: column; line-height: 1.25; }
+.nav .brand-name { font-weight: 800; font-size: 16px; }
+.nav .brand-role { font-weight: 400; font-size: 13px; color: var(--muted); letter-spacing: 0; }
+.nav ul { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; font-size: 15px; }
+.nav ul a { color: var(--muted); transition: color .2s; }
+.nav ul a:hover, .nav ul a:focus-visible { color: var(--accent); }
+.nav nav { margin-left: auto; margin-right: 20px; }
+.lang {
+  font: inherit; font-size: 14px; color: var(--ink);
+  background: none; border: none; border-radius: 999px;
+  padding: 6px 10px; cursor: pointer; transition: color .2s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.lang-opt { transition: color .2s; }
+.lang-opt:hover { color: var(--accent); }
+@media (max-width: 720px) { .nav ul { display: none; } }
+@media (max-width: 520px) { .nav .brand-name { font-size: 14px; } .nav .brand-role { font-size: 12px; } }
+
+/* ============ Hero ============ */
+.hero {
+  background: var(--surface); /* 白色 */
+  min-height: min(94svh, 880px);
+  padding: 92px 0 clamp(32px, 4vw, 56px);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.hero .wrap { width: 100%; }
+.hero-intro { color: var(--muted); font-size: 15px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); /* 右側照片 1:1，左側色塊填滿剩餘寬度 */
+  gap: clamp(12px, 1.6vw, 20px);
+  align-items: stretch; /* 左右兩張卡片等高 */
+}
+.hero-text {
+  align-self: stretch;
+  color: var(--ink);
+  padding: 0 clamp(0px, 3vw, 40px) 0 0;
+}
+.hero-title {
+  font-size: clamp(2rem, 4.8vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+.hero-text p { color: var(--ink); font-size: 1.05rem; line-height: 1.9; max-width: 42em; margin-top: 16px; text-wrap: pretty; }
+.hero-text .hero-role { color: var(--ink); font-weight: 600; font-size: 1.1rem; line-height: 1.6; margin-top: clamp(36px, 5vw, 64px); }
+.hero-text .hero-role span { display: inline-block; } /* 需要換行時只在「|」之後換，不會把詞拆開 */
+.hero-contact { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.hero-contact a { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 15px; font-weight: 500; transition: color .2s; }
+.hero-contact a:hover, .hero-contact a:focus-visible { color: var(--accent); }
+.hero-contact svg { flex: none; }
+.hero .portrait {
+  position: relative; display: block; overflow: hidden;
+  width: 100%; max-width: none; aspect-ratio: auto;
+  border: none; background: none;
+  border-radius: clamp(20px, 2.2vw, 32px);
+}
+.hero .portrait::before { content: ""; display: block; padding-top: 100%; } /* 1:1；左側內容較高時會自動撐高 */
+.hero .portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; }
+@media (max-width: 800px) {
+  .hero-grid { grid-template-columns: 1fr; }
+}
+.marquee {
+  overflow: hidden;
+  border-block: 1px solid var(--line);
+  margin: clamp(28px, 5vh, 56px) 0;
+  padding: 14px 0;
+  white-space: nowrap;
+}
+.marquee-track { display: inline-flex; animation: slide 28s linear infinite; }
+.marquee-track span {
+  font-size: clamp(1.4rem, 3.4vw, 2.4rem);
+  font-weight: 300;
+  padding-right: 1.4em;
+}
+.marquee-track span::after { content: "/"; color: var(--accent); padding-left: 1.4em; }
+@keyframes slide { to { transform: translateX(-50%); } }
+.hero-tagline { font-size: clamp(1.2rem, 2.4vw, 1.7rem); font-weight: 500; max-width: 24em; line-height: 1.4; }
+.scroll-hint { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: 14px; margin-top: 32px; }
+.scroll-hint i { width: 48px; height: 1px; background: var(--muted); display: block; }
+
+/* ============ Work ============ */
+#work { background: var(--surface); }
+.work-list { margin-top: 56px; border-top: 1px solid var(--line); }
+.work-item {
+  display: grid;
+  grid-template-columns: 90px 1fr minmax(180px, 300px);
+  gap: 32px; align-items: center;
+  padding: 36px 0;
+  border-bottom: 1px solid var(--line);
+  transition: padding .35s ease;
+}
+.work-item:hover { padding-left: 16px; }
+.work-year { color: var(--muted); font-size: 15px; }
+.work-title { font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 600; line-height: 1.25; letter-spacing: -0.015em; transition: color .2s; }
+.work-item:hover .work-title { color: var(--accent); }
+.work-tags { color: var(--muted); font-size: 15px; margin-top: 10px; }
+.work-thumb {
+  aspect-ratio: 4 / 3;
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  display: grid; place-items: center;
+  color: var(--muted); font-size: 13px;
+}
+.work-thumb img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 800px) {
+  .work-item { grid-template-columns: 1fr; gap: 14px; }
+  .work-thumb { order: -1; }
+}
+
+/* ---- Dcard 卡片（首頁） ---- */
+.panel { margin-top: 56px; background: var(--surface); border-radius: clamp(24px, 3vw, 32px); padding: clamp(24px, 4vw, 48px); box-shadow: var(--shadow-card); }
+.panel-head { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 24px); }
+.logo { flex: none; width: clamp(52px, 6vw, 72px); aspect-ratio: 1; }
+.logo img { width: 100%; height: 100%; object-fit: contain; }
+.panel-company { color: var(--muted); font-size: 15px; font-weight: 500; }
+.panel-title { margin-top: 2px; font-size: clamp(1.3rem, 2.6vw, 1.9rem); font-weight: 700; line-height: 1.3; letter-spacing: -0.015em; }
+.panel-meta { margin: clamp(24px, 3.5vw, 36px) 0 0; display: grid; gap: 18px; }
+.meta-row { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 6px 32px; }
+.meta-row > dt, .meta-row > h4 { margin: 0; font-size: 14px; font-weight: 600; color: var(--muted); line-height: 1.9; }
+.meta-row > dd { margin: 0; max-width: 52em; line-height: 1.85; }
+.invest-row { margin-top: clamp(24px, 3vw, 32px); }
+.invest-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.invest-grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.invest-card { display: flex; flex-direction: column; gap: 14px; padding: 16px; border-radius: 20px; background: var(--bg); box-shadow: 0 6px 20px color-mix(in srgb, var(--ink) 7%, transparent); transition: box-shadow .25s, transform .25s; }
+.invest-card:hover { box-shadow: 0 16px 38px color-mix(in srgb, var(--ink) 13%, transparent); transform: translateY(-3px); }
+.invest-cover { width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; background: var(--surface); overflow: hidden; }
+.invest-cover img { width: 100%; height: 100%; object-fit: cover; }
+.invest-body { display: flex; flex: 1; flex-direction: column; align-items: flex-start; gap: 10px; padding: 4px 8px 8px; }
+.invest-stage { font-size: 13px; font-weight: 500; color: var(--muted); }
+.invest-card h5 { margin: 0; font-size: 1.3rem; font-weight: 700; line-height: 1.35; text-wrap: balance; }
+.invest-card h5 span { display: inline-block; }
+.invest-problem { color: var(--muted); font-size: 14.5px; line-height: 1.75; }
+.invest-result { margin-top: auto; padding-top: 8px; display: flex; flex-direction: column; gap: 2px; }
+.invest-result strong { font-size: 2.1rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; }
+.invest-label { font-size: 14px; line-height: 1.6; color: var(--muted); }
+.invest-note { display: inline-block; white-space: nowrap; font-size: 13px; color: var(--muted); }
+.invest-btn { margin-top: 6px; padding: 11px 20px; border-radius: 12px; background: var(--surface); box-shadow: 0 1px 2px color-mix(in srgb, var(--ink) 10%, transparent); font-size: 15px; font-weight: 600; color: var(--ink); transition: background .2s, color .2s; }
+.invest-card:hover .invest-btn { background: var(--ink); color: var(--surface); }
+.cover-simple { display: grid; place-items: center; color: var(--ink); background: var(--surface); }
+.invest-card.is-disabled { cursor: not-allowed; box-shadow: none; }
+.invest-card.is-disabled:hover { box-shadow: none; transform: none; }
+.invest-card.is-disabled > * { opacity: .5; }
+.invest-card.is-disabled .invest-cover { background: color-mix(in srgb, var(--surface) 55%, transparent); }
+.invest-card.is-disabled .invest-btn { margin-top: auto; }
+.invest-card.is-disabled .invest-btn, .invest-card.is-disabled:hover .invest-btn { background: transparent; box-shadow: none; color: var(--muted); padding-left: 0; font-weight: 500; }
+.panel-foot { margin-top: 16px; }
+.strategy-link { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; border-radius: 20px; background: var(--bg); transition: background .25s, color .25s, transform .25s;  box-shadow:0 6px 20px color-mix(in srgb,var(--ink) 7%,transparent); position: relative;}
+.sl-text { display: flex; flex-direction: column; gap: 2px; }
+.sl-text strong { font-size: 1.05rem; font-weight: 700; }
+.sl-text span { font-size: 14px; color: var(--muted); transition: color .25s; }
+.sl-i { font-style:normal; display:inline-block; white-space:nowrap; }
+html[lang="en"] .sl-i:not(:last-child) { margin-right:.3em; }
+.sl-arrow { flex: none; width: 40px; height: 40px; border-radius: 50%; background: var(--surface); display: grid; place-items: center; font-size: 18px; transition: background .25s, color .25s, transform .25s; }
+.strategy-link:hover { background: var(--ink); color: var(--surface); }
+.strategy-link:hover .sl-text span { color: color-mix(in srgb, var(--surface) 70%, transparent); }
+.strategy-link:hover .sl-arrow { background: var(--surface); color: var(--ink); transform: translateX(4px); }
+@media (max-width: 760px) {
+  .meta-row { grid-template-columns: 1fr; gap: 2px; }
+  .invest-grid, .invest-grid.cols-2 { grid-template-columns: 1fr; }
+  .invest-cover { aspect-ratio: 2.4 / 1; }
+}
+
+/* ============ Experience ============ */
+.exp-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; }
+.btn {
+  display: inline-block; font: inherit; font-size: 15px; font-weight: 500;
+  padding: 12px 24px; border-radius: 999px;
+  background: var(--ink); color: var(--bg);
+  transition: background .25s, color .25s, transform .25s;
+}
+.btn:hover { background: var(--accent); color: var(--accent-ink); }
+.btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+.btn.ghost:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.exp-list { margin-top: 48px; border-top: 1px solid var(--line); }
+.exp-row {
+  display: grid; grid-template-columns: 200px 1fr auto; gap: 24px; align-items: baseline;
+  padding: 26px 0; border-bottom: 1px solid var(--line);
+}
+.exp-years { color: var(--muted); font-size: 15px; font-variant-numeric: tabular-nums; }
+.exp-role { font-size: 1.25rem; font-weight: 600; }
+.exp-company { color: var(--muted); }
+@media (max-width: 720px) { .exp-row { grid-template-columns: 1fr; gap: 4px; } }
+
+/* ============ Testimonials（推薦）============ */
+#recommendations { background: var(--surface); }
+.t-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+.t-nav { display: flex; gap: 10px; }
+.t-arrow { width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--bg); color: var(--ink); font-size: 18px; line-height: 1; cursor: pointer; display: grid; place-items: center; box-shadow: 0 6px 20px color-mix(in srgb, var(--ink) 7%, transparent); transition: background .2s, color .2s, opacity .2s; }
+.t-arrow:hover:not(:disabled) { background: var(--ink); color: var(--surface); }
+.t-arrow:disabled { opacity: .4; cursor: default; }
+.t-track { --tp: min(48px, var(--pad)); margin: 28px calc(-1 * var(--tp)) -48px; padding: 24px var(--tp) 96px; display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 var(--tp); scrollbar-width: none; cursor: grab; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
+.t-track::-webkit-scrollbar { display: none; }
+.t-track.dragging { cursor: grabbing; scroll-snap-type: none; user-select: none; }
+.t-card { flex: 0 0 calc((100% - 16px) / 2); scroll-snap-align: start; margin: 0; display: flex; flex-direction: column; gap: 24px; padding: clamp(20px, 2.4vw, 28px); border-radius: 20px; background: var(--surface); box-shadow: var(--shadow-card); }
+.t-person { display: flex; align-items: center; gap: 14px; }
+.t-avatar { flex: none; width: 56px; height: 56px; border-radius: 50%; background: var(--bg); overflow: hidden; }
+.t-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.t-initials { display: grid; place-items: center; font-weight: 700; font-size: 1.05rem; color: var(--muted); }
+.t-name { font-size: 1.15rem; font-weight: 700; line-height: 1.3; }
+.t-role { color: var(--muted); font-size: 14px; line-height: 1.5; }
+.t-rel { align-self: flex-start; padding: 4px 12px; border-radius: 10px; line-height: 1.5; background: var(--bg); font-size: 13px; color: var(--muted); }
+.t-body { flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.t-quote { margin: 0; font-size: 1rem; line-height: 1.8; color: var(--ink); display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 9; line-clamp: 9; overflow: hidden; }
+.t-card.open .t-quote { -webkit-line-clamp: unset; line-clamp: unset; display: block; }
+.t-quote p + p { margin-top: 10px; }
+.t-toggle { margin-top: auto; padding: 8px 16px; border: 0; border-radius: 12px; background: var(--bg); font: inherit; font-size: 14px; font-weight: 600; color: var(--ink); cursor: pointer; transition: background .2s, color .2s; }
+.t-toggle:hover { background: var(--ink); color: var(--surface); }
+.t-toggle .less { display: none; }
+.t-card.open .t-toggle .more { display: none; }
+.t-card.open .t-toggle .less { display: inline; }
+.t-more { margin-top: 8px; }
+@media (max-width: 800px) { .t-card { flex-basis: calc(100% - 28px); } }
+.t-track:has(.t-card.open) { align-items: flex-start; }
+.t-link { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 15px; font-weight: 500; transition: color .2s; }
+.t-link:hover, .t-link:focus-visible { color: var(--accent); }
+
+footer { background: var(--ink); color: color-mix(in srgb, var(--bg) 55%, transparent); font-size: 14px; padding: 28px 0 32px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track { animation: none; }
+  * { transition: none !important; }
+}
+
+
+
+.sp-hero { background: var(--surface); padding: 108px 0 clamp(48px, 7vw, 88px); }
+.sp-hero .panel-head { align-items: center; }
+.sp-title { margin-top: 2px; font-size: clamp(1.3rem, 2.6vw, 1.9rem); font-weight: 700; line-height: 1.3; letter-spacing: -0.015em; text-wrap: balance; }
+.sp-meta { margin-top: clamp(32px, 5vw, 56px); display: grid; grid-template-columns: minmax(0, 1fr) 215px; gap: 28px clamp(32px, 6vw, 96px); }
+.sp-meta .col { display: grid; gap: 28px; align-content: start; }
+.sp-meta h4 { margin: 0 0 6px; font-size: 14px; font-weight: 600; color: var(--muted); }
+.sp-meta p { margin: 0; line-height: 1.85; }
+.sp-sec { background: var(--surface); }
+.sp-sec::before { content: ""; display: block; height: 1px; background: var(--line); width: min(calc(100% - 2 * var(--pad)), calc(var(--maxw) - 2 * var(--pad))); margin: 0 auto; }
+.sp-sec > .wrap { padding-top: clamp(56px, 8vw, 104px); padding-bottom: clamp(56px, 8vw, 104px); }
+.sp-row { display: grid; grid-template-columns: minmax(150px, 0.3fr) minmax(0, 1fr); gap: 20px clamp(24px, 5vw, 72px); align-items: start; }
+.sp-eyebrow { position: sticky; top: 96px; display: block; font-size: 15px; font-weight: 600; color: var(--accent); line-height: 1.9; }
+.sp-h2 { font-size: clamp(1.4rem, 2.5vw, 1.9rem); font-weight: 600; line-height: 1.5; letter-spacing: -0.015em; max-width: 30em; text-wrap: pretty; }
+.sp-h2 strong { font-weight: 800; }
+.sp-lead { margin-top: 24px; max-width: 46em; line-height: 1.9; }
+.sp-grid { margin-top: 28px; display: grid; gap: 16px; }
+.sp-grid.c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.sp-grid.c2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.sp-card { display: flex; flex-direction: column; gap: 6px; padding: clamp(20px, 2.4vw, 28px); border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); }
+.sp-ic { width: 52px; height: 52px; border-radius: 50%; background: var(--bg); display: grid; place-items: center; color: var(--ink); margin-bottom: 14px; }
+.sp-ic svg { width: 26px; height: 26px; }
+.sp-num { font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: .04em; }
+.sp-who { font-size: 14px; font-weight: 500; color: var(--muted); }
+.sp-card h3 { margin: 0; font-size: 1.2rem; font-weight: 700; line-height: 1.45; }
+.sp-card p { color: var(--muted); font-size: 15px; line-height: 1.8; }
+.sp-card .sp-k { margin-top: 10px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.sp-card .sp-v { color: var(--ink); font-weight: 600; font-size: 1.05rem; line-height: 1.6; }
+.sp-close { margin-top: 28px; max-width: 46em; line-height: 1.9; }
+.sp-note { margin-top: 20px; display: flex; gap: 10px; align-items: flex-start; padding: 0; color: var(--muted); font-size: 14.5px; line-height: 1.75; }
+.sp-note svg { flex: none; width: 20px; height: 20px; margin-top: 2px; }
+.sp-sec .invest-grid { margin-top: 24px; grid-template-columns: 1fr; }
+.sp-sec .invest-card { flex-direction: row; align-items: stretch; gap: 24px; }
+.sp-sec .invest-card { background: var(--surface); border: 0; box-shadow: var(--shadow-card); }
+.sp-sec .invest-card:hover { box-shadow: 0 1px 2px color-mix(in srgb, var(--ink) 6%, transparent), 0 16px 38px color-mix(in srgb, var(--ink) 12%, transparent), 0 34px 70px color-mix(in srgb, var(--ink) 9%, transparent); transform: translateY(-3px); }
+.sp-sec .invest-cover { background: var(--bg); }
+.sp-sec .invest-btn { background: var(--bg); box-shadow: none; align-self: flex-end; margin-top: auto; }
+.sp-sec .invest-card:hover .invest-btn { background: var(--ink); color: var(--surface); }
+.sp-sec .invest-cover { flex: 0 0 38%; align-self: flex-start; }
+.sp-sec .invest-body { padding: 8px 8px 8px 0; justify-content: flex-start; }
+.sp-sec .invest-result { margin-top: 8px; }
+.sp-sec .invest-btn { margin-top: auto; }
+.sp-sec .invest-result + .invest-result { margin-top: 0; padding-top: 0; }
+.sp-row > * { min-width: 0; }
+.sp-map { min-width: 0; max-width: 100%; margin: 28px 0 0; padding: clamp(16px, 2.4vw, 28px); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.sp-map figcaption { margin-bottom: 14px; font-size: 14px; font-weight: 600; color: var(--muted); }
+.sp-map-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.mm-svg { display: block; width: 100%; height: auto; min-width: 0; }
+.mm-svg .mm-font { font-family: var(--font); }
+.sp-map .sp-hint { margin-top: 10px; font-size: 13px; color: var(--muted); }
+.sp-map figcaption { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.sp-zoom { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 0; border-radius: 10px; background: var(--bg); font: inherit; font-size: 13px; font-weight: 600; color: var(--ink); cursor: pointer; transition: background .2s, color .2s; }
+.sp-zoom:hover { background: var(--ink); color: var(--surface); }
+.sp-zoom svg { width: 14px; height: 14px; }
+.sp-map-scroll { cursor: zoom-in; }
+.mm-modal { position: fixed; inset: 0; z-index: 50; display: none; flex-direction: column; background: color-mix(in srgb, var(--ink) 55%, transparent); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); padding: clamp(12px, 3vw, 32px); }
+.mm-modal.open { display: flex; }
+.mm-bar { display: flex; justify-content: flex-end; align-items: center; gap: 8px; margin-bottom: 12px; }
+.mm-btn { min-width: 40px; height: 40px; padding: 0 14px; border: 0; border-radius: 12px; background: var(--surface); font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; transition: background .2s, color .2s; }
+.mm-btn:hover { background: var(--ink); color: var(--surface); }
+.mm-stage { flex: 1; min-height: 0; overflow: auto; border-radius: var(--radius); background: var(--surface); padding: 16px; -webkit-overflow-scrolling: touch; }
+.mm-stage svg { display: block; width: 100%; min-width: 0; height: auto; margin: 0 auto; }
+.sp-end { padding: 0 0 clamp(56px, 8vw, 104px); background: var(--surface); }
+@media (max-width: 900px) {
+  .sp-grid.c3, .sp-grid.c2 { grid-template-columns: 1fr; }
+  .sp-row { grid-template-columns: 1fr; gap: 6px; }
+  .sp-eyebrow { position: static; }
+  .sp-meta { grid-template-columns: 1fr; }
+  .sp-sec .invest-card { flex-direction: column; gap: 14px; }
+  .sp-sec .invest-cover { flex-basis: auto; align-self: auto; }
+  .sp-sec .invest-body { padding: 4px 8px 8px; }
+}
+'
+.sp-flow { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.sp-flow span { padding: 8px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); font-size: 14px; font-weight: 600; }
+.sp-flow i { font-style: normal; color: var(--muted); }
+.sp-block { margin-top: 28px; padding: clamp(20px, 2.6vw, 30px); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.sp-block h3 { margin: 0; font-size: 1.2rem; font-weight: 700; }
+.sp-block > p { margin-top: 10px; color: var(--muted); font-size: 15px; line-height: 1.85; }
+.sp-items { margin-top: 18px; display: grid; gap: 14px; }
+.sp-item { padding: 16px 18px; border-radius: 14px; background: var(--bg); }
+.sp-item h4 { margin: 0 0 4px; font-size: 15px; font-weight: 700; }
+.sp-item p { color: var(--muted); font-size: 14.5px; line-height: 1.8; }
+.sp-block .sp-nsm { margin-top: 16px; color: var(--ink); font-size: 15px; line-height: 1.8; }
+.sp-sec .invest-card.is-disabled { box-shadow: none; border: 1px solid var(--line); cursor: not-allowed; }
+.sp-sec .invest-card.is-disabled:hover { box-shadow: none; transform: none; }
+.sp-sec .invest-card.is-disabled .invest-cover { background: var(--bg); }
+.sp-sec .invest-card.is-disabled .invest-btn, .sp-sec .invest-card.is-disabled:hover .invest-btn { background: transparent; color: var(--muted); padding-left: 0; font-weight: 500; align-self: flex-start; }
+.sp-sec .invest-body { justify-content: flex-start; }
+
+.sp-media { margin-top: 28px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.sp-media figure { margin: 0; padding: 16px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.sp-media video { display: block; width: 100%; max-width: 240px; margin: 0 auto; border-radius: 14px; border: 1px solid var(--line); background: var(--bg); }
+.sp-media figcaption { margin-top: 12px; text-align: center; font-size: 13.5px; line-height: 1.7; color: var(--muted); }
+.sp-stat { margin-top: 24px; display: grid; gap: 6px; }
+.sp-stat strong { font-size: clamp(2.4rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; }
+.sp-stat span { color: var(--muted); font-size: 15px; }
+.sp-next { margin-top: 28px; }
+.sp-res { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 20px; align-items: stretch; }
+.sp-res-card { display: flex; flex-direction: column; justify-content: center; gap: 10px; min-height: 200px; padding: 32px 36px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.sp-res-card h4 { margin: 0; font-size: 14px; font-weight: 600; color: var(--muted); }
+.sp-res-card.metric strong { font-size: clamp(3rem, 6vw, 4.2rem); font-weight: 800; line-height: 1.05; letter-spacing: -.03em; color: var(--accent); }
+.sp-res-card.metric span { font-size: 15px; color: var(--muted); }
+.sp-res-card.guard .head { display: flex; align-items: center; gap: 10px; }
+.sp-res-card.guard .ok { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--bg); color: var(--ink); }
+.sp-res-card.guard .ok svg { width: 15px; height: 15px; }
+.sp-cm { display: grid; gap: 20px; }
+.sp-res3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.sp-res3 .sp-res-card { min-height: 180px; padding: 28px; }
+.sp-res3 .sp-res-card.metric strong { font-size: clamp(2rem, 3.4vw, 2.9rem); white-space: nowrap; }
+.sp-res3.one { grid-template-columns: 1fr; }
+.sp-cm .sp-res-card.guard { min-height: 0; }
+.sp-cm .sp-res-card p { margin: 0; }
+@media (max-width: 900px) { .sp-res3 { grid-template-columns: 1fr; } }
+.sp-res-card.guard p { margin: 0; font-size: 16px; line-height: 1.85; color: var(--ink); }
+@media (max-width: 900px) { .sp-res { grid-template-columns: 1fr; } .sp-res-card { min-height: 0; padding: 24px; } }
+.sp-sec > .wrap { padding-top: clamp(36px, 5vw, 56px); padding-bottom: clamp(36px, 5vw, 56px); }
+.sp-hero { padding-bottom: clamp(32px, 4vw, 48px); }
+.sp-sec { padding: 0; }
+@media (min-width: 901px) { .sp-meta { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.sp-item { background: var(--surface); border: 1px solid var(--line); }
+#insight .sp-item { background: none; border: 0; padding: 0; }
+#insight .sp-items { gap: 20px; }
+#insight .sp-item h4 { font-size: 16px; margin-bottom: 6px; }
+.sp-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.sp-chips span { padding: 5px 11px; border: 1px solid var(--line); border-radius: 999px; font-size: 12.5px; font-weight: 500; line-height: 1.5; background: var(--surface); }
+.sp-out { margin-top: 28px; }
+.sp-out h4 { margin: 0 0 8px; font-size: 14px; font-weight: 600; color: var(--muted); }
+.sp-out-card { display: inline-grid; gap: 8px; align-content: center; min-width: 280px; min-height: 170px; padding: 32px 36px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.sp-out-card strong { font-size: clamp(2.2rem, 4.4vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; color: var(--accent); }
+.sp-out-card span { font-size: 15px; color: var(--muted); }
+.sp-oldflow { margin-top: 24px; padding: clamp(16px, 2.4vw, 28px); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.sp-oldflow > h4 { margin: 0 0 16px; font-size: 14px; font-weight: 600; color: var(--muted); }
+.sp-of-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.sp-of-bar { padding: 6px 10px; border-radius: 10px; font-size: 12.5px; font-weight: 600; line-height: 1.5; text-align: center; background: var(--bg); color: var(--muted); }
+.sp-of-bar.hot { grid-column: span 2; background: color-mix(in srgb, var(--accent) 10%, var(--surface)); color: var(--accent); }
+.sp-of-bar.cool { grid-column: span 2; }
+.sp-of-step { margin: 0; text-align: center; }
+.sp-of-step img { display: block; width: 100%; height: auto; border-radius: 16px; filter: drop-shadow(0 6px 12px rgba(16,24,40,.14)); }
+.sp-of-step figcaption { margin-top: 10px; font-size: 13px; line-height: 1.55; color: var(--ink); }
+.sp-of-step figcaption b { display: block; margin-bottom: 2px; font-size: 12px; font-weight: 600; color: var(--muted); }
+.sp-dec { margin-top: 28px; display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 20px; align-items: center; }
+.sp-dec .sp-item { padding: 22px 24px; }
+.sp-dec .sp-item h4 { font-size: 16px; margin-bottom: 8px; }
+.sp-dec .sp-item .no { display: block; margin-bottom: 8px; font-size: 13px; font-weight: 600; color: var(--accent); }
+.sp-vis { padding: 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.sp-vis .sp-media { margin-top: 0; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.sp-vis .sp-media figure { padding: 0; border: 0; }
+.sp-vis .sp-media video { max-width: 210px; }
+.sp-dec2 { margin-top: 28px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+.sp-dec2 .sp-item { padding: 24px; }
+.sp-dec2 .sp-item h4 { font-size: 16px; margin-bottom: 8px; }
+.sp-dec2 .sp-item .no { display: block; margin-bottom: 8px; font-size: 13px; font-weight: 600; color: var(--accent); }
+.sp-dec2 .sp-item { display: flex; flex-direction: column; }
+.sp-dec2 .vid { margin-top: auto; padding-top: 20px; }
+.sp-dec2 video { height: auto; aspect-ratio: 1179 / 2556; object-fit: contain; display: block; width: 100%; max-width: 240px; margin: 0 auto; border-radius: 14px; border: 1px solid var(--line); background: var(--bg); }
+@media (max-width: 900px) { .sp-dec2 { grid-template-columns: 1fr; } }
+.sp-seq { display: grid; gap: 18px; }
+.sp-seq h5 { margin: 0 0 8px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.sp-seq .chips { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.sp-seq .chips span { position: relative; padding: 9px 6px; border: 1px solid var(--line); border-radius: 10px; font-size: 13px; font-weight: 600; line-height: 1.4; text-align: center; background: var(--surface); }
+.sp-seq .chips span:not(:last-of-type)::after { content: '→'; position: absolute; right: -16px; top: 50%; transform: translateY(-50%); font-weight: 400; color: var(--muted); }
+.sp-seq .chips i { display: none; }
+.sp-seq .new .chips span { background: color-mix(in srgb, var(--accent) 8%, var(--surface)); border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
+.sp-seq .new .chips span.first { background: var(--accent); border-color: var(--accent); color: #fff; }
+@media (max-width: 900px) { .sp-dec { grid-template-columns: 1fr; } .sp-of-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 16px; } .sp-of-bar { display: none; } }
+@media (max-width: 700px) { .sp-media { grid-template-columns: 1fr; } }
+
+.sp-pcard { padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.sp-pcard .sp-ic { margin-bottom: 18px; }
+.sp-pcard h3 { margin: 0 0 8px; font-size: 1.15rem; font-weight: 700; }
+.sp-pcard p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.85; }
+.sp-tbl { margin-top: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); overflow: hidden; }
+.sp-tr { display: grid; grid-template-columns: 1.1fr .6fr 2.8fr 1.3fr; gap: 20px; align-items: center; padding: 18px 24px; border-top: 1px solid var(--line); }
+.sp-tr:first-child { border-top: 0; }
+.sp-tr.th { padding-top: 14px; padding-bottom: 14px; background: var(--bg); font-size: 13px; font-weight: 600; color: var(--muted); }
+.sp-tr .name { font-size: 14.5px; font-weight: 700; }
+.sp-tr .lvl, .sp-tr .why { font-size: 14.5px; line-height: 1.75; }
+.sp-tr .why { color: var(--muted); }
+.sp-tag { display: inline-block; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line); font-size: 13px; font-weight: 600; white-space: nowrap; }
+.sp-tag.no { color: var(--muted); background: var(--bg); }
+.sp-tag.go { color: #fff; background: var(--accent); border-color: var(--accent); }
+.sp-tag.try { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); background: color-mix(in srgb, var(--accent) 6%, var(--surface)); }
+.sp-tr.is-go { background: color-mix(in srgb, var(--accent) 3%, var(--surface)); }
+.sp-prob { margin-top: 20px; display: grid; gap: 14px; }
+.sp-prob .card { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 20px; padding: 24px 28px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.sp-prob .sp-ic { width: 52px; height: 52px; margin: 0; }
+.sp-prob h3 { margin: 4px 0 8px; font-size: 1.1rem; font-weight: 700; line-height: 1.5; }
+.sp-prob p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.9; }
+.sp-prob p strong { color: var(--ink); font-weight: 600; }
+.sp-ship { margin-top: 24px; display: grid; gap: 20px; }
+.sp-ship .two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; }
+.sp-ship .shots { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.sp-ship .shot { margin: 0; text-align: center; }
+.sp-ship .shot img { display: block; width: 100%; max-width: 240px; height: auto; margin: 0 auto; filter: drop-shadow(0 8px 16px rgba(16,24,40,.14)); }
+.sp-ship .shot figcaption { margin-top: 14px; font-size: 13.5px; line-height: 1.7; color: var(--muted); }
+.sp-ship .sp-pcard .tag { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 600; color: var(--accent); }
+.sp-ship .blk { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
+.sp-ship .blk h4 { margin: 0 0 4px; font-size: 14px; font-weight: 600; color: var(--muted); }
+.sp-ship .blk p { color: var(--ink); font-size: 15px; }
+.sp-out-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.sp-out-row .sp-out-card { min-width: 0; min-height: 0; flex: 1 1 140px; padding: 20px 22px; }
+.sp-out-row .sp-out-card strong { font-size: clamp(1.4rem, 2.2vw, 1.75rem); white-space: nowrap; }
+.sp-out-row .sp-out-card { align-content: start; }
+.sp-out-row .sp-out-card span { font-size: 13.5px; line-height: 1.5; }
+.sp-out .sub { margin: -4px 0 12px; font-size: 13px; color: var(--muted); }
+.sp-res3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.sp-res3 .sp-res-card { min-height: 180px; padding: 28px; }
+.sp-res3 .sp-res-card.metric strong { font-size: clamp(2rem, 3.4vw, 2.9rem); white-space: nowrap; }
+.sp-cm .sp-lead { margin: 0; }
+.sp-res3 .t { padding: 22px 24px; border-radius: 14px; background: var(--bg); display: grid; gap: 6px; }
+.sp-res3 .t strong { font-size: clamp(2rem, 3.6vw, 2.6rem); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; color: var(--accent); }
+.sp-res3 .t span { font-size: 14.5px; color: var(--muted); }
+.sp-note-s { margin-top: 14px; display: flex; gap: 8px; font-size: 13px; line-height: 1.7; color: var(--muted); }
+.sp-note-s svg { flex: 0 0 15px; width: 15px; height: 15px; margin-top: 3px; }
+.sp-cm { display: grid; gap: 20px; }
+.sp-cm .sp-res-card { min-height: 0; }
+.sp-cm .sp-res-card h4 { font-size: 14px; }
+.sp-cm .sp-res-card p { margin: 0; }
+@media (max-width: 900px) {
+  .sp-tr.th { display: none; }
+  .sp-tr { grid-template-columns: 1fr; gap: 6px; padding: 18px 20px; }
+  .sp-res3 { grid-template-columns: 1fr; }
+  .sp-ship .two { grid-template-columns: 1fr; }
+  .sp-ship .shots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sp-prob .card { grid-template-columns: 1fr; gap: 14px; padding: 22px; }
+}
+
+.sp-res3.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.sp-res3.two .sp-res-card.metric strong { font-size: clamp(2.2rem, 4vw, 3.2rem); }
+@media (max-width: 900px) { .sp-res3.two { grid-template-columns: 1fr; } }
+
+.pj { grid-column: 1 / -1; margin: 24px 0 0; min-width: 0; }
+.pj > figcaption { margin-bottom: 18px; font-size: 14px; font-weight: 600; color: var(--muted); }
+.pj-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+.pj-grid { min-width: 980px; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: 14px; row-gap: 16px; align-items: start; }
+.pj-stage { padding-bottom: 8px; border-bottom: 2px solid var(--ink); font-size: 13px; font-weight: 700; color: var(--ink); }
+.pj-stage.s1 { grid-column: 1; } .pj-stage.s2 { grid-column: 2 / 6; } .pj-stage.s3 { grid-column: 6; }
+.pj-step { display: flex; flex-direction: column; gap: 3px; }
+.pj-step .n { font-size: 12.5px; font-weight: 700; color: var(--accent); }
+.pj-step .t { font-size: 15px; font-weight: 700; line-height: 1.45; }
+.pj-step .x { font-size: 12px; line-height: 1.5; color: var(--muted); }
+.pj-ui img { display: block; width: 100%; height: auto; border-radius: 14px; filter: drop-shadow(0 6px 14px rgba(16,24,40,.16)); }
+.pj-brk { grid-column: 1 / 6; display: flex; align-items: center; gap: 14px; margin-top: 8px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.pj-brk::before, .pj-brk::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.pj-brk-r { grid-column: 6; margin-top: 8px; border-top: 1px solid var(--line); }
+.pj-c ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.pj-c li { position: relative; padding-left: 20px; font-size: 13px; line-height: 1.7; color: #344054; }
+.pj-c li b { position: absolute; left: 0; top: 0; font-weight: 700; color: var(--muted); }
+.pj-c.c12 { grid-column: 1 / 3; } .pj-c.c5 { grid-column: 5; } .pj-c.c6 { grid-column: 6; }
+.ap { margin-top: 28px; display: grid; gap: 0; }
+.ap-t { display: grid; grid-template-columns: 124px minmax(0, 1fr); gap: 0 16px; padding: 22px 0; border-top: 1px solid var(--line); }
+.ap-t:last-child { padding-bottom: 0; }
+.ap-chip { display: inline-block; align-self: start; justify-self: start; padding: 4px 12px; border-radius: 999px; font-size: 12.5px; font-weight: 700; line-height: 1.5; background: var(--bg); color: var(--muted); }
+.ap-chip.must { background: var(--accent); color: #fff; }
+.ap-chip.test { background: color-mix(in srgb, var(--accent) 10%, var(--surface)); color: var(--accent); }
+.ap-list { display: grid; gap: 14px; min-width: 0; }
+.ap-i { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 20px; align-items: baseline; }
+.ap-i p { margin: 0; font-size: 15px; line-height: 1.85; color: var(--ink); }
+.ap-i .tg { font-size: 12.5px; font-weight: 600; color: var(--muted); white-space: nowrap; }
+@media (max-width: 700px) { .ap-t { grid-template-columns: 1fr; gap: 12px; } .ap-i { grid-template-columns: 1fr; } }
+
+.sp-tr.ap2 { grid-template-columns: minmax(130px, .8fr) minmax(0, 3.4fr) minmax(104px, .7fr); align-items: start; }
+.sp-tr.ap2 .name { padding-top: 1px; }
+.sp-tr.ap2 .why { color: var(--ink); }
+.sp-tr.ap2.th { align-items: center; }
+.sp-tr.ap2.rep { border-top: 0; }
+@media (min-width: 701px) {
+.sp-tr.ap2.rep > :nth-child(1) { grid-column: 1; grid-row: 1; }
+.sp-tr.ap2.rep > :nth-child(3) { grid-column: 2; grid-row: 1; }
+.sp-tr.ap2.rep > :nth-child(4) { grid-column: 3; grid-row: 1; }
+.sp-tr.ap2.rep .hl { grid-column: 2 / 4; grid-row: 1; align-self: start; height: 0; margin: -18px -24px 0 0; border-top: 1px solid var(--line); }
+}
+@media (max-width: 700px) { .sp-tr.ap2.rep { border-top: 1px solid var(--line); } .sp-tr.ap2.rep .hl { display: none; } }
+@media (max-width: 700px) { .sp-tr.ap2 { grid-template-columns: 1fr; gap: 8px; } .sp-tr.ap2.th { display: none; } }
+
+.dl { margin-top: 24px; display: grid; gap: 20px; }
+.dl-card { padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.dl-card .tag { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 600; color: var(--accent); }
+.dl-card h3 { margin: 0; font-size: 1.15rem; font-weight: 700; line-height: 1.5; }
+.dl-body { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line); display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 28px 36px; align-items: start; }
+.dl-shots { display: flex; gap: 22px; }
+.dl-shot { margin: 0; width: 200px; text-align: center; }
+.dl-shot img, .dl-shot video { display: block; width: 100%; height: auto; border-radius: 14px; filter: drop-shadow(0 8px 16px rgba(16,24,40,.14)); }
+.dl-shot figcaption { margin-top: 14px; font-size: 13.5px; line-height: 1.7; color: var(--muted); }
+.dl-shot video { width: 89.53%; height: auto; aspect-ratio: 828 / 1792; margin: 0 auto; border-radius: 14px; object-fit: fill; }
+.dl-shot .lb { display: inline-block; margin-bottom: 10px; padding: 3px 12px; border-radius: 999px; font-size: 12.5px; font-weight: 700; background: var(--bg); color: var(--muted); }
+.dl-shot .lb.new { background: var(--accent); color: #fff; }
+.dl-notes { margin: 0; padding: 0; list-style: none; display: grid; gap: 18px; align-self: center; }
+.dl-notes li { position: relative; padding-left: 18px; font-size: 15px; line-height: 1.85; }
+.dl-notes li::before { content: ""; position: absolute; left: 0; top: .8em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.dl-notes b { display: block; font-weight: 700; }
+.dl-notes span.d { color: var(--muted); }
+@media (max-width: 900px) { .dl-body { grid-template-columns: 1fr; } .dl-shots { justify-content: center; } }
+@media (max-width: 480px) { .dl-card { padding: 20px; } .dl-shots { gap: 12px; } .dl-shot { width: calc(50% - 6px); } }
+</style>
+</head>
+
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand"><img class="avatar" src="../assets/avatar.jpg" alt="" width="40" height="40"><span class="brand-text"><span class="brand-name">FENG HSIN JOU 馮欣柔</span><span class="brand-role">Senior Product Manager</span></span></a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="../index.html#work">Selected Works</a></li>
+        <li><a href="../index.html#recommendations">Recommendations</a></li>
+      </ul>
+    </nav>
+    <button class="lang" id="langBtn" type="button" aria-label="Switch language"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19"/><path d="M12 2.5c2.6 2.7 4 5.9 4 9.5s-1.4 6.8-4 9.5c-2.6-2.7-4-5.9-4-9.5s1.4-6.8 4-9.5z"/></svg><span class="lang-opts"><span class="lang-opt" data-lang="en">EN</span><span class="lang-sep"> / </span><span class="lang-opt" data-lang="zh">中</span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="sp-hero">
+  <div class="wrap">
+    <header class="panel-head">
+      <div class="logo"><img src="../assets/moneybook-logo.png" alt="Moneybook 麻布記帳" width="120" height="120"></div>
+      <div>
+        <p class="panel-company" data-en="Moneybook・Personal finance management service that consolidates financial accounts" data-zh="Moneybook 麻布記帳・整合金融帳戶的個人財務管理服務">Moneybook 麻布記帳・整合金融帳戶的個人財務管理服務</p>
+        <h1 class="sp-title" data-en="Improving the financial account linking flow to lay the foundation for users to reach the core experience" data-zh="優化金融帳戶綁定流程，建立使用者進入核心體驗的基礎">優化金融帳戶綁定流程，建立使用者進入核心體驗的基礎</h1>
+        <p class="sp-lead" data-en="Raising users' willingness and success rate in completing their first account link, and reducing the friction of later cross-account consolidation, so users can reach the core product experience smoothly" data-zh="提升完成首次金融帳戶綁定的意願與成功率，並降低後續跨帳戶整合的操作阻力，讓使用者順利進入產品核心體驗">提升完成首次金融帳戶綁定的意願與成功率，並降低後續跨帳戶整合的操作阻力，讓使用者順利進入產品核心體驗</p>
+      </div>
+    </header>
+    <div class="sp-meta">
+      <div class="col">
+        <div><h4 data-en="Summary" data-zh="摘要">摘要</h4><p data-en="I redesigned the Moneybook financial account linking flow. Addressing security concerns, uncertainty about the steps, and anxiety while waiting for sync, I built fuller trust guidance and flow feedback to lower the Activation barrier to the core product experience." data-zh="重新設計 Moneybook 金融帳戶綁定流程，針對資安疑慮、操作不確定性與同步等待焦慮，建立更完整的信任引導與流程回饋，降低使用者進入產品核心體驗的 Activation 門檻。">重新設計 Moneybook 金融帳戶綁定流程，針對資安疑慮、操作不確定性與同步等待焦慮，建立更完整的信任引導與流程回饋，降低使用者進入產品核心體驗的 Activation 門檻。</p>
+          <div class="sp-out"><h4 data-en="Key outcomes" data-zh="關鍵成果">關鍵成果</h4>
+            <div class="sp-out-row">
+              <div class="sp-out-card"><strong>+12%</strong><span data-en="Account-linking conversion rate of new users" data-zh="新進使用者完成金融帳戶綁定轉換率">新進使用者完成金融帳戶綁定轉換率</span></div>
+              <div class="sp-out-card"><strong>3.5 → 5.2</strong><span data-en="Average number of linked accounts" data-zh="平均綁定帳戶數">平均綁定帳戶數</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div><h4 data-en="Period" data-zh="專案時間">專案時間</h4><p>2021/10 – 2021/12</p></div>
+        <div><h4 data-en="Role" data-zh="所屬職位">所屬職位</h4><p>Senior Product Manager</p></div>
+        <div><h4 data-en="Core team" data-zh="核心專案團隊">核心專案團隊</h4><div class="sp-chips"><span>UIUX Designer</span><span>iOS Developer</span><span>Android Developer</span><span>Back-end Developer</span></div></div>
+        <div><h4 data-en="Cross-functional" data-zh="跨職能協作">跨職能協作</h4><div class="sp-chips"><span>Marketing Specialist</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sp-sec" id="insight">
+  <div class="wrap sp-row">
+    <span class="sp-eyebrow" data-en="01 Problem insight" data-zh="01 問題洞察">01 問題洞察</span>
+    <div>
+      <h2 class="sp-h2" data-en="The account-linking rate of new users was low, slowing the growth of active users" data-zh="新進使用者的金融帳戶綁定率偏低，導致活躍使用者成長緩慢">新進使用者的金融帳戶綁定率偏低，導致活躍使用者成長緩慢</h2>
+      <p class="sp-lead" data-en="I cross-checked linking funnel data, App Store reviews, and customer-service tickets, and studied benchmark account-aggregation services across markets. Benchmark products all defuse users' defensiveness through layered trust-building and guidance, whereas Moneybook's flow had fallen into the blind spot of “pursuing fewer steps while ignoring the psychological barrier of a high-sensitivity financial scenario”, which showed up as three core obstacles:" data-zh="我交叉比對綁定漏斗數據、App 商店評論與客服進線紀錄，並剖析各國標竿金融帳戶整合服務。標竿產品皆透過多層次的信任鋪陳與引導來化解防禦心理；Moneybook 既有流程卻陷入「過度追求步驟精簡，而忽略金融高敏感場景的心理門檻」的盲點，反映在三大核心阻礙：">我交叉比對綁定漏斗數據、App 商店評論與客服進線紀錄，並剖析各國標竿金融帳戶整合服務。標竿產品皆透過多層次的信任鋪陳與引導來化解防禦心理；Moneybook 既有流程卻陷入「過度追求步驟精簡，而忽略金融高敏感場景的心理門檻」的盲點，反映在三大核心阻礙：</p>
+      <div class="sp-prob">
+        <div class="card"><div class="sp-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><div><h3 data-en="Abrupt requests trigger security defensiveness" data-zh="突襲式索取引發資安防禦心理">突襲式索取引發資安防禦心理</h3><p data-en="App Store reviews showed the flow over-simplified its upfront guidance: with no mental preparation or security assurance, the screen asked for a username and password right away. This “abrupt request” amplified fears of credential theft, and many prospective users left at the login page because they felt unsafe." data-zh="盤點 App 商店評論發現，既有流程過度簡化前置引導：使用者在毫無心理準備與安全背書的狀況下，畫面就直接要求輸入帳號密碼。這種「突襲式索取」放大了竊密恐慌，不少潛在使用者在輸入登入資訊頁因缺乏安全感而離開。">盤點 App 商店評論發現，既有流程過度簡化前置引導：使用者在毫無心理準備與安全背書的狀況下，畫面就直接要求輸入帳號密碼。這種「突襲式索取」放大了竊密恐慌，不少潛在使用者在輸入登入資訊頁因缺乏安全感而離開。</p></div></div>
+        <div class="card"><div class="sp-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2.5"/><path d="M8 9h8M8 13h8M8 17h4"/></svg></div><div><h3 data-en="Over-minimal UI causes frustration" data-zh="過度追求介面極簡，造成高挫敗感">過度追求介面極簡，造成高挫敗感</h3><p data-en="Customer-service tickets showed that many highly motivated users who had overcome their security concerns kept failing because they were unsure whether to enter their web-banking or mobile-banking credentials, or had forgotten them. To stay minimal, the design left out the field rules and format guidance, and had no real-time guidance or error-recovery path, so users who failed often gave up." data-zh="客服進線紀錄顯示，許多已克服資安疑慮的高動機使用者，卻因不清楚該輸入網路銀行或行動銀行的帳密、或忘記帳密而反覆失敗。既有設計省略了必要的欄位規範與格式說明，也缺乏即時引導與錯誤恢復路徑，失敗後的使用者容易無所適從而放棄。">客服進線紀錄顯示，許多已克服資安疑慮的高動機使用者，卻因不清楚該輸入網路銀行或行動銀行的帳密、或忘記帳密而反覆失敗。既有設計省略了必要的欄位規範與格式說明，也缺乏即時引導與錯誤恢復路徑，失敗後的使用者容易無所適從而放棄。</p></div></div>
+        <div class="card"><div class="sp-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div><div><h3 data-en="Opaque sync status breeds anxiety" data-zh="同步狀態缺乏透明度，引發失控焦慮">同步狀態缺乏透明度，引發失控焦慮</h3><p data-en="Syncing data after linking takes a while, but the flow showed only a monotonous waiting message, with no progress breakdown or status guidance. Users who had just handed over sensitive information were under stress, and overly thin status feedback made them suspect a malfunction or misuse of their data, so they left at the last step out of panic or impatience." data-zh="綁定後的資料同步需要較長等待時間，但既有流程只有單調的等待提示，缺乏進度拆解與狀態引導。剛交出敏感資訊的使用者處於高壓心理，過於簡略的狀態回饋反而讓人誤以為程式異常或資料遭不當處理，在最終環節因恐慌或不耐而離開。">綁定後的資料同步需要較長等待時間，但既有流程只有單調的等待提示，缺乏進度拆解與狀態引導。剛交出敏感資訊的使用者處於高壓心理，過於簡略的狀態回饋反而讓人誤以為程式異常或資料遭不當處理，在最終環節因恐慌或不耐而離開。</p></div></div>
+      </div>
+      <figure class="sp-map">
+        <figcaption><span data-en="Existing account-linking flow" data-zh="既有帳戶綁定流程">既有帳戶綁定流程</span><button class="sp-zoom" type="button" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="Zoom in" data-zh="放大查看">放大查看</span></button></figcaption>
+        <div class="sp-map-scroll"><svg viewBox="0 0 1200 600" class="mm-svg" role="img" aria-label="Account linking journey with drop-off causes" xmlns="http://www.w3.org/2000/svg" style="display:block">
+<defs><style>
+.mm-font{font-family:var(--font),'Noto Sans TC',sans-serif}
+.jb-st{font-size:18px;font-weight:700;fill:#101828}
+.jb-n{font-size:15px;font-weight:700;fill:#2F4BFF}
+.jb-h{font-size:20px;font-weight:700;fill:#101828}
+.jb-s{font-size:15px;font-weight:500;fill:#667085}
+</style>
+<filter id="jbsh" x="-10%" y="-5%" width="120%" height="115%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#101828" flood-opacity=".16"/></filter>
+<clipPath id="jbc0"><rect x="0" y="190" width="180" height="395" rx="16"/></clipPath>
+<clipPath id="jbc1"><rect x="204" y="190" width="180" height="395" rx="16"/></clipPath>
+<clipPath id="jbc2"><rect x="408" y="190" width="180" height="395" rx="16"/></clipPath>
+<clipPath id="jbc3"><rect x="612" y="190" width="180" height="395" rx="16"/></clipPath>
+<clipPath id="jbc4"><rect x="816" y="190" width="180" height="395" rx="16"/></clipPath>
+<clipPath id="jbc5"><rect x="1020" y="190" width="180" height="395" rx="16"/></clipPath>
+</defs>
+<text x="0" y="26" class="mm-font jb-st" text-anchor="start" data-en="Sign-up complete" data-zh="完成註冊">完成註冊</text>
+<rect x="0" y="38" width="180" height="2.5" fill="#101828"/>
+<text x="204" y="26" class="mm-font jb-st" text-anchor="start" data-en="Link financial accounts" data-zh="綁定金融帳戶">綁定金融帳戶</text>
+<rect x="204" y="38" width="792" height="2.5" fill="#101828"/>
+<text x="1020" y="26" class="mm-font jb-st" text-anchor="start" data-en="Sync" data-zh="同步">同步</text>
+<rect x="1020" y="38" width="180" height="2.5" fill="#101828"/>
+<text x="0" y="78" class="mm-font jb-n" text-anchor="start" data-en="01" data-zh="01">01</text>
+<text x="0" y="106" class="mm-font jb-h" text-anchor="start" data-en="Start linking a" data-zh="開始綁定金融帳戶">開始綁定金融帳戶</text>
+<text x="0" y="132" class="mm-font jb-h" text-anchor="start" data-en="financial account" data-zh=""></text>
+<g filter="url(#jbsh)"><image href="../assets/ab-welcome.webp" x="0" y="190" width="180" height="395" preserveAspectRatio="xMidYMin meet" clip-path="url(#jbc0)"/></g>
+<text x="204" y="78" class="mm-font jb-n" text-anchor="start" data-en="02" data-zh="02">02</text>
+<text x="204" y="106" class="mm-font jb-h" text-anchor="start" data-en="Choose the" data-zh="選擇欲綁定的">選擇欲綁定的</text>
+<text x="204" y="132" class="mm-font jb-h" text-anchor="start" data-en="account type" data-zh="帳戶類型">帳戶類型</text>
+<g filter="url(#jbsh)"><image href="../assets/ab-type.webp" x="204" y="190" width="180" height="395" preserveAspectRatio="xMidYMin meet" clip-path="url(#jbc1)"/></g>
+<text x="408" y="78" class="mm-font jb-n" text-anchor="start" data-en="03" data-zh="03">03</text>
+<text x="408" y="106" class="mm-font jb-h" text-anchor="start" data-en="Choose the" data-zh="選擇欲綁定的">選擇欲綁定的</text>
+<text x="408" y="132" class="mm-font jb-h" text-anchor="start" data-en="institution" data-zh="金融機構">金融機構</text>
+<g filter="url(#jbsh)"><image href="../assets/ab-bank.webp" x="408" y="190" width="180" height="395" preserveAspectRatio="xMidYMin meet" clip-path="url(#jbc2)"/></g>
+<text x="612" y="78" class="mm-font jb-n" text-anchor="start" data-en="04" data-zh="04">04</text>
+<text x="612" y="106" class="mm-font jb-h" text-anchor="start" data-en="Choose a" data-zh="選擇同步方式">選擇同步方式</text>
+<text x="612" y="132" class="mm-font jb-h" text-anchor="start" data-en="sync method" data-zh=""></text>
+<text x="612" y="162" class="mm-font jb-s" text-anchor="start" data-en="→ Proxy sync" data-zh="→ 代理同步">→ 代理同步</text>
+<g filter="url(#jbsh)"><image href="../assets/ab-method.webp" x="612" y="190" width="180" height="395" preserveAspectRatio="xMidYMin meet" clip-path="url(#jbc3)"/></g>
+<text x="816" y="78" class="mm-font jb-n" text-anchor="start" data-en="05" data-zh="05">05</text>
+<text x="816" y="106" class="mm-font jb-h" text-anchor="start" data-en="Enter login" data-zh="輸入登入資訊">輸入登入資訊</text>
+<text x="816" y="132" class="mm-font jb-h" text-anchor="start" data-en="details" data-zh=""></text>
+<text x="816" y="162" class="mm-font jb-s" text-anchor="start" data-en="→ Start sync" data-zh="→ 開始同步">→ 開始同步</text>
+<g filter="url(#jbsh)"><image href="../assets/ab-login.webp" x="816" y="190" width="180" height="395" preserveAspectRatio="xMidYMin meet" clip-path="url(#jbc4)"/></g>
+<text x="1020" y="78" class="mm-font jb-n" text-anchor="start" data-en="06" data-zh="06">06</text>
+<text x="1020" y="106" class="mm-font jb-h" text-anchor="start" data-en="Proxy-sync" data-zh="代理同步">代理同步</text>
+<text x="1020" y="132" class="mm-font jb-h" text-anchor="start" data-en="account data" data-zh="金融帳戶資料">金融帳戶資料</text>
+<g filter="url(#jbsh)"><image href="../assets/ab-syncing.webp" x="1020" y="190" width="180" height="395" preserveAspectRatio="xMidYMin meet" clip-path="url(#jbc5)"/></g>
+</svg></div>
+      </figure>
+      <figure class="sp-map">
+        <figcaption><span data-en="Benchmark account-linking tactics compared" data-zh="標竿金融帳戶整合服務手段比較">標竿金融帳戶整合服務手段比較</span><button class="sp-zoom" type="button" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="Zoom in" data-zh="放大查看">放大查看</span></button></figcaption>
+        <div class="sp-map-scroll"><svg viewBox="0 0 1197 1000" class="mm-svg" role="img" aria-label="Benchmark comparison of account-linking tactics" xmlns="http://www.w3.org/2000/svg" style="display:block">
+<defs><style>
+.mm-font{font-family:var(--font),'Noto Sans TC',sans-serif}
+.bm-rg{font-size:15px;font-weight:700;fill:#667085}
+.bm-pn{font-size:17px;font-weight:700;fill:#101828}
+.bm-pa{font-size:17px;font-weight:700;fill:#2F4BFF}
+.bm-band{font-size:14px;font-weight:700;fill:#101828}
+.bm-row{font-size:15px;font-weight:500;fill:#344054}
+.bm-dash{font-size:18px;font-weight:500;fill:#B8C0CC}
+.bm-na{font-size:13.5px;font-weight:500;fill:#98A2B3}
+.bm-sec{font-size:15px;font-weight:700;fill:#667085}
+.bm-tag{font-size:12.5px;font-weight:600;fill:#667085}
+</style>
+<filter id="bmsh" x="-10%" y="-5%" width="120%" height="115%"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#101828" flood-opacity=".14"/></filter></defs>
+<text x="619.5" y="24" class="mm-font bm-rg" text-anchor="middle" data-en="Japan" data-zh="日本">日本</text>
+<rect x="380" y="34" width="479" height="2" fill="#101828"/>
+<text x="949.5" y="24" class="mm-font bm-rg" text-anchor="middle" data-en="Vietnam" data-zh="越南">越南</text>
+<rect x="875" y="34" width="149" height="2" fill="#101828"/>
+<text x="1114.5" y="24" class="mm-font bm-rg" text-anchor="middle" data-en="EU standards" data-zh="歐盟標準規範">歐盟標準規範</text>
+<rect x="1040" y="34" width="149" height="2" fill="#101828"/>
+<text x="454.5" y="66" class="mm-font bm-pn" text-anchor="middle" data-en="MoneyForward" data-zh="MoneyForward">MoneyForward</text>
+<text x="619.5" y="66" class="mm-font bm-pn" text-anchor="middle" data-en="Zaim" data-zh="Zaim">Zaim</text>
+<text x="784.5" y="66" class="mm-font bm-pn" text-anchor="middle" data-en="Moneytree" data-zh="Moneytree">Moneytree</text>
+<text x="949.5" y="66" class="mm-font bm-pn" text-anchor="middle" data-en="Moneylover" data-zh="Moneylover">Moneylover</text>
+<text x="1114.5" y="66" class="mm-font bm-pn" text-anchor="middle" data-en="Santander" data-zh="Santander">Santander</text>
+<rect x="0" y="88" width="1193" height="30" rx="8" fill="#F2F4F7"/>
+<text x="14" y="108" class="mm-font bm-band" text-anchor="start" data-en="Before sign-in: enter login details" data-zh="登入前：輸入登入資訊">登入前：輸入登入資訊</text>
+<text x="14" y="152" class="mm-font bm-row" text-anchor="start" data-en="Explain what to prepare before login" data-zh="說明登入前需準備的資訊">說明登入前需準備的資訊</text>
+<circle cx="454.5" cy="147" r="8.5" fill="#2F4BFF"/>
+<text x="619.5" y="153" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<text x="784.5" y="153" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<text x="949.5" y="153" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<text x="1114.5" y="153" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<rect x="0" y="170" width="1193" height="1" fill="#E4E7EC"/>
+<text x="14" y="199" class="mm-font bm-row" text-anchor="start" data-en="Offer a sync tutorial or help link" data-zh="提供同步教學說明或連結">提供同步教學說明或連結</text>
+<circle cx="454.5" cy="194" r="8.5" fill="#2F4BFF"/>
+<circle cx="619.5" cy="194" r="8.5" fill="#2F4BFF"/>
+<text x="784.5" y="200" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<text x="949.5" y="200" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<text x="1114.5" y="200" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<rect x="0" y="217" width="1193" height="1" fill="#E4E7EC"/>
+<text x="14" y="246" class="mm-font bm-row" text-anchor="start" data-en="Clarify web credentials, link to sign-up" data-zh="釐清須使用網頁版帳號密碼，並提供註冊連結">釐清須使用網頁版帳號密碼，並提供註冊連結</text>
+<text x="454.5" y="247" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<text x="619.5" y="247" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<circle cx="784.5" cy="241" r="8.5" fill="#2F4BFF"/>
+<text x="949.5" y="247" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<text x="1114.5" y="246" class="mm-font bm-na" text-anchor="middle" data-en="(N/A)" data-zh="(不適用)">(不適用)</text>
+<rect x="0" y="264" width="1193" height="1" fill="#E4E7EC"/>
+<text x="14" y="293" class="mm-font bm-row" text-anchor="start" data-en="Pre-explain fixes for common sync failures" data-zh="預先說明常見同步失敗的排解方式">預先說明常見同步失敗的排解方式</text>
+<text x="454.5" y="294" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<circle cx="619.5" cy="288" r="8.5" fill="#2F4BFF"/>
+<text x="784.5" y="294" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<text x="949.5" y="294" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<text x="1114.5" y="294" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<rect x="0" y="311" width="1193" height="1" fill="#E4E7EC"/>
+<rect x="0" y="318" width="1193" height="30" rx="8" fill="#F2F4F7"/>
+<text x="14" y="338" class="mm-font bm-band" text-anchor="start" data-en="During sync" data-zh="同步中">同步中</text>
+<text x="14" y="382" class="mm-font bm-row" text-anchor="start" data-en="Show sync progress" data-zh="顯示同步進度">顯示同步進度</text>
+<circle cx="454.5" cy="377" r="8.5" fill="#2F4BFF"/>
+<circle cx="619.5" cy="377" r="8.5" fill="#2F4BFF"/>
+<circle cx="784.5" cy="377" r="8.5" fill="#2F4BFF"/>
+<circle cx="949.5" cy="377" r="8.5" fill="#2F4BFF"/>
+<circle cx="1114.5" cy="377" r="8.5" fill="#2F4BFF"/>
+<rect x="0" y="400" width="1193" height="1" fill="#E4E7EC"/>
+<text x="14" y="429" class="mm-font bm-row" text-anchor="start" data-en="Preview what happens next" data-zh="預告同步接下來會發生什麼事">預告同步接下來會發生什麼事</text>
+<text x="454.5" y="430" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<text x="619.5" y="430" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<text x="784.5" y="430" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<circle cx="949.5" cy="424" r="8.5" fill="#2F4BFF"/>
+<circle cx="1114.5" cy="424" r="8.5" fill="#2F4BFF"/>
+<rect x="0" y="447" width="1193" height="1" fill="#E4E7EC"/>
+<text x="14" y="476" class="mm-font bm-row" text-anchor="start" data-en="Ask users to wait / estimate the duration" data-zh="提示須稍待片刻或預估所需時間">提示須稍待片刻或預估所需時間</text>
+<circle cx="454.5" cy="471" r="8.5" fill="#2F4BFF"/>
+<circle cx="619.5" cy="471" r="8.5" fill="#2F4BFF"/>
+<text x="784.5" y="477" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<text x="949.5" y="477" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<circle cx="1114.5" cy="471" r="8.5" fill="#2F4BFF"/>
+<rect x="0" y="494" width="1193" height="1" fill="#E4E7EC"/>
+<rect x="0" y="501" width="1193" height="30" rx="8" fill="#F2F4F7"/>
+<text x="14" y="521" class="mm-font bm-band" text-anchor="start" data-en="After sync" data-zh="同步後">同步後</text>
+<text x="14" y="565" class="mm-font bm-row" text-anchor="start" data-en="Point to a settings page for later failures" data-zh="引導至設定頁，日後同步失敗可自行排解">引導至設定頁，日後同步失敗可自行排解</text>
+<text x="454.5" y="566" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<text x="619.5" y="566" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<circle cx="784.5" cy="560" r="8.5" fill="#2F4BFF"/>
+<text x="949.5" y="566" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<text x="1114.5" y="566" class="mm-font bm-dash" text-anchor="middle" data-en="–" data-zh="–">–</text>
+<rect x="0" y="583" width="1193" height="1" fill="#E4E7EC"/>
+<text x="0" y="640" class="mm-font bm-sec" text-anchor="start" data-en="Illustrative screens" data-zh="示意圖">示意圖</text>
+<rect x="0" y="652" width="1197" height="1" fill="#E4E7EC"/>
+<text x="0.0" y="684" class="mm-font bm-pn" text-anchor="start" data-en="MoneyForward" data-zh="MoneyForward">MoneyForward</text>
+<text x="0.0" y="706" class="mm-font bm-tag" text-anchor="start" data-en="Login" data-zh="登入">登入</text>
+<g filter="url(#bmsh)"><image href="../assets/bm-mf-login.webp" x="0.0" y="720" width="132" height="269.4"/></g>
+<text x="152.14285714285714" y="706" class="mm-font bm-tag" text-anchor="start" data-en="Sync" data-zh="同步">同步</text>
+<g filter="url(#bmsh)"><image href="../assets/bm-mf-sync.webp" x="152.14285714285714" y="720" width="132" height="270.7"/></g>
+<text x="304.2857142857143" y="684" class="mm-font bm-pn" text-anchor="start" data-en="Zaim" data-zh="Zaim">Zaim</text>
+<text x="304.2857142857143" y="706" class="mm-font bm-tag" text-anchor="start" data-en="Login" data-zh="登入">登入</text>
+<g filter="url(#bmsh)"><image href="../assets/bm-zaim-login.webp" x="304.2857142857143" y="720" width="132" height="269.8"/></g>
+<text x="456.42857142857144" y="706" class="mm-font bm-tag" text-anchor="start" data-en="Sync" data-zh="同步">同步</text>
+<g filter="url(#bmsh)"><image href="../assets/bm-zaim-sync.webp" x="456.42857142857144" y="720" width="132" height="269.8"/></g>
+<text x="608.5714285714286" y="684" class="mm-font bm-pn" text-anchor="start" data-en="Moneytree" data-zh="Moneytree">Moneytree</text>
+<text x="608.5714285714286" y="706" class="mm-font bm-tag" text-anchor="start" data-en="Login" data-zh="登入">登入</text>
+<g filter="url(#bmsh)"><image href="../assets/bm-mt-login.webp" x="608.5714285714286" y="720" width="132" height="269.8"/></g>
+<text x="760.7142857142857" y="706" class="mm-font bm-tag" text-anchor="start" data-en="Sync" data-zh="同步">同步</text>
+<g filter="url(#bmsh)"><image href="../assets/bm-mt-sync.webp" x="760.7142857142857" y="720" width="132" height="269.8"/></g>
+<text x="912.8571428571429" y="684" class="mm-font bm-pn" text-anchor="start" data-en="Moneylover" data-zh="Moneylover">Moneylover</text>
+<text x="912.8571428571429" y="706" class="mm-font bm-tag" text-anchor="start" data-en="Sync" data-zh="同步">同步</text>
+<g filter="url(#bmsh)"><image href="../assets/bm-ml-sync.webp" x="912.8571428571429" y="720" width="132" height="225.9"/></g>
+<text x="1065.0" y="684" class="mm-font bm-pn" text-anchor="start" data-en="Santander" data-zh="Santander">Santander</text>
+<text x="1065.0" y="706" class="mm-font bm-tag" text-anchor="start" data-en="Sync" data-zh="同步">同步</text>
+<g filter="url(#bmsh)"><image href="../assets/bm-sd-sync.webp" x="1065.0" y="720" width="132" height="233.0"/></g>
+</svg></div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="sp-sec" id="decision">
+  <div class="wrap sp-row">
+    <span class="sp-eyebrow" data-en="02 Key decisions" data-zh="02 關鍵決策">02 關鍵決策</span>
+    <div>
+      <h2 class="sp-h2" data-en="Prioritizing countermeasures and development priorities based on the drop-off causes in the flow" data-zh="依流程中的流失原因，排定對策及開發優先序">依流程中的流失原因，排定對策及開發優先序</h2>
+      <p class="sp-lead" data-en="I proposed a “healthy friction” hypothesis: in a high-sensitivity financial scenario, measured upfront trust-building and flow feedback do more to raise users' willingness and ability to complete linking than simply cutting steps. Accordingly, I planned the following countermeasures against the obstacles in the journey:" data-zh="我提出「良性摩擦力」假說：在金融高敏感場景，適度的前置信任說明與流程回饋，比單純精簡步驟更能提升使用者完成綁定的意願與能力。據此，針對旅程中的阻礙規劃以下對策：">我提出「良性摩擦力」假說：在金融高敏感場景，適度的前置信任說明與流程回饋，比單純精簡步驟更能提升使用者完成綁定的意願與能力。據此，針對旅程中的阻礙規劃以下對策：</p>
+      <div class="sp-tbl" role="table">
+        <div class="sp-tr th ap2" role="row"><div data-en="Flow step" data-zh="流程步驟">流程步驟</div><div data-en="Countermeasure" data-zh="對策">對策</div><div data-en="Priority" data-zh="優先序">優先序</div></div>
+        <div class="sp-tr ap2"><div class="name" data-en="01 Start linking" data-zh="01 開始綁定">01 開始綁定</div><div class="why" data-en="If a user has not linked a financial account after signing up, send a push reminder and A/B test whether providing a tutorial link changes how many users link an account." data-zh="若使用者註冊後未綁定金融帳戶，推播提醒並採取 A/B Testing，測試「有無提供教學連結」對使用者綁定金融帳戶的差異。">若使用者註冊後未綁定金融帳戶，推播提醒並採取 A/B Testing，測試「有無提供教學連結」對使用者綁定金融帳戶的差異。</div><div><span class="sp-tag try">Testing</span></div></div>
+        <div class="sp-tr ap2"><div class="name" data-en="05 Enter login details" data-zh="05 輸入登入資訊">05 輸入登入資訊</div><div class="why" data-en="Provide a link to the institution's web-banking site so users understand they must sign in with web credentials, and can confirm on the web that sign-in works before linking." data-zh="提供金融機構的網頁版連結，讓使用者理解需採用網頁版帳號、密碼登入，並可於綁定前至網頁版確認是否可成功登入。">提供金融機構的網頁版連結，讓使用者理解需採用網頁版帳號、密碼登入，並可於綁定前至網頁版確認是否可成功登入。</div><div><span class="sp-tag go">Must Have</span></div></div>
+        <div class="sp-tr ap2 rep"><div class="name"></div><div class="hl"></div><div class="why" data-en="Provide a link to the institution's forgotten-password help." data-zh="提供金融機構忘記密碼排解的連結。">提供金融機構忘記密碼排解的連結。</div><div><span class="sp-tag no">Nice to Have</span></div></div>
+        <div class="sp-tr ap2"><div class="name" data-en="06 Sync" data-zh="06 同步">06 同步</div><div class="why" data-en="After tapping Start sync, insert a page that explains sync progress, the estimated completion time, and the sync result." data-zh="點擊「開始同步按鈕」後，安插頁面說明同步進度、預計完成同步時間、同步結果。">點擊「開始同步按鈕」後，安插頁面說明同步進度、預計完成同步時間、同步結果。</div><div><span class="sp-tag go">Must Have</span></div></div>
+        <div class="sp-tr ap2 rep"><div class="name"></div><div class="hl"></div><div class="why" data-en="When the first sync fails, send a push notification and A/B test whether providing a tutorial link changes how many users resolve the failure." data-zh="首次同步失敗時，推播通知同步失敗，並採取 A/B Testing，測試「有無提供教學連結」對使用者排除同步失敗的差異。">首次同步失敗時，推播通知同步失敗，並採取 A/B Testing，測試「有無提供教學連結」對使用者排除同步失敗的差異。</div><div><span class="sp-tag try">Testing</span></div></div>
+        <div class="sp-tr ap2 rep"><div class="name"></div><div class="hl"></div><div class="why" data-en="After sync starts, nudge users who have not enabled push permission to turn it on." data-zh="開始同步後，針對未開啟推播權限的使用者，輕推其前往開啟。">開始同步後，針對未開啟推播權限的使用者，輕推其前往開啟。</div><div><span class="sp-tag no">Nice to Have</span></div></div>
+        <div class="sp-tr ap2"><div class="name" data-en="01–05 Linking flow" data-zh="01–05 綁定流程">01–05 綁定流程</div><div class="why" data-en="A/B test which page placement of the security-related explanation link yields the higher conversion rate." data-zh="採取 A/B Testing，測試資安相關說明連結放置於哪個頁面所帶來的轉換率較高。">採取 A/B Testing，測試資安相關說明連結放置於哪個頁面所帶來的轉換率較高。</div><div><span class="sp-tag try">Testing</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sp-sec" id="design">
+  <div class="wrap sp-row">
+    <span class="sp-eyebrow" data-en="03 Shipped design" data-zh="03 落地設計">03 落地設計</span>
+    <div>
+      <h2 class="sp-h2" data-en="Optimizing the account-linking flow to give users more clarity and a stronger sense of control" data-zh="優化金融帳戶綁定流程，提升使用者的清晰度與操作掌控感">優化金融帳戶綁定流程，提升使用者的清晰度與操作掌控感</h2>
+      <div class="dl">
+        <div class="dl-card">
+          <span class="tag" data-en="Enter login details" data-zh="輸入登入資訊">輸入登入資訊</span>
+          <h3 data-en="Reducing friction in the “enter bank login details” step" data-zh="降低使用者在「輸入銀行登入資訊」步驟的操作阻力">降低使用者在「輸入銀行登入資訊」步驟的操作阻力</h3>
+          <div class="dl-body">
+            <div class="dl-shots">
+              <figure class="dl-shot"><span class="lb" data-en="Before" data-zh="調整前">調整前</span><img src="../assets/dl-login-old.webp" alt="調整前：輸入臺灣銀行登入資訊" loading="lazy" width="480" height="1040"></figure>
+              <figure class="dl-shot"><span class="lb new" data-en="After" data-zh="調整後">調整後</span><img src="../assets/dl-login-new.webp" alt="調整後：加入銀行 Logo、網頁版登入連結與忘記密碼連結" loading="lazy" width="480" height="1040"></figure>
+            </div>
+            <ul class="dl-notes">
+              <li><b data-en="Add the institution's logo" data-zh="加入金融機構的 Logo">加入金融機構的 Logo</b><span class="d" data-en="To build trust." data-zh="以提升信任感。">以提升信任感。</span></li>
+              <li><b data-en="Link to the bank's sign-in page" data-zh="提供銀行登入頁面的連結">提供銀行登入頁面的連結</b><span class="d" data-en="So users can confirm their login details are correct before linking an account." data-zh="讓使用者在綁定金融帳戶之前，可以先確認自己的登入資訊是否正確。">讓使用者在綁定金融帳戶之前，可以先確認自己的登入資訊是否正確。</span></li>
+              <li><b data-en="Link to the bank's forgotten ID or password help" data-zh="提供銀行忘記代號或密碼的連結">提供銀行忘記代號或密碼的連結</b><span class="d" data-en="Helps users recover their login details and eases anxiety when sign-in fails." data-zh="協助使用者找回登入資訊，並在無法成功登入時降低焦慮感。">協助使用者找回登入資訊，並在無法成功登入時降低焦慮感。</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="dl-card">
+          <span class="tag" data-en="Sync" data-zh="同步">同步</span>
+          <h3 data-en="A more transparent sync, with a clear next step when it fails" data-zh="同步過程更透明，失敗時有明確的下一步">同步過程更透明，失敗時有明確的下一步</h3>
+          <div class="dl-body">
+            <div class="dl-shots">
+              <figure class="dl-shot"><span class="lb" data-en="Before" data-zh="調整前">調整前</span><img src="../assets/dl-accounts.webp" alt="調整前：帳戶頁，新增成功，同步中" loading="lazy" width="480" height="1040"></figure>
+              <figure class="dl-shot ab-vid"><span class="lb new" data-en="After" data-zh="調整後">調整後</span><video src="../assets/account-binding-sync.mp4#t=0.001" autoplay muted loop playsinline controls preload="auto" aria-label="調整後：同步進度與登入資訊錯誤指引"></video><figcaption data-en="Shows progress and estimated time, and gives guidance when login fails" data-zh="顯示進度與預計時間；登入失敗時提供行動指引">顯示進度與預計時間；登入失敗時提供行動指引</figcaption></figure>
+            </div>
+            <ul class="dl-notes">
+              <li><b data-en="Real-time sync progress" data-zh="導入即時同步進度的提示">導入即時同步進度的提示</b><span class="d" data-en="Raises users' sense of control and transparency." data-zh="提升使用者的掌控感與透明度。">提升使用者的掌控感與透明度。</span></li>
+              <li><b data-en="Prompt users without notification permission to turn on push" data-zh="提示未開啟通知權限的使用者開啟推播">提示未開啟通知權限的使用者開啟推播</b><span class="d" data-en="So they are notified right away when linking is complete." data-zh="以確保在金融帳戶綁定完成時能即時獲得通知。">以確保在金融帳戶綁定完成時能即時獲得通知。</span></li>
+              <li><b data-en="Clear action guidance when linking fails" data-zh="綁定失敗時提供清楚的行動指引">綁定失敗時提供清楚的行動指引</b><span class="d" data-en="Helps users work through the problem." data-zh="協助使用者完成問題排解。">協助使用者完成問題排解。</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sp-sec" id="result">
+  <div class="wrap sp-row">
+    <span class="sp-eyebrow" data-en="04 Key outcomes" data-zh="04 關鍵成果">04 關鍵成果</span>
+    <div>
+      <div class="sp-cm">
+      <h2 class="sp-h2" data-en="First-link conversion rose 12%, and the average number of linked accounts grew from 3.5 to 5.2" data-zh="首綁轉換率提升 12%，平均綁定帳戶數由 3.5 個提升至 5.2 個">首綁轉換率提升 12%，平均綁定帳戶數由 3.5 個提升至 5.2 個</h2>
+      <div class="sp-res3 two">
+        <div class="sp-res-card metric"><h4 data-en="First-link conversion" data-zh="首綁轉換">首綁轉換</h4><strong>+12%</strong><span data-en="Conversion rate of new users completing their first financial account link" data-zh="新進使用者完成金融帳戶綁定轉換率提升">新進使用者完成金融帳戶綁定轉換率提升</span></div>
+        <div class="sp-res-card metric"><h4 data-en="Depth of account consolidation" data-zh="帳戶整合深度">帳戶整合深度</h4><strong>3.5 → 5.2</strong><span data-en="The average number of linked accounts rose, showing users consolidate more financial accounts" data-zh="平均綁定帳戶數提升，反映使用者整合更多金融帳戶">平均綁定帳戶數提升，反映使用者整合更多金融帳戶</span></div>
+      </div>
+        <div class="sp-res-card guard">
+          <div class="head"><span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><h4 data-en="Supporting the healthy-friction hypothesis" data-zh="支持良性摩擦力假說">支持良性摩擦力假說</h4></div>
+          <p data-en="In a high-sensitivity financial scenario, measured upfront trust messaging and flow feedback help improve users' willingness and ability to complete linking" data-zh="在金融高敏感場景中，適度的前置信任說明與流程回饋，有助於改善使用者完成綁定的意願與能力">在金融高敏感場景中，適度的前置信任說明與流程回饋，有助於改善使用者完成綁定的意願與能力</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sp-sec" id="next">
+  <div class="wrap sp-row">
+    <span class="sp-eyebrow" data-en="05 Strategy extension" data-zh="05 策略延伸">05 策略延伸</span>
+    <div>
+      <h2 class="sp-h2" data-en="From helping users complete account consolidation to letting them feel the value it brings" data-zh="從協助使用者完成帳戶整合，延伸到讓使用者感受整合帶來的價值">從協助使用者完成帳戶整合，延伸到讓使用者感受整合帶來的價值</h2>
+      <p class="sp-lead" data-en="A successful account link means users have crossed the threshold into the core product experience, but not that they have felt the value of cross-account consolidation. After linking and syncing, the existing screen still centered on static asset and liability totals, with nothing that lets users immediately understand changes in their finances. So the next phase of product investment shifts from “helping users complete account consolidation” to “letting users feel the value consolidation brings”, raising core-feature engagement and motivation to return." data-zh="金融帳戶綁定成功，代表使用者跨越了進入產品核心體驗的門檻，但不代表已經感受到跨帳戶整合的價值。當使用者完成帳戶綁定與同步後，既有畫面仍以靜態資產與負債總額為主，缺乏能讓使用者立即理解財務變化的資訊。因此，下一階段的產品投資將從「協助使用者完成帳戶整合」，進一步轉向「讓使用者感受到整合帶來的價值」，提升核心功能互動與回訪動機。">金融帳戶綁定成功，代表使用者跨越了進入產品核心體驗的門檻，但不代表已經感受到跨帳戶整合的價值。當使用者完成帳戶綁定與同步後，既有畫面仍以靜態資產與負債總額為主，缺乏能讓使用者立即理解財務變化的資訊。因此，下一階段的產品投資將從「協助使用者完成帳戶整合」，進一步轉向「讓使用者感受到整合帶來的價值」，提升核心功能互動與回訪動機。</p>
+      <div class="invest-grid sp-next">
+        <a class="invest-card" href="sync-complete.html">
+  <div class="invest-cover"><img src="../assets/sync-complete-cover.jpg" alt="手機上的 Moneybook 同步完成頁，顯示本次同步帳戶數與資產負債變動" loading="lazy"></div>
+  <div class="invest-body">
+    <span class="invest-stage" data-en="02・Realize core value (Value Realization)" data-zh="02・感知核心價值 (Value Realization)">02・感知核心價值 (Value Realization)</span>
+    <h5><span data-en="Improve the experience" data-zh="優化同步完成後">優化同步完成後</span><span data-en="after sync completes" data-zh="的體驗">的體驗</span></h5>
+    <p class="invest-problem" data-en="After linking, the experience still centered on static totals, lacking information that lets users immediately understand changes in their finances and giving them little motivation to return" data-zh="完成綁定後仍以靜態總額為主，缺乏能讓使用者立即理解財務變化的資訊，難以形成持續回訪的動機">完成綁定後仍以靜態總額為主，缺乏能讓使用者立即理解財務變化的資訊，難以形成持續回訪的動機</p>
+    <p class="invest-result"><strong><span data-en="Higher long-term retention" data-zh="長尾留存較高">長尾留存較高</span></strong><span class="invest-label" data-en="Viewed the sync-complete page vs. did not" data-zh="有瀏覽同步完成頁 vs. 未瀏覽者">有瀏覽同步完成頁 vs. 未瀏覽者</span></p>
+    <span class="invest-btn" data-en="View project →" data-zh="查看專案 →">查看專案 →</span>
+  </div>
+</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mm-modal" id="mmModal" role="dialog" aria-modal="true" aria-label="Account linking journey">
+  <div class="mm-bar">
+    <button class="mm-btn" type="button" id="mmOut" aria-label="Zoom out">−</button>
+    <button class="mm-btn" type="button" id="mmFit" data-en="Reset" data-zh="重設">重設</button>
+    <button class="mm-btn" type="button" id="mmIn" aria-label="Zoom in">+</button>
+    <button class="mm-btn" type="button" id="mmClose" data-en="Close" data-zh="關閉">關閉</button>
+  </div>
+  <div class="mm-stage" id="mmStage"></div>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 FENG HSIN JOU</span>
+    <span data-en="Based in Taiwan" data-zh="Based in Taiwan">Based in Taiwan</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Nav border on scroll
+  var nav = document.getElementById('nav');
+  function onScroll() { nav.classList.toggle('scrolled', window.scrollY > 10); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // EN / 中 toggle
+  var lang = 'en'; // 預設英文；訪客手動切換後會記住選擇
+  try { var saved = localStorage.getItem('lang'); if (saved === 'zh' || saved === 'en') lang = saved; } catch (e) {}
+
+  function apply() {
+    document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+    document.querySelectorAll('[data-en]').forEach(function (el) {
+      el.innerHTML = el.getAttribute('data-' + lang);
+    });
+  }
+  document.getElementById('langBtn').addEventListener('click', function (e) {
+    var opt = e.target.closest('.lang-opt');
+    lang = opt ? opt.getAttribute('data-lang') : (lang === 'en' ? 'zh' : 'en');
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+    apply();
+  });
+  apply();
+
+})();
+</script>
+
+<script>
+(function () {
+  var modal = document.getElementById('mmModal'), stage = document.getElementById('mmStage');
+  var figs = document.querySelectorAll('.sp-map'); if (!modal || !figs.length) return;
+  var svg = null, scale = 1, last = null;
+  function apply() { svg.style.width = (scale * 100) + '%'; svg.style.minWidth = scale > 1 ? '' : '0'; }
+  function show(fig, btn) {
+    var src = fig.querySelector('.mm-svg'); last = btn;
+    svg = src.cloneNode(true); svg.setAttribute('class', 'mm-zoomed');
+    stage.innerHTML = ''; stage.appendChild(svg);
+    scale = window.innerWidth < 900 ? 2.2 : 1; apply();
+    modal.classList.add('open'); document.body.style.overflow = 'hidden';
+    document.getElementById('mmClose').focus();
+  }
+  function hide() { modal.classList.remove('open'); document.body.style.overflow = ''; if (last) last.focus(); }
+  figs.forEach(function (fig) {
+    var b = fig.querySelector('.sp-zoom'), s = fig.querySelector('.sp-map-scroll');
+    b.addEventListener('click', function () { show(fig, b); });
+    s.addEventListener('click', function () { show(fig, b); });
+  });
+  document.getElementById('mmClose').addEventListener('click', hide);
+  modal.addEventListener('click', function (e) { if (e.target === modal) hide(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('open')) hide(); });
+  document.getElementById('mmIn').addEventListener('click', function () { scale = Math.min(scale + 0.4, 4); apply(); });
+  document.getElementById('mmOut').addEventListener('click', function () { scale = Math.max(scale - 0.4, 0.6); apply(); });
+  document.getElementById('mmFit').addEventListener('click', function () { scale = 1; apply(); stage.scrollTo(0, 0); });
+})();
+</script>
+
+<script>
+(function(){var vs=document.querySelectorAll(".ab-vid video");if(!vs.length)return;function go(v){var pr=v.play();if(pr&&pr.catch)pr.catch(function(){});}
+vs.forEach(function(v){v.muted=true;v.setAttribute("muted","");v.setAttribute("playsinline","");v.addEventListener("loadeddata",function(){if(vis(v))go(v);});});
+function vis(v){var r=v.getBoundingClientRect();return r.bottom>0&&r.top<(window.innerHeight||document.documentElement.clientHeight);}
+if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)go(e.target);else e.target.pause();});},{threshold:.2});vs.forEach(function(v){io.observe(v);});}else{vs.forEach(go);}
+var kick=function(){vs.forEach(function(v){if(v.paused&&vis(v))go(v);});};
+["touchstart","pointerdown","scroll"].forEach(function(ev){window.addEventListener(ev,kick,{passive:true,once:ev!=="scroll"});});
+window.addEventListener("load",kick);})();
+</script>
+</body>
+</html>

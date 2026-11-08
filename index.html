@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FENG HSIN JOU｜Product Manager Portfolio</title>
+<meta name="description" content="Sr. Product Manager. Defining problems, shaping products, driving outcomes.">
+<link rel="icon" type="image/jpeg" href="assets/avatar.jpg">
+<link rel="apple-touch-icon" href="assets/avatar.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="FENG HSIN JOU｜Product Manager Portfolio">
+<meta property="og:description" content="Sr. Product Manager. Defining problems, shaping products, driving outcomes.">
+<meta property="og:image" content="https://hsinjou-feng.github.io/portfolio/assets/avatar.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hsinjou-feng.github.io/portfolio/assets/avatar.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ============ 換色只需要改這裡 / Edit colors here ============ */
+:root {
+  --bg:       #EEF1F5;   /* 頁面底色 */
+  --surface:  #FFFFFF;   /* 卡片、縮圖底色 */
+  --ink:      #101828;   /* 主要文字 */
+  --muted:    #5B6676;   /* 次要文字 */
+  --line:     #D3D9E2;   /* 分隔線 */
+  --accent:   #2F4BFF;   /* 強調色（hover、按鈕） */
+  --accent-ink: #FFFFFF; /* 強調色上的文字 */
+  --shadow-card: 0 1px 2px color-mix(in srgb, var(--ink) 5%, transparent), 0 10px 30px color-mix(in srgb, var(--ink) 7%, transparent), 0 30px 70px color-mix(in srgb, var(--ink) 8%, transparent); /* 卡片陰影 */
+
+  --font: "PingFang CJK", "Noto Sans TC", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius: 20px;
+  --maxw: 1200px;
+  --pad: clamp(20px, 5vw, 56px);
+}
+
+
+/* ============ Fonts ============
+   英文：Noto Sans TC（Google Fonts）
+   繁體中文：蘋方體 PingFang TC（只套用在中日韓字元；沒有蘋方的裝置會自動改用 Noto Sans TC） */
+@font-face { font-family: "PingFang CJK"; font-weight: 300;
+  src: local("PingFang TC Light"), local("PingFangTC-Light");
+  unicode-range: U+2E80-2FFF, U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF, U+FE30-FE4F, U+FF00-FFEF; }
+@font-face { font-family: "PingFang CJK"; font-weight: 400;
+  src: local("PingFang TC Regular"), local("PingFangTC-Regular");
+  unicode-range: U+2E80-2FFF, U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF, U+FE30-FE4F, U+FF00-FFEF; }
+@font-face { font-family: "PingFang CJK"; font-weight: 500;
+  src: local("PingFang TC Medium"), local("PingFangTC-Medium");
+  unicode-range: U+2E80-2FFF, U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF, U+FE30-FE4F, U+FF00-FFEF; }
+@font-face { font-family: "PingFang CJK"; font-weight: 600 800;
+  src: local("PingFang TC Semibold"), local("PingFangTC-Semibold");
+  unicode-range: U+2E80-2FFF, U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF, U+FE30-FE4F, U+FF00-FFEF; }
+
+/* ============ Base ============ */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
+section { padding: clamp(72px, 12vw, 140px) 0; }
+h1, h2, h3, h4, p { margin: 0; }
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* ============ Nav ============ */
+.nav {
+  position: fixed; inset: 0 0 auto 0; z-index: 20;
+  background: color-mix(in srgb, var(--bg) 60%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav .brand { font-weight: 800; letter-spacing: -0.01em; white-space: nowrap; display: inline-flex; align-items: center; gap: 12px; }
+.nav .avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: none; background: var(--surface); }
+.nav .brand-text { display: flex; flex-direction: column; line-height: 1.25; }
+.nav .brand-name { font-weight: 800; font-size: 16px; }
+.nav .brand-role { font-weight: 400; font-size: 13px; color: var(--muted); letter-spacing: 0; }
+.nav ul { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; font-size: 15px; }
+.nav ul a { color: var(--muted); transition: color .2s; }
+.nav ul a:hover, .nav ul a:focus-visible { color: var(--accent); }
+.nav nav { margin-left: auto; margin-right: 20px; }
+.lang {
+  font: inherit; font-size: 14px; color: var(--ink);
+  background: none; border: none; border-radius: 999px;
+  padding: 6px 10px; cursor: pointer; transition: color .2s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.lang-opt { transition: color .2s; }
+.lang-opt:hover { color: var(--accent); }
+@media (max-width: 720px) { .nav ul { display: none; } }
+@media (max-width: 520px) { .nav .brand-name { font-size: 14px; } .nav .brand-role { font-size: 12px; } }
+
+/* ============ Hero ============ */
+.hero {
+  background: var(--surface); /* 白色 */
+  min-height: min(94svh, 880px);
+  padding: 92px 0 clamp(32px, 4vw, 56px);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.hero .wrap { width: 100%; }
+.hero-intro { color: var(--muted); font-size: 15px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); /* 右側照片 1:1，左側色塊填滿剩餘寬度 */
+  gap: clamp(12px, 1.6vw, 20px);
+  align-items: stretch; /* 左右兩張卡片等高 */
+}
+.hero-text {
+  align-self: stretch;
+  color: var(--ink);
+  padding: 0 clamp(0px, 3vw, 40px) 0 0;
+}
+.hero-title {
+  font-size: clamp(2rem, 4.8vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+.hero-text p { color: var(--ink); font-size: 1.05rem; line-height: 1.9; max-width: 42em; margin-top: 16px; text-wrap: pretty; }
+.hero-text .hero-role { color: var(--ink); font-weight: 600; font-size: 1.1rem; line-height: 1.6; margin-top: clamp(36px, 5vw, 64px); }
+.hero-text .hero-role span { display: inline-block; } /* 需要換行時只在「|」之後換，不會把詞拆開 */
+.hero-contact { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.hero-contact a { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 15px; font-weight: 500; transition: color .2s; }
+.hero-contact a:hover, .hero-contact a:focus-visible { color: var(--accent); }
+.hero-contact svg { flex: none; }
+.hero .portrait {
+  position: relative; display: block; overflow: hidden;
+  width: 100%; max-width: none; aspect-ratio: auto;
+  border: none; background: none;
+  border-radius: clamp(20px, 2.2vw, 32px);
+}
+.hero .portrait::before { content: ""; display: block; padding-top: 100%; } /* 1:1；左側內容較高時會自動撐高 */
+.hero .portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; }
+@media (max-width: 800px) {
+  .hero-grid { grid-template-columns: 1fr; }
+}
+.marquee {
+  overflow: hidden;
+  border-block: 1px solid var(--line);
+  margin: clamp(28px, 5vh, 56px) 0;
+  padding: 14px 0;
+  white-space: nowrap;
+}
+.marquee-track { display: inline-flex; animation: slide 28s linear infinite; }
+.marquee-track span {
+  font-size: clamp(1.4rem, 3.4vw, 2.4rem);
+  font-weight: 300;
+  padding-right: 1.4em;
+}
+.marquee-track span::after { content: "/"; color: var(--accent); padding-left: 1.4em; }
+@keyframes slide { to { transform: translateX(-50%); } }
+.hero-tagline { font-size: clamp(1.2rem, 2.4vw, 1.7rem); font-weight: 500; max-width: 24em; line-height: 1.4; }
+.scroll-hint { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: 14px; margin-top: 32px; }
+.scroll-hint i { width: 48px; height: 1px; background: var(--muted); display: block; }
+
+/* ============ Work ============ */
+#work { background: var(--surface); }
+.work-list { margin-top: 56px; border-top: 1px solid var(--line); }
+.work-item {
+  display: grid;
+  grid-template-columns: 90px 1fr minmax(180px, 300px);
+  gap: 32px; align-items: center;
+  padding: 36px 0;
+  border-bottom: 1px solid var(--line);
+  transition: padding .35s ease;
+}
+.work-item:hover { padding-left: 16px; }
+.work-year { color: var(--muted); font-size: 15px; }
+.work-title { font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 600; line-height: 1.25; letter-spacing: -0.015em; transition: color .2s; }
+.work-item:hover .work-title { color: var(--accent); }
+.work-tags { color: var(--muted); font-size: 15px; margin-top: 10px; }
+.work-thumb {
+  aspect-ratio: 4 / 3;
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  display: grid; place-items: center;
+  color: var(--muted); font-size: 13px;
+}
+.work-thumb img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 800px) {
+  .work-item { grid-template-columns: 1fr; gap: 14px; }
+  .work-thumb { order: -1; }
+}
+
+/* ---- Dcard 卡片（首頁） ---- */
+.panel { margin-top: 56px; background: var(--surface); border-radius: clamp(24px, 3vw, 32px); padding: clamp(24px, 4vw, 48px); box-shadow: var(--shadow-card); }
+.panel-head { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 24px); }
+.logo { flex: none; width: clamp(52px, 6vw, 72px); aspect-ratio: 1; }
+.logo img { width: 100%; height: 100%; object-fit: contain; }
+.panel-company { color: var(--muted); font-size: 15px; font-weight: 500; }
+.panel-title { margin-top: 2px; font-size: clamp(1.3rem, 2.6vw, 1.9rem); font-weight: 700; line-height: 1.3; letter-spacing: -0.015em; }
+.panel-meta { margin: clamp(24px, 3.5vw, 36px) 0 0; display: grid; gap: 18px; }
+.meta-row { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 6px 32px; }
+.meta-row > dt, .meta-row > h4 { margin: 0; font-size: 14px; font-weight: 600; color: var(--muted); line-height: 1.9; }
+.meta-row > dd { margin: 0; max-width: 52em; line-height: 1.85; }
+.invest-row { margin-top: clamp(24px, 3vw, 32px); }
+.invest-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.invest-grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.invest-card { display: flex; flex-direction: column; gap: 14px; padding: 16px; border-radius: 20px; background: var(--bg); box-shadow: 0 6px 20px color-mix(in srgb, var(--ink) 7%, transparent); transition: box-shadow .25s, transform .25s; }
+.invest-card:hover { box-shadow: 0 16px 38px color-mix(in srgb, var(--ink) 13%, transparent); transform: translateY(-3px); }
+.invest-cover { width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; background: var(--surface); overflow: hidden; }
+.invest-cover img { width: 100%; height: 100%; object-fit: cover; }
+.invest-body { display: flex; flex: 1; flex-direction: column; align-items: flex-start; gap: 10px; padding: 4px 8px 8px; }
+.invest-stage { font-size: 13px; font-weight: 500; color: var(--muted); }
+.invest-card h5 { margin: 0; font-size: 1.3rem; font-weight: 700; line-height: 1.35; text-wrap: balance; }
+.invest-card h5 span { display: inline-block; }
+.invest-problem { color: var(--muted); font-size: 14.5px; line-height: 1.75; }
+.invest-result { margin-top: auto; padding-top: 8px; display: flex; flex-direction: column; gap: 2px; }
+.invest-result strong { font-size: 2.1rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; }
+.invest-label { font-size: 14px; line-height: 1.6; color: var(--muted); }
+.invest-note { display: inline-block; white-space: nowrap; font-size: 13px; color: var(--muted); }
+.invest-btn { margin-top: 6px; padding: 11px 20px; border-radius: 12px; background: var(--surface); box-shadow: 0 1px 2px color-mix(in srgb, var(--ink) 10%, transparent); font-size: 15px; font-weight: 600; color: var(--ink); transition: background .2s, color .2s; }
+.invest-card:hover .invest-btn { background: var(--ink); color: var(--surface); }
+.cover-simple { display: grid; place-items: center; color: var(--ink); background: var(--surface); }
+.invest-card.is-disabled { position: relative; cursor: default; box-shadow: none; }
+.invest-card.is-disabled > .invest-flag { position: absolute; top: 28px; right: 28px; z-index: 1; opacity: 1; padding: 5px 12px; border-radius: 999px; background: #DDE2EA; color: #4A5565; font-size: 12.5px; font-weight: 700; line-height: 1.4; letter-spacing: .02em; }
+.invest-card.is-disabled > .invest-body { opacity: 1; }
+.invest-card.is-disabled > .invest-body > .invest-stage, .invest-card.is-disabled > .invest-body > h5, .invest-card.is-disabled > .invest-body > .invest-problem { opacity: .5; }
+.invest-btns { margin-top: auto; padding-top: 6px; display: flex; flex-wrap: wrap; gap: 10px; }
+.invest-card.is-disabled .invest-btns .invest-btn, .invest-card.is-disabled:hover .invest-btns .invest-btn { margin-top: 6px; padding: 11px 20px; background: var(--surface); box-shadow: 0 1px 2px color-mix(in srgb, var(--ink) 10%, transparent); color: var(--ink); font-weight: 600; text-decoration: none; cursor: pointer; }
+.invest-card.is-disabled .invest-btns .invest-btn:hover, .invest-card.is-disabled .invest-btns .invest-btn:focus-visible { background: var(--ink); color: var(--surface); }
+.invest-card.is-disabled:hover { box-shadow: none; transform: none; }
+.invest-card.is-disabled > * { opacity: .5; }
+.invest-card.is-disabled .invest-cover { background: color-mix(in srgb, var(--surface) 55%, transparent); }
+.invest-card.is-disabled .invest-btn { margin-top: auto; }
+.invest-card.is-disabled .invest-btn, .invest-card.is-disabled:hover .invest-btn { background: transparent; box-shadow: none; color: var(--muted); padding-left: 0; font-weight: 500; }
+.panel-foot { margin-top: 16px; }
+.strategy-link { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; border-radius: 20px; background: var(--bg); transition: background .25s, color .25s, transform .25s;  box-shadow:0 6px 20px color-mix(in srgb,var(--ink) 7%,transparent); position: relative;}
+.sl-text { display: flex; flex-direction: column; gap: 2px; }
+.sl-text strong { font-size: 1.05rem; font-weight: 700; }
+.sl-text span { font-size: 14px; color: var(--muted); transition: color .25s; }
+.sl-i { font-style:normal; display:inline-block; white-space:nowrap; }
+html[lang="en"] .sl-i:not(:last-child) { margin-right:.3em; }
+.sl-arrow { flex: none; width: 40px; height: 40px; border-radius: 50%; background: var(--surface); display: grid; place-items: center; font-size: 18px; transition: background .25s, color .25s, transform .25s; }
+.strategy-link:hover { background: var(--ink); color: var(--surface); }
+.strategy-link:hover .sl-text span { color: color-mix(in srgb, var(--surface) 70%, transparent); }
+.strategy-link:hover .sl-arrow { background: var(--surface); color: var(--ink); transform: translateX(4px); }
+@media (max-width: 760px) {
+  .meta-row { grid-template-columns: 1fr; gap: 2px; }
+  .invest-grid, .invest-grid.cols-2 { grid-template-columns: 1fr; }
+  .invest-cover { aspect-ratio: 2.4 / 1; }
+}
+
+/* ============ Experience ============ */
+.exp-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; }
+.btn {
+  display: inline-block; font: inherit; font-size: 15px; font-weight: 500;
+  padding: 12px 24px; border-radius: 999px;
+  background: var(--ink); color: var(--bg);
+  transition: background .25s, color .25s, transform .25s;
+}
+.btn:hover { background: var(--accent); color: var(--accent-ink); }
+.btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+.btn.ghost:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.exp-list { margin-top: 48px; border-top: 1px solid var(--line); }
+.exp-row {
+  display: grid; grid-template-columns: 200px 1fr auto; gap: 24px; align-items: baseline;
+  padding: 26px 0; border-bottom: 1px solid var(--line);
+}
+.exp-years { color: var(--muted); font-size: 15px; font-variant-numeric: tabular-nums; }
+.exp-role { font-size: 1.25rem; font-weight: 600; }
+.exp-company { color: var(--muted); }
+@media (max-width: 720px) { .exp-row { grid-template-columns: 1fr; gap: 4px; } }
+
+/* ============ Testimonials（推薦）============ */
+#recommendations { background: var(--surface); }
+.t-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+.t-nav { display: flex; gap: 10px; }
+.t-arrow { width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--bg); color: var(--ink); font-size: 18px; line-height: 1; cursor: pointer; display: grid; place-items: center; box-shadow: 0 6px 20px color-mix(in srgb, var(--ink) 7%, transparent); transition: background .2s, color .2s, opacity .2s; }
+.t-arrow:hover:not(:disabled) { background: var(--ink); color: var(--surface); }
+.t-arrow:disabled { opacity: .4; cursor: default; }
+.t-track { --tp: min(48px, var(--pad)); margin: 28px calc(-1 * var(--tp)) -48px; padding: 24px var(--tp) 96px; display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 var(--tp); scrollbar-width: none; cursor: grab; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
+.t-track::-webkit-scrollbar { display: none; }
+.t-track.dragging { cursor: grabbing; scroll-snap-type: none; user-select: none; }
+.t-card { flex: 0 0 calc((100% - 16px) / 2); scroll-snap-align: start; margin: 0; display: flex; flex-direction: column; gap: 24px; padding: clamp(20px, 2.4vw, 28px); border-radius: 20px; background: var(--surface); box-shadow: var(--shadow-card); }
+.t-person { display: flex; align-items: center; gap: 14px; }
+.t-avatar { flex: none; width: 56px; height: 56px; border-radius: 50%; background: var(--bg); overflow: hidden; }
+.t-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.t-initials { display: grid; place-items: center; font-weight: 700; font-size: 1.05rem; color: var(--muted); }
+.t-name { font-size: 1.15rem; font-weight: 700; line-height: 1.3; }
+.t-role { color: var(--muted); font-size: 14px; line-height: 1.5; }
+.t-rel { align-self: flex-start; padding: 4px 12px; border-radius: 10px; line-height: 1.5; background: var(--bg); font-size: 13px; color: var(--muted); }
+.t-body { flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.t-quote { margin: 0; font-size: 1rem; line-height: 1.8; color: var(--ink); display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 9; line-clamp: 9; overflow: hidden; }
+.t-card.open .t-quote { -webkit-line-clamp: unset; line-clamp: unset; display: block; }
+.t-quote p + p { margin-top: 10px; }
+.t-toggle { margin-top: auto; padding: 8px 16px; border: 0; border-radius: 12px; background: var(--bg); font: inherit; font-size: 14px; font-weight: 600; color: var(--ink); cursor: pointer; transition: background .2s, color .2s; }
+.t-toggle:hover { background: var(--ink); color: var(--surface); }
+.t-toggle .less { display: none; }
+.t-card.open .t-toggle .more { display: none; }
+.t-card.open .t-toggle .less { display: inline; }
+.t-more { margin-top: 8px; }
+@media (max-width: 800px) { .t-card { flex-basis: calc(100% - 28px); } }
+.t-track:has(.t-card.open) { align-items: flex-start; }
+.t-link { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 15px; font-weight: 500; transition: color .2s; }
+.t-link:hover, .t-link:focus-visible { color: var(--accent); }
+
+footer { background: var(--ink); color: color-mix(in srgb, var(--bg) 55%, transparent); font-size: 14px; padding: 28px 0 32px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track { animation: none; }
+  * { transition: none !important; }
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="brand"><img class="avatar" src="assets/avatar.jpg" alt="" width="40" height="40"><span class="brand-text"><span class="brand-name">FENG HSIN JOU 馮欣柔</span><span class="brand-role">Senior Product Manager</span></span></a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#work">Selected Works</a></li>
+        <li><a href="#recommendations">Recommendations</a></li>
+      </ul>
+    </nav>
+    <button class="lang" id="langBtn" type="button" aria-label="Switch language"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19"/><path d="M12 2.5c2.6 2.7 4 5.9 4 9.5s-1.4 6.8-4 9.5c-2.6-2.7-4-5.9-4-9.5s1.4-6.8 4-9.5z"/></svg><span class="lang-opts"><span class="lang-opt" data-lang="en">EN</span><span class="lang-sep"> / </span><span class="lang-opt" data-lang="zh">中</span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <h1 class="hero-title" data-en="Hi, I'm Abby." data-zh="Hi, 我是 Abby.">Hi, 我是 Abby.</h1>
+        <p class="hero-role"><span data-en="Senior Product Manager (8+ years) |" data-zh="資深產品經理（8 年以上經驗）|">資深產品經理（8 年以上經驗）|</span> <span data-en="Enterprise GenAI, Consumer Scale & Fintech" data-zh="企業級生成式 AI、消費級大規模平台與金融科技">企業級生成式 AI、消費級大規模平台與金融科技</span></p>
+        <p class="hero-bio" data-en="Psychology-trained product manager who turns complex problems into intuitive, trusted, and scalable products. Across fintech, consumer platforms, and enterprise GenAI, combines behavioral insight and data-driven decision-making to identify the right problems to solve, balance user value with business goals and regulatory or technical constraints, and deliver measurable outcomes." data-zh="具備心理學背景的產品經理，擅長將複雜問題轉化為直覺、值得信賴且可擴充的產品。橫跨金融科技、消費者平台與企業生成式 AI 領域，結合行為洞察與數據驅動決策，精準識別關鍵問題，在使用者價值、商業目標、法規限制及技術瓶頸之間取得平衡，並持續交付具體成效。">具備心理學背景的產品經理，擅長將複雜問題轉化為直覺、值得信賴且可擴充的產品。橫跨金融科技、消費者平台與企業生成式 AI 領域，結合行為洞察與數據驅動決策，精準識別關鍵問題，在使用者價值、商業目標、法規限制及技術瓶頸之間取得平衡，並持續交付具體成效。</p>
+        <ul class="hero-contact">
+          <li><a href="mailto:hsinjou.feng@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg><span>hsinjou.feng@gmail.com</span></a></li>
+          <li><a href="https://www.linkedin.com/in/abbyfeng/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.5H3V9.75Zm6.5 0h3.84v1.57h.06c.54-1.01 1.84-2.07 3.79-2.07 4.05 0 4.8 2.67 4.8 6.13v5.87h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75v5.29h-4V9.75Z"/></svg><span>linkedin.com/in/abbyfeng/</span></a></li>
+        </ul>
+      </div>
+      <div class="portrait"><img src="assets/portrait.jpg" alt="馮欣柔" width="1200" height="1200" fetchpriority="high"></div>
+    </div>
+  </div>
+
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <h2 class="section-title" data-en="Selected Works" data-zh="精選作品">Selected Works</h2>
+
+    <article class="panel" id="dcard">
+      <header class="panel-head">
+        <div class="logo"><img src="assets/dcard-logo.png" alt="Dcard" width="256" height="256"></div>
+        <div>
+          <p class="panel-company" data-en="Dcard・Taiwan's largest anonymous social platform" data-zh="Dcard・台灣最大匿名社群平台">Dcard・台灣最大匿名社群平台</p>
+          <h3 class="panel-title" data-en="From single-post traffic to a creator economy: building a sustainable creator growth mechanism" data-zh="從單篇流量到創作者經濟：建立可持續的作者成長機制">從單篇流量到創作者經濟：建立可持續的作者成長機制</h3>
+        </div>
+      </header>
+
+      <dl class="panel-meta">
+        <div class="meta-row"><dt data-en="Period" data-zh="策略推進期間">策略推進期間</dt><dd>2024 Q2-4</dd></div>
+        <div class="meta-row"><dt data-en="Role" data-zh="所屬職位">所屬職位</dt><dd>Senior Product Manager</dd></div>
+        <div class="meta-row"><dt data-en="Ownership" data-zh="策略責任">策略責任</dt><dd data-en="Owned <strong>the overall creator-side strategy and roadmap</strong>. Combining user interviews with data analysis, I identified the key problems in creators' growth journey and defined the strategic direction and investment priorities. After aligning with stakeholders (CEO, CPO, Marketing Manager), I coordinated cross-functional teams to ship the product and kept tracking results, keeping product development aligned with overall business goals." data-zh="負責<strong>作者端整體策略及發展路徑圖</strong>，結合使用者訪談與數據分析，辨識作者成長過程中的關鍵問題，定義策略方向與投資優先順序；與利害關係人 (CEO、CPO、Marketing Manager) 討論並取得策略共識後，協調跨職能團隊推動產品落地，並持續追蹤策略成效，確保產品發展與整體業務目標一致。">負責<strong>作者端整體策略及發展路徑圖</strong>，結合使用者訪談與數據分析，辨識作者成長過程中的關鍵問題，定義策略方向與投資優先順序；與利害關係人 (CEO、CPO、Marketing Manager) 討論並取得策略共識後，協調跨職能團隊推動產品落地，並持續追蹤策略成效，確保產品發展與整體業務目標一致。</dd></div>
+        <div class="meta-row"><dt data-en="Problem" data-zh="問題摘要">問題摘要</dt><dd data-en="Creators are Dcard's core growth engine, but as daily active users (DAU) kept growing, <strong>the number of daily posters did not grow with it</strong>, meaning traffic growth had not been effectively converted into a stable content supply." data-zh="作者是 Dcard 的核心成長引擎，但隨著日活躍使用者 (DAU) 持續成長，<strong>每日發文人數並未同步增加</strong>，代表平台流量成長尚未有效轉化為穩定的內容供給。">作者是 Dcard 的核心成長引擎，但隨著日活躍使用者 (DAU) 持續成長，<strong>每日發文人數並未同步增加</strong>，代表平台流量成長尚未有效轉化為穩定的內容供給。</dd></div>
+      </dl>
+
+      <div class="invest-row">
+        <div class="invest-grid">
+          <a class="invest-card" href="works/post-flow.html">
+            <div class="invest-cover"><img src="assets/post-flow-cover.jpg" alt="手持手機使用 Dcard 發文工具撰寫文章的畫面" loading="lazy"></div>
+            <div class="invest-body">
+              <span class="invest-stage" data-en="01・Start creating" data-zh="01・開始創作">01・開始創作</span>
+              <h5 data-en="Streamline the posting flow" data-zh="優化發文流程">優化發文流程</h5>
+              <p class="invest-problem" data-en="Even when users are willing to express themselves, the high friction of the posting flow raises the cost of starting to create" data-zh="使用者即便有表達意願，也會受到發文流程的高摩擦力而增加創作啟動的成本">使用者即便有表達意願，也會受到發文流程的高摩擦力而增加創作啟動的成本</p>
+              <p class="invest-result"><strong>+12%</strong><span class="invest-label" data-en="Average daily posters" data-zh="每日平均發文人數">每日平均發文人數</span></p>
+              <span class="invest-btn" data-en="View project →" data-zh="查看專案 →">查看專案 →</span>
+            </div>
+          </a>
+          <a class="invest-card" href="works/personal-wall.html">
+            <div class="invest-cover"><img src="assets/personal-wall-cover.jpg" alt="三支手機並排顯示 Dcard 重構後的個人牆，包含作者頭像、簡介與追蹤按鈕" loading="lazy"></div>
+            <div class="invest-body">
+              <span class="invest-stage" data-en="02・Build identity" data-zh="02・累積身份">02・累積身份</span>
+              <h5 data-en="Rebuild the personal wall" data-zh="重構個人牆">重構個人牆</h5>
+              <p class="invest-problem" data-en="Even after posting successfully, users lack a clear personal identity and a home base to manage, making it hard for readers to remember and keep following them" data-zh="使用者即便成功發文，仍缺乏明確的個人識別與經營主場，難以讓讀者記住並持續追蹤">使用者即便成功發文，仍缺乏明確的個人識別與經營主場，難以讓讀者記住並持續追蹤</p>
+              <p class="invest-result"><strong>+20%</strong><span class="invest-label" data-en="Active creators who set up their own identity" data-zh="自主完成個人身份識別的活躍作者">自主完成個人身份識別的活躍作者</span></p>
+              <span class="invest-btn" data-en="View project →" data-zh="查看專案 →">查看專案 →</span>
+            </div>
+          </a>
+          <a class="invest-card" href="works/comment-management.html">
+            <div class="invest-cover"><img src="assets/comment-management-cover.jpg" alt="手持手機瀏覽 Dcard 文章留言區的畫面" loading="lazy"></div>
+            <div class="invest-body">
+              <span class="invest-stage" data-en="03・Keep creating" data-zh="03・持續創作">03・持續創作</span>
+              <h5><span data-en="Progressive" data-zh="提供漸進式">提供漸進式</span><span data-en="comment management tools" data-zh="留言管理工具">留言管理工具</span></h5>
+              <p class="invest-problem" data-en="Without proper governance, creators tend to lose the motivation to keep posting when facing malicious comments or off-topic threads" data-zh="平台缺乏適當的治理機制，作者容易因留言惡意攻擊或風向歪樓而降低持續發文意願">平台缺乏適當的治理機制，作者容易因留言惡意攻擊或風向歪樓而降低持續發文意願</p>
+              <p class="invest-result"><strong>2.0–2.2x</strong><span class="invest-label" data-en="Monthly posts per creator: feature users vs. non-users" data-zh="有使用 vs. 未使用功能的月平均發文量">有使用 vs. 未使用功能的月平均發文量</span></p>
+              <span class="invest-btn" data-en="View project →" data-zh="查看專案 →">查看專案 →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="panel-foot">
+        <a class="strategy-link" href="works/dcard-strategy.html">
+          <span class="sl-text"><strong data-en="View the full strategy" data-zh="查看策略全局">查看策略全局</strong><span><i class="sl-i" data-en="Background &amp; problem, " data-zh="背景與問題、">背景與問題、</i><i class="sl-i" data-en="Core strategy, " data-zh="核心策略、">核心策略、</i><i class="sl-i" data-en="Objectives &amp; measurement framework" data-zh="策略目標與衡量架構">策略目標與衡量架構</i></span></span>
+          <span class="sl-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </article>
+
+    <article class="panel" id="moneybook">
+      <header class="panel-head">
+        <div class="logo"><img src="assets/moneybook-logo.png" alt="Moneybook 麻布記帳" width="120" height="120"></div>
+        <div>
+          <p class="panel-company" data-en="Moneybook・Personal finance management service that consolidates financial accounts" data-zh="Moneybook 麻布記帳・整合金融帳戶的個人財務管理服務">Moneybook 麻布記帳・整合金融帳戶的個人財務管理服務</p>
+          <h3 class="panel-title" data-en="From account aggregation to proactive money management: building a retention-driven product growth mechanism" data-zh="從帳戶整合到主動管帳：建立以使用者留存為核心的產品成長機制">從帳戶整合到主動管帳：建立以使用者留存為核心的產品成長機制</h3>
+        </div>
+      </header>
+
+      <dl class="panel-meta">
+        <div class="meta-row"><dt data-en="Period" data-zh="策略推進期間">策略推進期間</dt><dd>2021 Q4 – 2022 Q1</dd></div>
+        <div class="meta-row"><dt data-en="Role" data-zh="所屬職位">所屬職位</dt><dd>Senior Product Manager</dd></div>
+        <div class="meta-row"><dt data-en="Ownership" data-zh="策略責任">策略責任</dt><dd data-en="<strong>As the product's sole Product Manager, I owned end-to-end strategy planning and execution</strong>, with improving user retention as the top goal. I worked closely with the CPO on product direction and prioritization, and combined user interviews, qualitative and quantitative analysis, and customer-support tickets to identify the key problems affecting users from Activation to Retention, form strategic judgments, and turn alignment into the product roadmap and investment priorities. From problem discovery, research and analysis, strategy planning, and project design to cross-functional collaboration and post-launch tracking, I owned it end to end." data-zh="<strong>作為產品唯一的 Product Manager，負責完整產品的策略規劃與推進</strong>，以提升使用者留存率為首要目標。我與 CPO 密切合作討論產品方向與成整優先順序，結合使用者訪談、質化與量化數據分析及客服進線紀錄，辨識影響使用者從啟動 (Activation) 到持續回訪 (Retention) 的關鍵問題，提出策略判斷並將共識轉化為產品 Roadmap 與投資優先順序。從問題探索、研究分析、策略規劃、專案設計、跨職能協作到上線後成效追蹤，皆由我端到端負責。"><strong>作為產品唯一的 Product Manager，負責完整產品的策略規劃與推進</strong>，以提升使用者留存率為首要目標。我與 CPO 密切合作討論產品方向與成整優先順序，結合使用者訪談、質化與量化數據分析及客服進線紀錄，辨識影響使用者從啟動 (Activation) 到持續回訪 (Retention) 的關鍵問題，提出策略判斷並將共識轉化為產品 Roadmap 與投資優先順序。從問題探索、研究分析、策略規劃、專案設計、跨職能協作到上線後成效追蹤，皆由我端到端負責。</dd></div>
+        <div class="meta-row"><dt data-en="Problem" data-zh="問題摘要">問題摘要</dt><dd data-en="Moneybook's core value is consolidating users' accounts scattered across financial institutions so they can see their full financial picture in one place. But the most important growth question at the time was not just getting more users to link accounts, but <strong>how to give users a reason to keep coming back (Retention) after they have successfully activated (Activation) and experienced the core value, and so lift overall retention</strong>." data-zh="Moneybook 的核心價值是整合使用者分散於不同金融機構的帳戶，讓使用者能在單一平台掌握完整財務狀況。然而，當時產品最重要的成長課題，不只是讓更多使用者完成帳戶綁定，而是<strong>如何讓使用者在成功啟動 (Activation)、體驗產品核心價值後，仍有理由持續回訪 (Retention)，進而提升整體留存率</strong>。">Moneybook 的核心價值是整合使用者分散於不同金融機構的帳戶，讓使用者能在單一平台掌握完整財務狀況。然而，當時產品最重要的成長課題，不只是讓更多使用者完成帳戶綁定，而是<strong>如何讓使用者在成功啟動 (Activation)、體驗產品核心價值後，仍有理由持續回訪 (Retention)，進而提升整體留存率</strong>。</dd></div>
+      </dl>
+
+      <div class="invest-row">
+        <div class="invest-grid">
+          <a class="invest-card" href="works/account-binding.html">
+            <div class="invest-cover"><img src="assets/account-binding-cover.jpg" alt="手持手機在 Moneybook 輸入金融機構登入資訊以綁定帳戶" loading="lazy"></div>
+            <div class="invest-body">
+              <span class="invest-stage" data-en="01・Complete activation (Activation)" data-zh="01・完成啟動 (Activation)">01・完成啟動 (Activation)</span>
+              <h5><span data-en="Improve the financial" data-zh="優化金融帳戶">優化金融帳戶</span><span data-en="account linking flow" data-zh="綁定流程">綁定流程</span></h5>
+              <p class="invest-problem" data-en="Linking financial accounts involves sensitive information, so users easily drop off midway due to security concerns, uncertainty about the steps, and anxiety while waiting for sync" data-zh="金融帳戶綁定涉及敏感資訊，使用者容易因資安防禦心理、操作不確定性與同步等待焦慮而中途流失">金融帳戶綁定涉及敏感資訊，使用者容易因資安防禦心理、操作不確定性與同步等待焦慮而中途流失</p>
+              <p class="invest-result"><strong>+12%</strong><span class="invest-label" data-en="Account-linking conversion rate of new users" data-zh="新進使用者金融帳戶綁定轉換率">新進使用者金融帳戶綁定轉換率</span></p>
+              <span class="invest-btn" data-en="View project →" data-zh="查看專案 →">查看專案 →</span>
+            </div>
+          </a>
+          <a class="invest-card" href="works/sync-complete.html">
+            <div class="invest-cover"><img src="assets/sync-complete-cover.jpg" alt="手機上的 Moneybook 同步完成頁，顯示本次同步帳戶數與資產負債變動" loading="lazy"></div>
+            <div class="invest-body">
+              <span class="invest-stage" data-en="02・Realize core value (Value Realization)" data-zh="02・感知核心價值 (Value Realization)">02・感知核心價值 (Value Realization)</span>
+              <h5><span data-en="Improve the experience" data-zh="優化同步完成後">優化同步完成後</span><span data-en="after sync completes" data-zh="的體驗">的體驗</span></h5>
+              <p class="invest-problem" data-en="After linking, the experience still centered on static totals, lacking information that lets users immediately understand changes in their finances and giving them little motivation to return" data-zh="完成綁定後仍以靜態總額為主，缺乏能讓使用者立即理解財務變化的資訊，難以形成持續回訪的動機">完成綁定後仍以靜態總額為主，缺乏能讓使用者立即理解財務變化的資訊，難以形成持續回訪的動機</p>
+              <p class="invest-result"><strong data-en="Higher long-term retention" data-zh="長尾留存較高">長尾留存較高</strong><span class="invest-label" data-en="Viewed the sync-complete page vs. did not" data-zh="有瀏覽同步完成頁 vs. 未瀏覽者">有瀏覽同步完成頁 vs. 未瀏覽者</span></p>
+              <span class="invest-btn" data-en="View project →" data-zh="查看專案 →">查看專案 →</span>
+            </div>
+          </a>
+          <div class="invest-card is-disabled">
+            <span class="invest-flag" data-en="Planning Stage Only" data-zh="僅負責至規劃階段">僅負責至規劃階段</span>
+            <div class="invest-cover cover-simple" aria-hidden="true">
+              <svg viewBox="0 0 64 64" width="72" height="72" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="38" width="10" height="16" rx="3" fill="currentColor" opacity=".45"/>
+                <rect x="27" y="28" width="10" height="26" rx="3" fill="currentColor" opacity=".7"/>
+                <rect x="44" y="16" width="10" height="38" rx="3" fill="currentColor"/>
+                <path d="M12 26l14-9 10 5 14-13" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="invest-body">
+              <span class="invest-stage" data-en="03・Next product development" data-zh="03・後續產品發展">03・後續產品發展</span>
+              <h5><span data-en="Deepen money-management efficiency" data-zh="深化管帳效率">深化管帳效率</span><span data-en="and subscription monetization" data-zh="與訂閱變現">與訂閱變現</span></h5>
+              <p class="invest-problem" data-en="After establishing a sense of core value through the sync-complete page, the next phase would deepen Engagement: stabilize the basic money-management experience and build advanced features on top of it to create a reason to pay" data-zh="透過「同步完成頁」建立核心價值感知後，下一階段將持續深化 Engagement：穩定基本管帳體驗，並在此基礎上發展進階管帳功能，創造付費誘因">透過「同步完成頁」建立核心價值感知後，下一階段將持續深化 Engagement：穩定基本管帳體驗，並在此基礎上發展進階管帳功能，創造付費誘因</p>
+              <div class="invest-btns"><a class="invest-btn" href="works/sync-complete.html#positioning"><span data-en="Product positioning →" data-zh="產品定位 →">產品定位 →</span></a><a class="invest-btn" href="works/sync-complete.html#roadmap"><span data-en="Product roadmap →" data-zh="產品路線圖 →">產品路線圖 →</span></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-foot">
+        <a class="strategy-link" href="works/moneybook-strategy.html">
+          <span class="sl-text"><strong data-en="View the full strategy" data-zh="查看策略全局">查看策略全局</strong><span><i class="sl-i" data-en="Background &amp; problem, " data-zh="背景與問題、">背景與問題、</i><i class="sl-i" data-en="Core strategy, " data-zh="核心策略、">核心策略、</i><i class="sl-i" data-en="Objectives &amp; measurement framework" data-zh="策略目標與衡量架構">策略目標與衡量架構</i></span></span>
+          <span class="sl-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="recommendations">
+  <div class="wrap">
+    <div class="t-head">
+      <h2 class="section-title" data-en="Recommendations" data-zh="推薦">Recommendations</h2>
+      <div class="t-nav">
+        <button class="t-arrow" type="button" id="tPrev" aria-label="Previous">←</button>
+        <button class="t-arrow" type="button" id="tNext" aria-label="Next">→</button>
+      </div>
+    </div>
+
+    <div class="t-track" id="tTrack" tabindex="0" role="region" aria-label="Recommendations">
+      <figure class="t-card">
+        <figcaption class="t-person">
+          <div class="t-avatar"><img src="assets/avatar-cj-chang.jpg" alt="CJ Chang" width="120" height="120" loading="lazy"></div>
+          <div><div class="t-name">CJ Chang</div><div class="t-role">Sr. Product Manager, Line Pay</div></div>
+        </figcaption>
+        <span class="t-rel">Managed Abby directly at Moneybook</span>
+        <div class="t-body">
+          <blockquote class="t-quote"><p>Abby is a talented and seasoned product manager. I had the pleasure of working with her during our time at Moneybook. Her data analysis skills are highly impressive—not only does she excel in SQL, but she also possesses a solid foundation in statistics, enabling her to tackle even the most complex requirements with ease.</p><p>When it comes to roadmap planning, Abby has the ability to start with high-level business problems and break them down into actionable tactics, supported by both quantitative and qualitative data. She is always in pursuit of better approaches to improve her performance and deepen her product knowledge.</p><p>I firmly believe that any team with Abby on board will see a significant boost in performance. I highly recommend her without hesitation.</p></blockquote>
+          <button class="t-toggle" type="button" aria-expanded="false"><span class="more" data-en="Read more" data-zh="展開全文">Read more</span><span class="less" data-en="Show less" data-zh="收合">Show less</span></button>
+        </div>
+      </figure>
+      <figure class="t-card">
+        <figcaption class="t-person">
+          <div class="t-avatar"><img src="assets/avatar-lian-yeh.jpg" alt="Lian Yeh" width="120" height="120" loading="lazy"></div>
+          <div><div class="t-name">Lian Yeh</div><div class="t-role">Staff Product Designer, Pinkoi</div></div>
+        </figcaption>
+        <span class="t-rel">Worked with Abby on the same team at Dcard</span>
+        <div class="t-body">
+          <blockquote class="t-quote"><p>With a solid background in psychology and work experience in startups, Abby possesses the ability to integrate projects and solve various problems. Additionally, she has strong management skills to execute projects with precision and efficiency. She also has excellent communication skills to collaborate with cross-departments, which can lead the team in the right direction.</p><p>Abby is also talented in composing product documentation which is easy to read and applies exact phrasing, making it easily understandable for everyone.</p><p>Abby's highly proactive approach to a self-learning mindset impresses me a lot, and she can also bring a different perspective to the team. With her work experiences, management skills and personality, I’d definitely recommend working with Abby.</p></blockquote>
+          <button class="t-toggle" type="button" aria-expanded="false"><span class="more" data-en="Read more" data-zh="展開全文">Read more</span><span class="less" data-en="Show less" data-zh="收合">Show less</span></button>
+        </div>
+      </figure>
+      <figure class="t-card">
+        <figcaption class="t-person">
+          <div class="t-avatar"><img src="assets/avatar-deming-huang.jpg" alt="Deming Huang" width="120" height="120" loading="lazy"></div>
+          <div><div class="t-name">Deming Huang</div><div class="t-role">Senior Android Developer, Dcard</div></div>
+        </figcaption>
+        <span class="t-rel">Worked with Abby on the same team at Dcard</span>
+        <div class="t-body">
+          <blockquote class="t-quote"><p>I am pleased to recommend Abby, who served as a Product Manager during our time working together. Abby is an exceptional professional who consistently demonstrates outstanding performance and unwavering commitment to achieving results.</p><p>What sets Abby apart is her mission-driven approach to work. When she takes on a project or responsibility, she sees it through to completion with attention to detail. Rather than shying away from challenges, Abby tackles problems head-on with a solution-oriented mindset, making her an invaluable asset to any team.</p><p>One of Abby's most admirable qualities is her team-first mentality. She consistently goes above and beyond her core responsibilities, often taking on additional tasks to support her colleagues and ensure the team's overall success. Her collaborative spirit and willingness to contribute wherever needed creates a positive and productive work environment.</p><p>Abby's combination of execution ability and dedication makes her an exceptional Product Manager. It has been an absolute privilege to work alongside her, and I am confident she will bring the same level of excellence and commitment to any organization fortunate enough to have her. I recommend Abby without reservation.</p></blockquote>
+          <button class="t-toggle" type="button" aria-expanded="false"><span class="more" data-en="Read more" data-zh="展開全文">Read more</span><span class="less" data-en="Show less" data-zh="收合">Show less</span></button>
+        </div>
+      </figure>
+      <figure class="t-card">
+        <figcaption class="t-person">
+          <div class="t-avatar t-initials" aria-hidden="true">LC</div>
+          <div><div class="t-name">Lulu Chang</div><div class="t-role">Sr. Product Designer, ViewSonic</div></div>
+        </figcaption>
+        <span class="t-rel">Worked with Abby on the same team at Dcard</span>
+        <div class="t-body">
+          <blockquote class="t-quote"><p>Abby, as a product manager, possesses excellent analytical skills, which allow her to systematically analyze requirements in the early stages of a project and provide precise feedback to the team members. Together with the team, she makes well-informed decisions, ensuring that the subsequent development work can proceed smoothly and with confidence.</p><p>Additionally, she is a dedicated and responsible team member who can fully focus on her work. She is reliable to work with, easy to communicate with, and proactively supports her teammates, whether in terms of psychological encouragement or practical work needs. She brings a great sense of reassurance and trust to the team, making her an excellent team player.</p><p>I would love to have the opportunity to work with her again!</p></blockquote>
+          <button class="t-toggle" type="button" aria-expanded="false"><span class="more" data-en="Read more" data-zh="展開全文">Read more</span><span class="less" data-en="Show less" data-zh="收合">Show less</span></button>
+        </div>
+      </figure>
+    </div>
+
+    <div class="t-more"><a class="t-link" href="https://www.linkedin.com/in/abbyfeng/details/recommendations/" target="_blank" rel="noopener"><span data-en="See all recommendations on LinkedIn" data-zh="在 LinkedIn 閱讀更多">See all recommendations on LinkedIn</span>&nbsp;→</a></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 FENG HSIN JOU</span>
+    <span data-en="Based in Taiwan" data-zh="Based in Taiwan">Based in Taiwan</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Nav border on scroll
+  var nav = document.getElementById('nav');
+  function onScroll() { nav.classList.toggle('scrolled', window.scrollY > 10); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // EN / 中 toggle
+  var lang = 'en'; // 預設英文；訪客手動切換後會記住選擇
+  try { var saved = localStorage.getItem('lang'); if (saved === 'zh' || saved === 'en') lang = saved; } catch (e) {}
+
+  function apply() {
+    document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+    document.querySelectorAll('[data-en]').forEach(function (el) {
+      el.innerHTML = el.getAttribute('data-' + lang);
+    });
+  }
+  document.getElementById('langBtn').addEventListener('click', function (e) {
+    var opt = e.target.closest('.lang-opt');
+    lang = opt ? opt.getAttribute('data-lang') : (lang === 'en' ? 'zh' : 'en');
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+    apply();
+  });
+  apply();
+
+})();
+</script>
+
+<script>
+(function () {
+  var track = document.getElementById('tTrack');
+  if (!track) return;
+  var prev = document.getElementById('tPrev'), next = document.getElementById('tNext');
+  function step() { var c = track.querySelector('.t-card'); return c ? c.getBoundingClientRect().width + 16 : 300; }
+  function update() {
+    prev.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+  }
+  prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+  next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
+  track.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  track.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { e.preventDefault(); next.click(); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); prev.click(); }
+  });
+  // 滑鼠拖曳（觸控裝置用原生滑動）
+  var down = false, startX = 0, startLeft = 0, moved = false;
+  track.addEventListener('pointerdown', function (e) {
+    if (e.pointerType !== 'mouse' || e.target.closest('button')) return;
+    down = true; moved = false; startX = e.clientX; startLeft = track.scrollLeft;
+  });
+  window.addEventListener('pointermove', function (e) {
+    if (!down) return;
+    var dx = e.clientX - startX;
+    if (Math.abs(dx) > 4) { moved = true; track.classList.add('dragging'); }
+    if (moved) track.scrollLeft = startLeft - dx;
+  });
+  window.addEventListener('pointerup', function () {
+    if (!down) return;
+    down = false;
+    if (moved) {
+      track.classList.remove('dragging');
+      var w = step(), i = Math.round(track.scrollLeft / w);
+      track.scrollTo({ left: i * w, behavior: 'smooth' });
+    }
+  });
+  // 展開 / 收合全文
+  track.querySelectorAll('.t-toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var card = btn.closest('.t-card');
+      var open = card.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+  update();
+})();
+</script>
+</body>
+</html>
