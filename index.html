@@ -131,6 +131,13 @@ h1, h2, h3, h4, p { margin: 0; }
   line-height: 1.2;
   letter-spacing: -0.025em;
 }
+.hero-title { position: relative; }
+.hero-title .tw-ghost { visibility: hidden; }
+.hero-title .tw-live { position: absolute; inset: 0; }
+.hero-title .tw-caret { display: inline-block; width: 0.07em; height: 0.95em; margin-left: 0.06em; vertical-align: -0.1em; background: var(--accent); animation: tw-blink 1s steps(1) infinite; }
+.hero-title .tw-caret.done { animation: tw-blink 1s steps(1) 3, tw-fade .4s ease 3s forwards; }
+@keyframes tw-blink { 50% { opacity: 0; } }
+@keyframes tw-fade { to { opacity: 0; } }
 .hero-text p { color: var(--ink); font-size: 1.05rem; line-height: 1.9; max-width: 42em; margin-top: 16px; text-wrap: pretty; }
 .hero-text .hero-role { color: var(--ink); font-weight: 600; font-size: 1.1rem; line-height: 1.6; margin-top: clamp(36px, 5vw, 64px); }
 .hero-text .hero-role span { display: inline-block; } /* 需要換行時只在「|」之後換，不會把詞拆開 */
@@ -345,7 +352,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-text">
-        <h1 class="hero-title" data-en="Hi, I'm Abby." data-zh="Hi, 我是 Abby.">Hi, 我是 Abby.</h1>
+        <h1 class="hero-title" id="heroTitle" data-tw data-en="Hi, I'm Abby." data-zh="Hi, 我是 Abby.">Hi, 我是 Abby.</h1>
         <p class="hero-role"><span data-en="Senior Product Manager (8+ years) |" data-zh="資深產品經理（8 年以上經驗）|">資深產品經理（8 年以上經驗）|</span> <span data-en="Enterprise GenAI, Consumer Scale & Fintech" data-zh="企業級生成式 AI、消費級大規模平台與金融科技">企業級生成式 AI、消費級大規模平台與金融科技</span></p>
         <p class="hero-bio" data-en="Psychology-trained product manager who turns complex problems into intuitive, trusted, and scalable products. Across fintech, consumer platforms, and enterprise GenAI, combines behavioral insight and data-driven decision-making to identify the right problems to solve, balance user value with business goals and regulatory or technical constraints, and deliver measurable outcomes." data-zh="具備心理學背景的產品經理，擅長將複雜問題轉化為直覺、值得信賴且可擴充的產品。橫跨金融科技、消費者平台與企業生成式 AI 領域，結合行為洞察與數據驅動決策，精準識別關鍵問題，在使用者價值、商業目標、法規限制及技術瓶頸之間取得平衡，並持續交付具體成效。">具備心理學背景的產品經理，擅長將複雜問題轉化為直覺、值得信賴且可擴充的產品。橫跨金融科技、消費者平台與企業生成式 AI 領域，結合行為洞察與數據驅動決策，精準識別關鍵問題，在使用者價值、商業目標、法規限制及技術瓶頸之間取得平衡，並持續交付具體成效。</p>
         <ul class="hero-contact">
@@ -573,17 +580,40 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 
   function apply() {
     document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
-    document.querySelectorAll('[data-en]').forEach(function (el) {
+    document.querySelectorAll('[data-en]:not([data-tw])').forEach(function (el) {
       el.innerHTML = el.getAttribute('data-' + lang);
     });
+  }
+
+  // Typewriter for hero title
+  var tw = document.getElementById('heroTitle'), twTimer = null, twFirst = true;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function typeTitle() {
+    var full = tw.getAttribute('data-' + lang);
+    clearTimeout(twTimer);
+    tw.setAttribute('aria-label', full);
+    tw.innerHTML = '<span class="tw-ghost" aria-hidden="true"></span><span class="tw-live" aria-hidden="true"><span class="tw-txt"></span><i class="tw-caret"></i></span>';
+    tw.querySelector('.tw-ghost').textContent = full;
+    var txt = tw.querySelector('.tw-txt'), caret = tw.querySelector('.tw-caret');
+    if (reduce) { txt.textContent = full; caret.style.display = 'none'; return; }
+    var chars = Array.from(full), i = 0, delay = lang === 'zh' ? 120 : 75;
+    function tick() {
+      i++; txt.textContent = chars.slice(0, i).join('');
+      if (i < chars.length) twTimer = setTimeout(tick, delay + Math.random() * 40);
+      else caret.classList.add('done');
+    }
+    twTimer = setTimeout(tick, twFirst ? 500 : 150);
+    twFirst = false;
   }
   document.getElementById('langBtn').addEventListener('click', function (e) {
     var opt = e.target.closest('.lang-opt');
     lang = opt ? opt.getAttribute('data-lang') : (lang === 'en' ? 'zh' : 'en');
     try { localStorage.setItem('lang', lang); } catch (e) {}
     apply();
+    typeTitle();
   });
   apply();
+  typeTitle();
 
 })();
 </script>
