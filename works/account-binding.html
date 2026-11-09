@@ -1012,6 +1012,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
       el.innerHTML = el.getAttribute('data-' + lang);
     });
   }
+
   document.getElementById('langBtn').addEventListener('click', function (e) {
     var opt = e.target.closest('.lang-opt');
     lang = opt ? opt.getAttribute('data-lang') : (lang === 'en' ? 'zh' : 'en');
