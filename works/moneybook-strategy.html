@@ -221,6 +221,7 @@ h1, h2, h3, h4, p { margin: 0; }
 .invest-stage { font-size: 13px; font-weight: 500; color: var(--muted); }
 .invest-card h5 { margin: 0; font-size: 1.3rem; font-weight: 700; line-height: 1.35; text-wrap: balance; }
 .invest-card h5 span { display: inline-block; }
+html:lang(en) .invest-card h5 span + span { margin-left: .28em; }
 .invest-problem { color: var(--muted); font-size: 14.5px; line-height: 1.75; }
 .invest-result { margin-top: auto; padding-top: 8px; display: flex; flex-direction: column; gap: 2px; }
 .invest-result strong { font-size: 2.1rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; }
@@ -366,11 +367,11 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 .sp-note svg { flex: none; width: 20px; height: 20px; margin-top: 2px; }
 .sp-sec .invest-grid { margin-top: 24px; grid-template-columns: 1fr; }
 .sp-sec .invest-card { flex-direction: row; align-items: stretch; gap: 24px; }
-.sp-sec .invest-card { background: var(--surface); border: 0; box-shadow: var(--shadow-card); }
-.sp-sec .invest-card:hover { box-shadow: 0 1px 2px color-mix(in srgb, var(--ink) 6%, transparent), 0 16px 38px color-mix(in srgb, var(--ink) 12%, transparent), 0 34px 70px color-mix(in srgb, var(--ink) 9%, transparent); transform: translateY(-3px); }
+.sp-sec .invest-card { background: var(--surface); border: 1px solid var(--line); box-shadow: none; }
+.sp-sec .invest-card:hover { box-shadow: none; transform: none; }
 .sp-sec .invest-cover { background: var(--bg); }
 .sp-sec .invest-btn { background: var(--bg); box-shadow: none; align-self: flex-end; margin-top: auto; }
-.sp-sec .invest-card:hover .invest-btn { background: var(--ink); color: var(--surface); }
+.sp-sec .invest-btn:hover, .sp-sec .invest-btn:focus-visible { background: var(--ink); color: var(--surface); }
 .sp-sec .invest-cover { flex: 0 0 38%; align-self: flex-start; }
 .sp-sec .invest-body { padding: 8px 8px 8px 0; justify-content: flex-start; }
 .sp-sec .invest-result { margin-top: 8px; }
