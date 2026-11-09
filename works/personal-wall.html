@@ -229,7 +229,13 @@ h1, h2, h3, h4, p { margin: 0; }
 .invest-btn { margin-top: 6px; padding: 11px 20px; border-radius: 12px; background: var(--surface); box-shadow: 0 1px 2px color-mix(in srgb, var(--ink) 10%, transparent); font-size: 15px; font-weight: 600; color: var(--ink); transition: background .2s, color .2s; }
 .invest-card:hover .invest-btn { background: var(--ink); color: var(--surface); }
 .cover-simple { display: grid; place-items: center; color: var(--ink); background: var(--surface); }
-.invest-card.is-disabled { cursor: not-allowed; box-shadow: none; }
+.invest-card.is-disabled { position: relative; cursor: default; box-shadow: none; }
+.invest-card.is-disabled > .invest-flag { position: absolute; top: 28px; right: 28px; z-index: 1; opacity: 1; padding: 5px 12px; border-radius: 999px; background: #DDE2EA; color: #4A5565; font-size: 12.5px; font-weight: 700; line-height: 1.4; letter-spacing: .02em; }
+.invest-card.is-disabled > .invest-body { opacity: 1; }
+.invest-card.is-disabled > .invest-body > .invest-stage, .invest-card.is-disabled > .invest-body > h5, .invest-card.is-disabled > .invest-body > .invest-problem { opacity: .5; }
+.invest-btns { margin-top: auto; padding-top: 6px; display: flex; flex-wrap: wrap; gap: 10px; }
+.invest-card.is-disabled .invest-btns .invest-btn, .invest-card.is-disabled:hover .invest-btns .invest-btn { margin-top: 6px; padding: 11px 20px; background: var(--surface); box-shadow: 0 1px 2px color-mix(in srgb, var(--ink) 10%, transparent); color: var(--ink); font-weight: 600; text-decoration: none; cursor: pointer; }
+.invest-card.is-disabled .invest-btns .invest-btn:hover, .invest-card.is-disabled .invest-btns .invest-btn:focus-visible { background: var(--ink); color: var(--surface); }
 .invest-card.is-disabled:hover { box-shadow: none; transform: none; }
 .invest-card.is-disabled > * { opacity: .5; }
 .invest-card.is-disabled .invest-cover { background: color-mix(in srgb, var(--surface) 55%, transparent); }
@@ -318,6 +324,10 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 
 
 .sp-hero { background: var(--surface); padding: 108px 0 clamp(48px, 7vw, 88px); }
+.sp-back { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 28px; font-size: 14px; font-weight: 600; color: var(--muted); text-decoration: none; transition: color .2s; }
+.sp-back svg { width: 16px; height: 16px; transition: transform .2s; }
+.sp-back:hover { color: var(--ink); }
+.sp-back:hover svg { transform: translateX(-3px); }
 .sp-hero .panel-head { align-items: center; }
 .sp-title { margin-top: 2px; font-size: clamp(1.3rem, 2.6vw, 1.9rem); font-weight: 700; line-height: 1.3; letter-spacing: -0.015em; text-wrap: balance; }
 .sp-meta { margin-top: clamp(32px, 5vw, 56px); display: grid; grid-template-columns: minmax(0, 1fr) 215px; gap: 28px clamp(32px, 6vw, 96px); }
@@ -340,6 +350,13 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 .sp-ic svg { width: 26px; height: 26px; }
 .sp-num { font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: .04em; }
 .sp-who { font-size: 14px; font-weight: 500; color: var(--muted); }
+.sp-metrics { grid-template-columns: 1fr; gap: 0; margin-top: 28px; }
+.sp-metrics .sp-card { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 0 12px; padding: 24px 0; border: 0; border-radius: 0; background: transparent; border-top: 1px solid var(--line); }
+.sp-metrics .sp-card:last-child { padding-bottom: 0; }
+.sp-metrics .sp-num { grid-row: 1 / span 2; font-size: 14px; font-weight: 700; color: var(--accent); line-height: 1.9; letter-spacing: 0; }
+.sp-metrics .sp-card h3 { margin: 0 0 8px; font-size: 17px; line-height: 1.6; }
+.sp-metrics .sp-card p { margin: 0; max-width: 46em; font-size: 15px; line-height: 1.85; }
+@media (max-width: 700px) { .sp-metrics .sp-card { grid-template-columns: 1fr; } .sp-metrics .sp-num { grid-row: auto; } }
 .sp-card h3 { margin: 0; font-size: 1.2rem; font-weight: 700; line-height: 1.45; }
 .sp-card p { color: var(--muted); font-size: 15px; line-height: 1.8; }
 .sp-card .sp-k { margin-top: 10px; font-size: 13px; font-weight: 600; color: var(--muted); }
@@ -400,10 +417,17 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 .sp-item h4 { margin: 0 0 4px; font-size: 15px; font-weight: 700; }
 .sp-item p { color: var(--muted); font-size: 14.5px; line-height: 1.8; }
 .sp-block .sp-nsm { margin-top: 16px; color: var(--ink); font-size: 15px; line-height: 1.8; }
-.sp-sec .invest-card.is-disabled { box-shadow: none; border: 1px solid var(--line); cursor: not-allowed; }
+.sp-sec .invest-card.is-disabled { position: relative; box-shadow: none; border: 1px solid var(--line); cursor: default; }
 .sp-sec .invest-card.is-disabled:hover { box-shadow: none; transform: none; }
 .sp-sec .invest-card.is-disabled .invest-cover { background: var(--bg); }
-.sp-sec .invest-card.is-disabled .invest-btn, .sp-sec .invest-card.is-disabled:hover .invest-btn { background: transparent; color: var(--muted); padding-left: 0; font-weight: 500; align-self: flex-start; }
+.sp-sec .invest-card.is-disabled > * { opacity: 1; }
+.sp-sec .invest-card.is-disabled .invest-cover { position: relative; }
+.sp-sec .invest-card.is-disabled .invest-cover > svg { opacity: .5; }
+.sp-sec .invest-card.is-disabled .invest-cover > .invest-flag { position: absolute; top: 12px; right: 12px; z-index: 1; padding: 5px 12px; border-radius: 999px; background: #DDE2EA; color: #4A5565; font-size: 12.5px; font-weight: 700; line-height: 1.4; letter-spacing: .02em; }
+.sp-sec .invest-card.is-disabled > .invest-body > .invest-stage, .sp-sec .invest-card.is-disabled > .invest-body > h5, .sp-sec .invest-card.is-disabled > .invest-body > .invest-problem { opacity: .5; }
+.sp-sec .invest-btns { margin-top: auto; padding-top: 6px; display: flex; flex-wrap: wrap; justify-content: flex-end; align-self: stretch; gap: 10px; }
+.sp-sec .invest-card.is-disabled .invest-btns .invest-btn, .sp-sec .invest-card.is-disabled:hover .invest-btns .invest-btn { margin-top: 6px; padding: 11px 20px; background: var(--bg); box-shadow: none; color: var(--ink); font-weight: 600; text-decoration: none; align-self: auto; cursor: pointer; }
+.sp-sec .invest-card.is-disabled .invest-btns .invest-btn:hover, .sp-sec .invest-card.is-disabled .invest-btns .invest-btn:focus-visible { background: var(--ink); color: var(--surface); }
 .sp-sec .invest-body { justify-content: flex-start; }
 
 .sp-media { margin-top: 28px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
@@ -586,6 +610,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 
 <section class="sp-hero">
   <div class="wrap">
+    <a class="sp-back" href="../index.html#work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span data-en="Selected Works" data-zh="精選作品">Selected Works</span></a>
     <header class="panel-head">
       <div class="logo"><img src="../assets/dcard-logo.png" alt="Dcard" width="120" height="120"></div>
       <div>
