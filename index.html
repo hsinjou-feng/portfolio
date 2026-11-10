@@ -231,7 +231,10 @@ html[lang="en"] .lang-opt[data-lang="en"], html[lang="zh-Hant"] .lang-opt[data-l
 .invest-card { display: flex; flex-direction: column; gap: 14px; padding: 16px; border-radius: 20px; background: var(--surface); border: 1px solid var(--soft-line); transition: border-color .25s, transform .25s; }
 .invest-card:hover { border-color: var(--soft-muted); transform: translateY(-3px); }
 .invest-cover { width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; background: var(--soft); overflow: hidden; }
-.invest-cover img { width: 100%; height: 100%; object-fit: cover; }
+.invest-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.7,.3,1); }
+@media (prefers-reduced-motion: no-preference) {
+  .invest-card:hover .invest-cover img, .invest-card:focus-visible .invest-cover img { transform: scale(1.05); } /* 圖片封面：hover 時在框內輕微放大 */
+}
 .invest-body { display: flex; flex: 1; flex-direction: column; align-items: flex-start; gap: 10px; padding: 4px 8px 8px; }
 .invest-stage { font-size: 13px; font-weight: 600; letter-spacing: .04em; color: var(--muted); }
 .invest-card h5 { margin: 0; font-size: 1.15rem; font-weight: 700; line-height: 1.35; text-wrap: balance; }
