@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FENG HSIN JOU｜Product Manager Portfolio</title>
+<title>Abby Feng 馮欣柔｜Product Manager Portfolio</title>
 <meta name="description" content="Sr. Product Manager. Defining problems, shaping products, driving outcomes.">
 <link rel="icon" type="image/jpeg" href="../assets/avatar.jpg">
 <link rel="apple-touch-icon" href="../assets/avatar.jpg">
@@ -90,18 +90,21 @@ h1, h2, h3, h4, p { margin: 0; }
 .nav .brand-text { display: flex; flex-direction: column; line-height: 1.25; }
 .nav .brand-name { font-weight: 800; font-size: 16px; }
 .nav .brand-role { font-weight: 400; font-size: 13px; color: var(--muted); letter-spacing: 0; }
-.nav ul { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; font-size: 15px; }
+.nav ul { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; font-size: 12.5px; font-weight: 500; letter-spacing: .12em; }
 .nav ul a { color: var(--muted); transition: color .2s; }
 .nav ul a:hover, .nav ul a:focus-visible { color: var(--accent); }
 .nav nav { margin-left: auto; margin-right: 20px; }
+/* 語言切換：膠囊分段樣式，目前語言反白 */
 .lang {
-  font: inherit; font-size: 14px; color: var(--ink);
-  background: none; border: none; border-radius: 999px;
-  padding: 6px 10px; cursor: pointer; transition: color .2s;
-  display: inline-flex; align-items: center; gap: 8px;
+  font: inherit; font-size: 12px; letter-spacing: .1em; line-height: 1.5; color: var(--muted);
+  background: none; border: 1px solid var(--line); border-radius: 999px;
+  padding: 0; cursor: pointer; overflow: hidden; transition: border-color .3s;
+  display: inline-grid; grid-template-columns: 1fr 1fr;
 }
-.lang-opt { transition: color .2s; }
-.lang-opt:hover { color: var(--accent); }
+.lang:hover { border-color: var(--muted); }
+.lang-opt { min-width: 2.6em; padding: 4px 8px; text-align: center; transition: background-color .3s, color .3s; }
+.lang-opt:hover { color: var(--ink); }
+html[lang="en"] .lang-opt[data-lang="en"], html[lang="zh-Hant"] .lang-opt[data-lang="zh"] { background: var(--ink); color: var(--surface); font-weight: 600; }
 @media (max-width: 720px) { .nav ul { display: none; } }
 @media (max-width: 520px) { .nav .brand-name { font-size: 14px; } .nav .brand-role { font-size: 12px; } }
 
@@ -597,14 +600,15 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 
 <header class="nav" id="nav">
   <div class="wrap">
-    <a href="../index.html" class="brand"><img class="avatar" src="../assets/avatar.jpg" alt="" width="40" height="40"><span class="brand-text"><span class="brand-name">FENG HSIN JOU 馮欣柔</span><span class="brand-role">Senior Product Manager</span></span></a>
+    <a href="../index.html" class="brand"><img class="avatar" src="../assets/avatar.jpg" alt="" width="40" height="40"><span class="brand-text"><span class="brand-name">Abby Feng 馮欣柔</span><span class="brand-role">Senior Product Manager</span></span></a>
     <nav aria-label="Main">
       <ul>
-        <li><a href="../index.html#work">Selected Works</a></li>
-        <li><a href="../index.html#recommendations">Recommendations</a></li>
+        <li><a href="../index.html#about" data-en="ABOUT" data-zh="關於">ABOUT</a></li>
+        <li><a href="../index.html#work" data-en="WORK" data-zh="作品">WORK</a></li>
+        <li><a href="../index.html#recommendations" data-en="RECOMMENDATION" data-zh="推薦">RECOMMENDATION</a></li>
       </ul>
     </nav>
-    <button class="lang" id="langBtn" type="button" aria-label="Switch language"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19"/><path d="M12 2.5c2.6 2.7 4 5.9 4 9.5s-1.4 6.8-4 9.5c-2.6-2.7-4-5.9-4-9.5s1.4-6.8 4-9.5z"/></svg><span class="lang-opts"><span class="lang-opt" data-lang="en">EN</span><span class="lang-sep"> / </span><span class="lang-opt" data-lang="zh">中</span></span></button>
+    <button class="lang" id="langBtn" type="button" aria-label="Switch language"><span class="lang-opt" data-lang="en">EN</span><span class="lang-opt" data-lang="zh">中</span></button>
   </div>
 </header>
 
@@ -612,7 +616,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 
 <section class="sp-hero">
   <div class="wrap">
-    <a class="sp-back" href="../index.html#work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span data-en="Selected Works" data-zh="精選作品">Selected Works</span></a>
+    <a class="sp-back" href="../index.html#work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span data-en="Selected Work" data-zh="精選作品">Selected Work</span></a>
     <header class="panel-head">
       <div class="logo"><img src="../assets/dcard-logo.png" alt="Dcard" width="120" height="120"></div>
       <div>
@@ -787,7 +791,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 
 <footer>
   <div class="wrap">
-    <span>© 2026 FENG HSIN JOU</span>
+    <span>© 2026 FENG HSIN JOU. All Rights Reserved.</span>
     <span data-en="Based in Taiwan" data-zh="Based in Taiwan">Based in Taiwan</span>
   </div>
 </footer>

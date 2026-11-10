@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FENG HSIN JOU｜Product Manager Portfolio</title>
+<title>Abby Feng 馮欣柔｜Product Manager Portfolio</title>
 <meta name="description" content="Sr. Product Manager. Defining problems, shaping products, driving outcomes.">
 <link rel="icon" type="image/jpeg" href="assets/avatar.jpg">
 <link rel="apple-touch-icon" href="assets/avatar.jpg">
@@ -94,18 +94,21 @@ h1, h2, h3, h4, p { margin: 0; }
 .nav .brand-text { display: flex; flex-direction: column; line-height: 1.25; }
 .nav .brand-name { font-weight: 800; font-size: 16px; }
 .nav .brand-role { font-weight: 400; font-size: 13px; color: var(--muted); letter-spacing: 0; }
-.nav ul { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; font-size: 15px; }
+.nav ul { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; font-size: 12.5px; font-weight: 500; letter-spacing: .12em; }
 .nav ul a { color: var(--muted); transition: color .2s; }
 .nav ul a:hover, .nav ul a:focus-visible { color: var(--accent); }
 .nav nav { margin-left: auto; margin-right: 20px; }
+/* 語言切換：膠囊分段樣式，目前語言反白 */
 .lang {
-  font: inherit; font-size: 14px; color: var(--ink);
-  background: none; border: none; border-radius: 999px;
-  padding: 6px 10px; cursor: pointer; transition: color .2s;
-  display: inline-flex; align-items: center; gap: 8px;
+  font: inherit; font-size: 12px; letter-spacing: .1em; line-height: 1.5; color: var(--muted);
+  background: none; border: 1px solid var(--line); border-radius: 999px;
+  padding: 0; cursor: pointer; overflow: hidden; transition: border-color .3s;
+  display: inline-grid; grid-template-columns: 1fr 1fr;
 }
-.lang-opt { transition: color .2s; }
-.lang-opt:hover { color: var(--accent); }
+.lang:hover { border-color: var(--muted); }
+.lang-opt { min-width: 2.6em; padding: 4px 8px; text-align: center; transition: background-color .3s, color .3s; }
+.lang-opt:hover { color: var(--ink); }
+html[lang="en"] .lang-opt[data-lang="en"], html[lang="zh-Hant"] .lang-opt[data-lang="zh"] { background: var(--ink); color: var(--surface); font-weight: 600; }
 @media (max-width: 720px) { .nav ul { display: none; } }
 @media (max-width: 520px) { .nav .brand-name { font-size: 14px; } .nav .brand-role { font-size: 12px; } }
 
@@ -215,6 +218,7 @@ h1, h2, h3, h4, p { margin: 0; }
 .panel-head { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 24px); }
 .logo { flex: none; width: clamp(52px, 6vw, 72px); aspect-ratio: 1; }
 .logo img { width: 100%; height: 100%; object-fit: contain; }
+.logo-tile img { border-radius: 22.36%; box-shadow: 0 0 0 1px var(--soft-line); } /* 白底 logo 在白色卡片上加淡框 */
 .panel-company { color: var(--muted); font-size: 15px; font-weight: 500; }
 .panel-title { margin-top: 2px; font-size: clamp(1.3rem, 2.6vw, 1.9rem); font-weight: 700; line-height: 1.3; letter-spacing: -0.015em; }
 .panel-meta { margin: clamp(24px, 3.5vw, 36px) 0 0; display: grid; gap: 18px; }
@@ -241,23 +245,60 @@ html:lang(en) .invest-card h5 span + span { margin-left: .28em; }
 .invest-btn { margin-top: 6px; padding: 11px 20px; border-radius: 12px; background: transparent; border: 1px solid var(--soft-chip); box-shadow: none; font-size: 15px; font-weight: 600; color: var(--ink); transition: background .2s, color .2s; }
 .invest-card:hover .invest-btn { background: var(--ink); border-color: var(--ink); color: var(--surface); }
 .cover-simple { display: grid; place-items: center; color: var(--ink); background: var(--soft); }
-.invest-card.is-disabled { position: relative; cursor: default; box-shadow: none; }
-.invest-card.is-disabled > .invest-flag { position: absolute; top: 28px; right: 28px; z-index: 1; opacity: 1; padding: 5px 12px; border-radius: 999px; background: #DDE2EA; color: #4A5565; font-size: 12.5px; font-weight: 700; line-height: 1.4; letter-spacing: .02em; }
-.invest-card.is-disabled > .invest-body { opacity: 1; }
-.invest-card.is-disabled > .invest-body > .invest-stage, .invest-card.is-disabled > .invest-body > h5, .invest-card.is-disabled > .invest-body > .invest-problem { opacity: .5; }
-.invest-btns { margin-top: auto; padding-top: 6px; display: flex; flex-wrap: wrap; gap: 10px; }
-.invest-card.is-disabled .invest-btns .invest-btn, .invest-card.is-disabled:hover .invest-btns .invest-btn { margin-top: 6px; padding: 11px 20px; background: transparent; border: 1px solid var(--soft-chip); box-shadow: none; color: var(--ink); font-weight: 600; text-decoration: none; cursor: pointer; }
-.invest-card.is-disabled .invest-btns .invest-btn:hover, .invest-card.is-disabled .invest-btns .invest-btn:focus-visible { background: var(--ink); border-color: var(--ink); color: var(--surface); }
-.invest-card.is-disabled:hover { box-shadow: none; transform: none; }
-.invest-card.is-disabled > * { opacity: .5; }
-.invest-card.is-disabled .invest-cover { background: var(--bg); opacity: 1; } /* #EEF1F5 灰底，不跟著半透明 */
-.invest-card.is-disabled .invest-cover svg { opacity: .5; }
-.invest-card.is-disabled .invest-btn { margin-top: auto; }
-.invest-card.is-disabled .invest-btn, .invest-card.is-disabled:hover .invest-btn { background: transparent; box-shadow: none; border: 0; color: var(--muted); padding-left: 0; font-weight: 500; }
+.invest-card.has-flag { position: relative; }
+.invest-card.has-flag > .invest-flag { position: absolute; top: 28px; right: 28px; z-index: 1; opacity: 1; padding: 5px 12px; border-radius: 999px; background: #DDE2EA; color: #4A5565; font-size: 12.5px; font-weight: 700; line-height: 1.4; letter-spacing: .02em; }
+/* Moneybook 03 小卡 icon：hover 動畫（長條依序長高、趨勢線畫出） */
+.mb-ic * { transform-box: fill-box; }
+.mb-ic .bar { transform-origin: center bottom; }
+.mb-ic .trend { stroke-dasharray: 1; stroke-dashoffset: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .invest-card:hover .mb-ic .bar { animation: mb-grow .5s cubic-bezier(.34,1.56,.64,1) both; }
+  .invest-card:hover .mb-ic .bar2 { animation-delay: .1s; }
+  .invest-card:hover .mb-ic .bar3 { animation-delay: .2s; }
+  .invest-card:hover .mb-ic .trend { animation: gc-tick .6s .3s ease-out both; }
+}
+@keyframes mb-grow { from { transform: scaleY(.15); } to { transform: scaleY(1); } }
+/* Going Cloud 小卡 icon：hover 動畫 */
+.gc-ic * { transform-box: fill-box; }
+.gc-ic .ln { transform-origin: left center; }
+.gc-ic-check .badge { transform-origin: center; }
+.gc-ic-check .tick { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.gc-ic-chat .b1 { transform-origin: left bottom; }
+.gc-ic-chat .b2 { transform-origin: right top; }
+.gc-ic-docs .p1, .gc-ic-docs .p2, .gc-ic-docs .p3 { transform-origin: center bottom; transition: transform .45s cubic-bezier(.34,1.56,.64,1); }
+@media (prefers-reduced-motion: no-preference) {
+  .invest-card:hover .gc-ic-check .ln, .invest-card:focus-visible .gc-ic-check .ln { animation: gc-draw .45s ease-out both; }
+  .invest-card:hover .gc-ic-check .ln2 { animation-delay: .12s; }
+  .invest-card:hover .gc-ic-check .ln3 { animation-delay: .24s; }
+  .invest-card:hover .gc-ic-check .badge { animation: gc-pop .5s .4s cubic-bezier(.34,1.56,.64,1) both; }
+  .invest-card:hover .gc-ic-check .tick { animation: gc-tick .35s .65s ease-out both; }
+
+  .invest-card:hover .gc-ic-chat .b1 { animation: gc-in-left .45s cubic-bezier(.34,1.56,.64,1) both; }
+  .invest-card:hover .gc-ic-chat .b2 { animation: gc-in-right .45s .18s cubic-bezier(.34,1.56,.64,1) both; }
+  .invest-card:hover .gc-ic-chat .d1 { animation: gc-typing 1s .6s ease-in-out infinite; }
+  .invest-card:hover .gc-ic-chat .d2 { animation: gc-typing 1s .8s ease-in-out infinite; }
+
+  .invest-card:hover .gc-ic-docs .p1 { transform: translateX(-4px) rotate(-8deg); }
+  .invest-card:hover .gc-ic-docs .p2 { transform: rotate(-3deg); transition-delay: .05s; }
+  .invest-card:hover .gc-ic-docs .p3 { transform: translate(3px, -3px) rotate(4deg); transition-delay: .1s; }
+  .invest-card:hover .gc-ic-docs .ln { animation: gc-draw .4s .25s ease-out both; }
+  .invest-card:hover .gc-ic-docs .ln2 { animation-delay: .35s; }
+  .invest-card:hover .gc-ic-docs .ln3 { animation-delay: .45s; }
+}
+@keyframes gc-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes gc-pop { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+@keyframes gc-tick { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes gc-in-left { from { transform: translateX(-8px) scale(.6); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes gc-in-right { from { transform: translateX(8px) scale(.6); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes gc-typing { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2.5px); } }
+.invest-btn .btn-lock { width: 14px; height: 14px; margin-right: 6px; vertical-align: -1px; }
+.invest-problem + .invest-btn { margin-top: auto; } /* 沒有成效數字的小卡，按鈕仍貼齊卡片底部 */
 .panel-foot { margin-top: 16px; }
 .strategy-link { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; border-radius: 20px; background: var(--surface); border: 1px solid var(--soft-line); transition: background .25s, color .25s, transform .25s; position: relative;}
 .sl-text { display: flex; flex-direction: column; gap: 2px; }
 .sl-text strong { font-size: 1.05rem; font-weight: 700; }
+.sl-text strong .sl-lock { width: 16px; height: 16px; margin-right: 6px; vertical-align: -2px; }
+.sl-text strong span { font-size: inherit; color: inherit; }
 .sl-text span { font-size: 14px; color: var(--muted); transition: color .25s; }
 .sl-i { font-style:normal; display:inline-block; white-space:nowrap; }
 html[lang="en"] .sl-i:not(:last-child) { margin-right:.3em; }
@@ -342,20 +383,21 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 
 <header class="nav" id="nav">
   <div class="wrap">
-    <a href="#top" class="brand"><img class="avatar" src="assets/avatar.jpg" alt="" width="40" height="40"><span class="brand-text"><span class="brand-name">FENG HSIN JOU 馮欣柔</span><span class="brand-role">Senior Product Manager</span></span></a>
+    <a href="#top" class="brand"><img class="avatar" src="assets/avatar.jpg" alt="" width="40" height="40"><span class="brand-text"><span class="brand-name">Abby Feng 馮欣柔</span><span class="brand-role">Senior Product Manager</span></span></a>
     <nav aria-label="Main">
       <ul>
-        <li><a href="#work">Selected Works</a></li>
-        <li><a href="#recommendations">Recommendations</a></li>
+        <li><a href="#about" data-en="ABOUT" data-zh="關於">ABOUT</a></li>
+        <li><a href="#work" data-en="WORK" data-zh="作品">WORK</a></li>
+        <li><a href="#recommendations" data-en="RECOMMENDATION" data-zh="推薦">RECOMMENDATION</a></li>
       </ul>
     </nav>
-    <button class="lang" id="langBtn" type="button" aria-label="Switch language"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19"/><path d="M12 2.5c2.6 2.7 4 5.9 4 9.5s-1.4 6.8-4 9.5c-2.6-2.7-4-5.9-4-9.5s1.4-6.8 4-9.5z"/></svg><span class="lang-opts"><span class="lang-opt" data-lang="en">EN</span><span class="lang-sep"> / </span><span class="lang-opt" data-lang="zh">中</span></span></button>
+    <button class="lang" id="langBtn" type="button" aria-label="Switch language"><span class="lang-opt" data-lang="en">EN</span><span class="lang-opt" data-lang="zh">中</span></button>
   </div>
 </header>
 
 <main id="top">
 
-<section class="hero">
+<section class="hero" id="about">
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-text">
@@ -375,7 +417,86 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 
 <section id="work">
   <div class="wrap">
-    <h2 class="section-title" data-en="Selected Works" data-zh="精選作品">Selected Works</h2>
+    <h2 class="section-title" data-en="Selected Work" data-zh="精選作品">Selected Work</h2>
+
+    <article class="panel" id="goingcloud">
+      <header class="panel-head">
+        <div class="logo logo-tile"><img src="assets/goingcloud-logo.png" alt="Going Cloud" width="512" height="512"></div>
+        <div>
+          <p class="panel-company" data-en="Going Cloud・Cloud and enterprise AI solutions provider" data-zh="Going Cloud・雲端與企業 AI 解決方案供應商">Going Cloud・雲端與企業 AI 解決方案供應商</p>
+          <h3 class="panel-title" data-en="From single-project delivery to scalable replication: building reusable GenAI quality, experience and delivery mechanisms" data-zh="從單一專案交付到規模化複製：建立可複用的 GenAI 品質、體驗與交付機制">從單一專案交付到規模化複製：建立可複用的 GenAI 品質、體驗與交付機制</h3>
+        </div>
+      </header>
+
+      <dl class="panel-meta">
+        <div class="meta-row"><dt data-en="Period" data-zh="策略推進期間">策略推進期間</dt><dd>2026 Q2-3</dd></div>
+        <div class="meta-row"><dt data-en="Role" data-zh="所屬職位">所屬職位</dt><dd>Lead Product &amp; Delivery Manager</dd></div>
+        <div class="meta-row"><dt data-en="Ownership" data-zh="策略責任">策略責任</dt><dd data-en="Owned <strong>cross-project delivery strategy and governance for a major Taiwanese private bank's AI chatbot projects</strong>. Drawing on requirements and acceptance work across projects, I identified recurring collaboration friction and delivery issues, then built shared mechanisms for requirement definition, AI reply experience and delivery governance, so the team could reuse existing standards and the client's different contacts could align on needs and experience in one product language and review every project against the same delivery standards." data-zh="負責<strong>台灣大型民營銀行的 AI Chatbot 跨專案交付策略與治理</strong>，從不同專案的需求規劃與驗收經驗中，辨識重複發生的協作摩擦與交付問題，並建立共通的需求定義、AI 回覆體驗與交付治理機制，讓團隊能直接複用既有標準，也讓客戶端不同窗口能以一致的產品語言對齊需求與體驗，並依循共通的交付標準審視各個專案成果。">負責<strong>台灣大型民營銀行的 AI Chatbot 跨專案交付策略與治理</strong>，從不同專案的需求規劃與驗收經驗中，辨識重複發生的協作摩擦與交付問題，並建立共通的需求定義、AI 回覆體驗與交付治理機制，讓團隊能直接複用既有標準，也讓客戶端不同窗口能以一致的產品語言對齊需求與體驗，並依循共通的交付標準審視各個專案成果。</dd></div>
+        <div class="meta-row"><dt data-en="Problem" data-zh="問題摘要">問題摘要</dt><dd data-en="The bank's AI chatbot projects ran in parallel under different contacts and business units, but <strong>without shared requirement definitions, acceptance standards or delivery formats</strong>, the client had to keep adapting to each project's way of working, and the team carried repeated communication and rework costs." data-zh="銀行的 AI Chatbot 專案由不同窗口與業務單位並行推進，但<strong>缺乏共通的需求定義、驗收標準與交付格式</strong>，客戶端需反覆適應不同專案的合作方式，團隊也承擔重複溝通與調整的成本。">銀行的 AI Chatbot 專案由不同窗口與業務單位並行推進，但<strong>缺乏共通的需求定義、驗收標準與交付格式</strong>，客戶端需反覆適應不同專案的合作方式，團隊也承擔重複溝通與調整的成本。</dd></div>
+      </dl>
+
+      <div class="invest-row">
+        <div class="invest-grid">
+          <a class="invest-card" href="works/going-cloud-strategy.html#pillar-1">
+            <div class="invest-cover cover-simple" aria-hidden="true">
+              <svg class="gc-ic gc-ic-check" viewBox="0 0 64 64" width="72" height="72" xmlns="http://www.w3.org/2000/svg">
+                <rect x="12" y="8" width="40" height="48" rx="6" fill="currentColor" opacity=".18"/>
+                <g stroke="currentColor" stroke-width="3.2" stroke-linecap="round" opacity=".55"><path class="ln ln1" d="M21 22h22"/><path class="ln ln2" d="M21 31h22"/><path class="ln ln3" d="M21 40h12"/></g>
+                <g class="badge"><circle cx="45" cy="45" r="11" fill="currentColor"/>
+                <path class="tick" d="M40 45l3.6 3.6L50.5 41" fill="none" stroke="var(--surface)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/></g>
+              </svg>
+            </div>
+            <div class="invest-body">
+              <span class="invest-stage" data-en="01・Quality acceptance standards" data-zh="01・品質驗收標準">01・品質驗收標準</span>
+              <h5><span data-en="Build an LLM quality acceptance mechanism" data-zh="建立 LLM 品質驗收機制">建立 LLM 品質驗收機制</span></h5>
+              <p class="invest-problem" data-en="With no standardized Golden Sample process yet in place, test sets differed from real business scenarios, so the System Prompt needed repeated tuning during acceptance" data-zh="前期尚未建立 Golden Sample 的標準化流程，測試題組與實際業務情境存在落差，使驗收期間需反覆調整 System Prompt">前期尚未建立 Golden Sample 的標準化流程，測試題組與實際業務情境存在落差，使驗收期間需反覆調整 System Prompt</p>
+              <span class="invest-btn"><svg class="btn-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg><span data-en="View approach →" data-zh="查看做法 →">查看做法 →</span></span>
+            </div>
+          </a>
+          <a class="invest-card" href="works/going-cloud-strategy.html#pillar-2">
+            <div class="invest-cover cover-simple" aria-hidden="true">
+              <svg class="gc-ic gc-ic-chat" viewBox="0 0 64 64" width="72" height="72" xmlns="http://www.w3.org/2000/svg">
+                <g class="b1"><rect x="6" y="10" width="36" height="22" rx="8" fill="currentColor" opacity=".3"/>
+                <rect x="13" y="17" width="16" height="3.2" rx="1.6" fill="currentColor" opacity=".9"/>
+                <rect x="13" y="23" width="22" height="3.2" rx="1.6" fill="currentColor" opacity=".6"/></g>
+                <g class="b2"><rect x="22" y="36" width="36" height="20" rx="8" fill="currentColor"/>
+                <rect class="d1" x="29" y="43" width="12" height="6" rx="3" fill="var(--surface)"/>
+                <rect class="d2" x="44" y="43" width="8" height="6" rx="3" fill="var(--surface)" opacity=".6"/></g>
+              </svg>
+            </div>
+            <div class="invest-body">
+              <span class="invest-stage" data-en="02・Conversation experience language" data-zh="02・對話體驗語言">02・對話體驗語言</span>
+              <h5><span data-en="Standardize AI reply" data-zh="建立 AI 回覆模板">建立 AI 回覆模板</span><span data-en="templates &amp; UI components" data-zh="與 UI 規範">與 UI 規範</span></h5>
+              <p class="invest-problem" data-en="Business and design teams were still building a shared picture of how AI replies should look, so conversation structure and UI often converged only after System Prompt development and testing" data-zh="業務與設計單位對 AI 回覆形式仍在建立共同理解，對話結構與介面呈現往往等到 System Prompt 開發與實測後才能收斂">業務與設計單位對 AI 回覆形式仍在建立共同理解，對話結構與介面呈現往往等到 System Prompt 開發與實測後才能收斂</p>
+              <span class="invest-btn"><svg class="btn-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg><span data-en="View approach →" data-zh="查看做法 →">查看做法 →</span></span>
+            </div>
+          </a>
+          <a class="invest-card" href="works/going-cloud-strategy.html#pillar-3">
+            <div class="invest-cover cover-simple" aria-hidden="true">
+              <svg class="gc-ic gc-ic-docs" viewBox="0 0 64 64" width="72" height="72" xmlns="http://www.w3.org/2000/svg">
+                <rect class="p1" x="8" y="14" width="30" height="38" rx="5" fill="currentColor" opacity=".25"/>
+                <rect class="p2" x="17" y="10" width="30" height="38" rx="5" fill="currentColor" opacity=".5"/>
+                <g class="p3"><rect x="26" y="6" width="30" height="38" rx="5" fill="currentColor"/>
+                <g stroke="var(--surface)" stroke-width="3" stroke-linecap="round"><path class="ln ln1" d="M33 17h16"/><path class="ln ln2" d="M33 25h16"/><path class="ln ln3" d="M33 33h10"/></g></g>
+              </svg>
+            </div>
+            <div class="invest-body">
+              <span class="invest-stage" data-en="03・Delivery governance" data-zh="03・交付治理機制">03・交付治理機制</span>
+              <h5><span data-en="Establish cross-project delivery governance" data-zh="建立跨專案交付治理">建立跨專案交付治理</span></h5>
+              <p class="invest-problem" data-en="Which documents to deliver and what format they should follow were not yet unified, so specs, test reports and acceptance documents had to be discussed and confirmed case by case" data-zh="各專案應繳交的文件項目與格式尚未統一，規格書、測試報告、驗收文件等皆需逐案溝通與確認">各專案應繳交的文件項目與格式尚未統一，規格書、測試報告、驗收文件等皆需逐案溝通與確認</p>
+              <span class="invest-btn"><svg class="btn-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg><span data-en="View approach →" data-zh="查看做法 →">查看做法 →</span></span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="panel-foot">
+        <a class="strategy-link" href="works/going-cloud-strategy.html">
+          <span class="sl-text"><strong><svg class="sl-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg><span data-en="View the full strategy" data-zh="查看策略全局">查看策略全局</span></strong><span><i class="sl-i" data-en="Background &amp; problem, " data-zh="背景與問題、">背景與問題、</i><i class="sl-i" data-en="Core strategy" data-zh="核心策略">核心策略</i></span></span>
+          <span class="sl-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </article>
 
     <article class="panel" id="dcard">
       <header class="panel-head">
@@ -474,23 +595,23 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
               <span class="invest-btn" data-en="View project →" data-zh="查看專案 →">查看專案 →</span>
             </div>
           </a>
-          <div class="invest-card is-disabled">
+          <a class="invest-card has-flag" href="works/sync-complete.html#concept">
             <span class="invest-flag" data-en="Planning Stage Only" data-zh="僅負責至規劃階段">僅負責至規劃階段</span>
             <div class="invest-cover cover-simple" aria-hidden="true">
-              <svg viewBox="0 0 64 64" width="72" height="72" xmlns="http://www.w3.org/2000/svg">
-                <rect x="10" y="38" width="10" height="16" rx="3" fill="currentColor" opacity=".45"/>
-                <rect x="27" y="28" width="10" height="26" rx="3" fill="currentColor" opacity=".7"/>
-                <rect x="44" y="16" width="10" height="38" rx="3" fill="currentColor"/>
-                <path d="M12 26l14-9 10 5 14-13" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg class="mb-ic" viewBox="0 0 64 64" width="72" height="72" xmlns="http://www.w3.org/2000/svg">
+                <rect class="bar bar1" x="10" y="38" width="10" height="16" rx="3" fill="currentColor" opacity=".45"/>
+                <rect class="bar bar2" x="27" y="28" width="10" height="26" rx="3" fill="currentColor" opacity=".7"/>
+                <rect class="bar bar3" x="44" y="16" width="10" height="38" rx="3" fill="currentColor"/>
+                <path class="trend" pathLength="1" d="M12 26l14-9 10 5 14-13" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
             <div class="invest-body">
               <span class="invest-stage" data-en="03・Next product development" data-zh="03・後續產品發展">03・後續產品發展</span>
               <h5><span data-en="Deepen money-management efficiency" data-zh="深化管帳效率">深化管帳效率</span><span data-en="and subscription monetization" data-zh="與訂閱變現">與訂閱變現</span></h5>
               <p class="invest-problem" data-en="After establishing a sense of core value through the sync-complete page, the next phase would deepen Engagement: stabilize the basic money-management experience and build advanced features on top of it to create a reason to pay" data-zh="透過「同步完成頁」建立核心價值感知後，下一階段將持續深化 Engagement：穩定基本管帳體驗，並在此基礎上發展進階管帳功能，創造付費誘因">透過「同步完成頁」建立核心價值感知後，下一階段將持續深化 Engagement：穩定基本管帳體驗，並在此基礎上發展進階管帳功能，創造付費誘因</p>
-              <div class="invest-btns"><a class="invest-btn" href="works/sync-complete.html#concept"><span data-en="Development concept →" data-zh="發展概念 →">發展概念 →</span></a></div>
+              <span class="invest-btn" data-en="Development concept →" data-zh="發展概念 →">發展概念 →</span>
             </div>
-          </div>
+          </a>
         </div>
       </div>
       <div class="panel-foot">
@@ -506,7 +627,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 <section id="recommendations">
   <div class="wrap">
     <div class="t-head">
-      <h2 class="section-title" data-en="Recommendations" data-zh="推薦">Recommendations</h2>
+      <h2 class="section-title" data-en="Recommendation" data-zh="推薦">Recommendation</h2>
       <div class="t-nav">
         <button class="t-arrow" type="button" id="tPrev" aria-label="Previous">←</button>
         <button class="t-arrow" type="button" id="tNext" aria-label="Next">→</button>
@@ -568,7 +689,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 
 <footer>
   <div class="wrap">
-    <span>© 2026 FENG HSIN JOU</span>
+    <span>© 2026 FENG HSIN JOU. All Rights Reserved.</span>
     <span data-en="Based in Taiwan" data-zh="Based in Taiwan">Based in Taiwan</span>
   </div>
 </footer>
