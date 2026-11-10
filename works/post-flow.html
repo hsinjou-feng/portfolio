@@ -512,6 +512,22 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 .sp-seq .new .chips span.first { background: var(--accent); border-color: var(--accent); color: #fff; }
 @media (max-width: 900px) { .sp-dec { grid-template-columns: 1fr; } .sp-of-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 16px; } .sp-of-bar { display: none; } }
 @media (max-width: 700px) { .sp-media { grid-template-columns: 1fr; } }
+/* ---- 策略投資／策略延伸小卡：與首頁小卡一致（保持橫式、字級縮小） ---- */
+.sp-sec .invest-card { background: var(--surface); border: 1px solid var(--line); box-shadow: none; cursor: pointer; transition: border-color .25s, transform .25s; }
+.sp-sec .invest-card:hover { border-color: var(--muted); box-shadow: none; transform: translateY(-3px); }
+.sp-sec .invest-cover { background: var(--bg); }
+.sp-sec .invest-cover img { transition: transform .6s cubic-bezier(.2,.7,.3,1); }
+@media (prefers-reduced-motion: no-preference) { .sp-sec .invest-card:hover .invest-cover img { transform: scale(1.05); } }
+.sp-sec .invest-stage { font-size: 13px; font-weight: 600; letter-spacing: .04em; }
+.sp-sec .invest-card h5 { font-size: 1.15rem; }
+.sp-sec .invest-problem { font-size: 13.5px; }
+.sp-sec .invest-result strong { font-size: 18px; }
+.sp-sec .invest-label { font-size: 13px; }
+.sp-sec .invest-btn, .sp-sec .invest-btns .invest-btn { padding: 10px 18px; border-radius: 12px; background: transparent; border: 1px solid var(--line); box-shadow: none; font: inherit; font-size: 14px; font-weight: 600; color: var(--ink); cursor: pointer; }
+.sp-sec .invest-card:hover .invest-btn { background: var(--ink); border-color: var(--ink); color: var(--surface); }
+/* 規劃階段小卡：不再半透明，「僅負責至規劃階段」標籤蓋在封面右上角 */
+.sp-sec .invest-card.has-flag .invest-cover { position: relative; }
+.sp-sec .invest-card.has-flag .invest-cover > .invest-flag { position: absolute; top: 12px; right: 12px; z-index: 1; padding: 5px 12px; border-radius: 999px; background: #DDE2EA; color: #4A5565; font-size: 12px; font-weight: 700; line-height: 1.4; letter-spacing: .02em; }
 </style>
 </head>
 
