@@ -842,5 +842,19 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 })();
 </script>
 
+<!-- 停用右鍵、複製與文字選取（輸入框除外）；不影響搜尋引擎與 AI 工具讀取原始碼 -->
+<style>
+body { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+input, textarea, [contenteditable] { -webkit-user-select: text; user-select: text; }
+img { -webkit-user-drag: none; }
+</style>
+<script>
+(function () {
+  function editable(t) { return t && t.closest && t.closest('input, textarea, [contenteditable]'); }
+  ['contextmenu', 'copy', 'cut', 'selectstart', 'dragstart'].forEach(function (type) {
+    document.addEventListener(type, function (e) { if (!editable(e.target)) e.preventDefault(); });
+  });
+})();
+</script>
 </body>
 </html>

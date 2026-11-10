@@ -1081,5 +1081,19 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 </script>
 
 <script>(function(){var c=document.getElementById("roadmapCard"),z=document.querySelectorAll(".sp-map .sp-zoom");if(!c||z.length<2)return;c.querySelectorAll("[data-fig]").forEach(function(b){b.addEventListener("click",function(){z[+b.getAttribute("data-fig")].click();});});c.addEventListener("click",function(e){if(e.target.closest("[data-fig]"))return;var b=c.querySelector("[data-fig]");if(b)b.click();});var h=location.hash;if(h==="#concept"||h==="#positioning")setTimeout(function(){z[1].click();},350);else if(h==="#roadmap")setTimeout(function(){z[1].click();},350);})();</script>
+<!-- 停用右鍵、複製與文字選取（輸入框除外）；不影響搜尋引擎與 AI 工具讀取原始碼 -->
+<style>
+body { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+input, textarea, [contenteditable] { -webkit-user-select: text; user-select: text; }
+img { -webkit-user-drag: none; }
+</style>
+<script>
+(function () {
+  function editable(t) { return t && t.closest && t.closest('input, textarea, [contenteditable]'); }
+  ['contextmenu', 'copy', 'cut', 'selectstart', 'dragstart'].forEach(function (type) {
+    document.addEventListener(type, function (e) { if (!editable(e.target)) e.preventDefault(); });
+  });
+})();
+</script>
 </body>
 </html>
