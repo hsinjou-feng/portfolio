@@ -333,6 +333,11 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 .sp-back svg { width: 16px; height: 16px; transition: transform .2s; }
 .sp-back:hover { color: var(--ink); }
 .sp-back:hover svg { transform: translateX(-3px); }
+/* 專案頁連回策略頁的連結：接在摘要／專案範疇段落最後方，字級與顏色沿用內文，hover 時變粗 */
+.sp-strat { font: inherit; font-size: .875em; color: var(--muted); white-space: nowrap; text-decoration: none; transition: color .2s; }
+.sp-strat-a { display: inline-block; margin-left: 4px; transition: transform .2s; }
+.sp-strat:hover, .sp-strat:focus-visible { font-weight: 700; color: var(--ink); }
+.sp-strat:hover .sp-strat-a, .sp-strat:focus-visible .sp-strat-a { transform: translateX(3px); }
 .sp-hero .panel-head { align-items: center; }
 .sp-title { margin-top: 2px; font-size: clamp(1.3rem, 2.6vw, 1.9rem); font-weight: 700; line-height: 1.3; letter-spacing: -0.015em; text-wrap: balance; }
 .sp-meta { margin-top: clamp(32px, 5vw, 56px); display: grid; grid-template-columns: minmax(0, 1fr) 215px; gap: 28px clamp(32px, 6vw, 96px); }
@@ -562,7 +567,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     </header>
     <div class="sp-meta">
       <div class="col">
-        <div><h4 data-en="Summary" data-zh="摘要">摘要</h4><p data-en="I redesigned the Dcard posting flow to lower the operational and cognitive cost before users start creating. By reordering the flow, users first write the article, then choose the article type, forum, and posting identity, improving the experience of starting to create." data-zh="重新設計 Dcard 發文流程，降低使用者開始創作前的操作與認知成本。透過調整流程順序，讓使用者先撰寫文章、再選擇文章類型、發布看板與發文身份，提升創作啟動體驗。">重新設計 Dcard 發文流程，降低使用者開始創作前的操作與認知成本。透過調整流程順序，讓使用者先撰寫文章、再選擇文章類型、發布看板與發文身份，提升創作啟動體驗。</p><div class="sp-out"><h4 data-en="Key outcomes" data-zh="關鍵成果">關鍵成果</h4><div class="sp-out-card"><strong>+12%</strong><span data-en="Average daily posters" data-zh="每日平均發文人數">每日平均發文人數</span></div></div></div>
+        <div><h4 data-en="Summary" data-zh="摘要">摘要</h4><p data-en="I redesigned the Dcard posting flow to lower the operational and cognitive cost before users start creating. By reordering the flow, users first write the article, then choose the article type, forum, and posting identity, improving the experience of starting to create. &lt;a class=&quot;sp-strat&quot; href=&quot;dcard-strategy.html&quot;&gt;View full strategy&lt;span class=&quot;sp-strat-a&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;&lt;/a&gt;" data-zh="重新設計 Dcard 發文流程，降低使用者開始創作前的操作與認知成本。透過調整流程順序，讓使用者先撰寫文章、再選擇文章類型、發布看板與發文身份，提升創作啟動體驗。 &lt;a class=&quot;sp-strat&quot; href=&quot;dcard-strategy.html&quot;&gt;查看策略全局&lt;span class=&quot;sp-strat-a&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;&lt;/a&gt;">重新設計 Dcard 發文流程，降低使用者開始創作前的操作與認知成本。透過調整流程順序，讓使用者先撰寫文章、再選擇文章類型、發布看板與發文身份，提升創作啟動體驗。 <a class="sp-strat" href="dcard-strategy.html">查看策略全局<span class="sp-strat-a" aria-hidden="true">→</span></a></p><div class="sp-out"><h4 data-en="Key outcomes" data-zh="關鍵成果">關鍵成果</h4><div class="sp-out-card"><strong>+12%</strong><span data-en="Average daily posters" data-zh="每日平均發文人數">每日平均發文人數</span></div></div></div>
       </div>
       <div class="col">
         <div><h4 data-en="Period" data-zh="專案時間">專案時間</h4><p>2024/06 – 2024/08</p></div>

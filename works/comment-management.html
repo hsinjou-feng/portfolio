@@ -333,6 +333,11 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 .sp-back svg { width: 16px; height: 16px; transition: transform .2s; }
 .sp-back:hover { color: var(--ink); }
 .sp-back:hover svg { transform: translateX(-3px); }
+/* 專案頁連回策略頁的連結：接在摘要／專案範疇段落最後方，字級與顏色沿用內文，hover 時變粗 */
+.sp-strat { font: inherit; font-size: .875em; color: var(--muted); white-space: nowrap; text-decoration: none; transition: color .2s; }
+.sp-strat-a { display: inline-block; margin-left: 4px; transition: transform .2s; }
+.sp-strat:hover, .sp-strat:focus-visible { font-weight: 700; color: var(--ink); }
+.sp-strat:hover .sp-strat-a, .sp-strat:focus-visible .sp-strat-a { transform: translateX(3px); }
 .sp-hero .panel-head { align-items: center; }
 .sp-title { margin-top: 2px; font-size: clamp(1.3rem, 2.6vw, 1.9rem); font-weight: 700; line-height: 1.3; letter-spacing: -0.015em; text-wrap: balance; }
 .sp-meta { margin-top: clamp(32px, 5vw, 56px); display: grid; grid-template-columns: minmax(0, 1fr) 215px; gap: 28px clamp(32px, 6vw, 96px); }
@@ -606,7 +611,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     </header>
     <div class="sp-meta">
       <div class="col">
-        <div><h4 data-en="Summary" data-zh="摘要">摘要</h4><p data-en="Facing the creative pressure caused by malicious comments and off-topic threads, I re-examined the team's original “hide comments” proposal. Starting from Dcard's position as a public discussion platform, I set decision principles that balance creator control, discussion transparency, and abuse prevention, and ultimately shipped two progressive moderation tools: pinned comments and paused comments." data-zh="面對惡意留言與討論歪樓造成的創作壓力，我重新檢視團隊原先提出的「隱藏留言」方案，從 Dcard 公領域討論平台的定位出發，建立兼顧作者掌控感、討論透明度與防止濫用的決策原則，最終推出置頂留言與暫停留言兩項漸進式管理工具。">面對惡意留言與討論歪樓造成的創作壓力，我重新檢視團隊原先提出的「隱藏留言」方案，從 Dcard 公領域討論平台的定位出發，建立兼顧作者掌控感、討論透明度與防止濫用的決策原則，最終推出置頂留言與暫停留言兩項漸進式管理工具。</p>
+        <div><h4 data-en="Summary" data-zh="摘要">摘要</h4><p data-en="Facing the creative pressure caused by malicious comments and off-topic threads, I re-examined the team&#x27;s original “hide comments” proposal. Starting from Dcard&#x27;s position as a public discussion platform, I set decision principles that balance creator control, discussion transparency, and abuse prevention, and ultimately shipped two progressive moderation tools: pinned comments and paused comments. &lt;a class=&quot;sp-strat&quot; href=&quot;dcard-strategy.html&quot;&gt;View full strategy&lt;span class=&quot;sp-strat-a&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;&lt;/a&gt;" data-zh="面對惡意留言與討論歪樓造成的創作壓力，我重新檢視團隊原先提出的「隱藏留言」方案，從 Dcard 公領域討論平台的定位出發，建立兼顧作者掌控感、討論透明度與防止濫用的決策原則，最終推出置頂留言與暫停留言兩項漸進式管理工具。 &lt;a class=&quot;sp-strat&quot; href=&quot;dcard-strategy.html&quot;&gt;查看策略全局&lt;span class=&quot;sp-strat-a&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;&lt;/a&gt;">面對惡意留言與討論歪樓造成的創作壓力，我重新檢視團隊原先提出的「隱藏留言」方案，從 Dcard 公領域討論平台的定位出發，建立兼顧作者掌控感、討論透明度與防止濫用的決策原則，最終推出置頂留言與暫停留言兩項漸進式管理工具。 <a class="sp-strat" href="dcard-strategy.html">查看策略全局<span class="sp-strat-a" aria-hidden="true">→</span></a></p>
           <div class="sp-out"><h4 data-en="Key outcomes" data-zh="關鍵成果">關鍵成果</h4><p class="sub" data-en="Observational comparison: feature users vs. non-users" data-zh="觀察性比較：功能使用者 vs. 未使用者">觀察性比較：功能使用者 vs. 未使用者</p>
             <div class="sp-out-row">
               <div class="sp-out-card"><strong>2.0–2.2x</strong><span data-en="Monthly posts" data-zh="月平均發文量">月平均發文量</span></div>

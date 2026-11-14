@@ -333,6 +333,11 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 .sp-back svg { width: 16px; height: 16px; transition: transform .2s; }
 .sp-back:hover { color: var(--ink); }
 .sp-back:hover svg { transform: translateX(-3px); }
+/* 專案頁連回策略頁的連結：接在摘要／專案範疇段落最後方，字級與顏色沿用內文，hover 時變粗 */
+.sp-strat { font: inherit; font-size: .875em; color: var(--muted); white-space: nowrap; text-decoration: none; transition: color .2s; }
+.sp-strat-a { display: inline-block; margin-left: 4px; transition: transform .2s; }
+.sp-strat:hover, .sp-strat:focus-visible { font-weight: 700; color: var(--ink); }
+.sp-strat:hover .sp-strat-a, .sp-strat:focus-visible .sp-strat-a { transform: translateX(3px); }
 .sp-hero .panel-head { align-items: center; }
 .sp-title { margin-top: 2px; font-size: clamp(1.3rem, 2.6vw, 1.9rem); font-weight: 700; line-height: 1.3; letter-spacing: -0.015em; text-wrap: balance; }
 .sp-meta { margin-top: clamp(32px, 5vw, 56px); display: grid; grid-template-columns: minmax(0, 1fr) 215px; gap: 28px clamp(32px, 6vw, 96px); }
@@ -680,7 +685,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     </header>
     <div class="sp-meta">
       <div class="col">
-        <div><h4 data-en="Summary" data-zh="摘要">摘要</h4><p data-en="I redesigned the Moneybook financial account linking flow. Addressing security concerns, uncertainty about the steps, and anxiety while waiting for sync, I built fuller trust guidance and flow feedback to lower the Activation barrier to the core product experience." data-zh="重新設計 Moneybook 金融帳戶綁定流程，針對資安疑慮、操作不確定性與同步等待焦慮，建立更完整的信任引導與流程回饋，降低使用者進入產品核心體驗的 Activation 門檻。">重新設計 Moneybook 金融帳戶綁定流程，針對資安疑慮、操作不確定性與同步等待焦慮，建立更完整的信任引導與流程回饋，降低使用者進入產品核心體驗的 Activation 門檻。</p>
+        <div><h4 data-en="Summary" data-zh="摘要">摘要</h4><p data-en="I redesigned the Moneybook financial account linking flow. Addressing security concerns, uncertainty about the steps, and anxiety while waiting for sync, I built fuller trust guidance and flow feedback to lower the Activation barrier to the core product experience. &lt;a class=&quot;sp-strat&quot; href=&quot;moneybook-strategy.html&quot;&gt;View full strategy&lt;span class=&quot;sp-strat-a&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;&lt;/a&gt;" data-zh="重新設計 Moneybook 金融帳戶綁定流程，針對資安疑慮、操作不確定性與同步等待焦慮，建立更完整的信任引導與流程回饋，降低使用者進入產品核心體驗的 Activation 門檻。 &lt;a class=&quot;sp-strat&quot; href=&quot;moneybook-strategy.html&quot;&gt;查看策略全局&lt;span class=&quot;sp-strat-a&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;&lt;/a&gt;">重新設計 Moneybook 金融帳戶綁定流程，針對資安疑慮、操作不確定性與同步等待焦慮，建立更完整的信任引導與流程回饋，降低使用者進入產品核心體驗的 Activation 門檻。 <a class="sp-strat" href="moneybook-strategy.html">查看策略全局<span class="sp-strat-a" aria-hidden="true">→</span></a></p>
           <div class="sp-out"><h4 data-en="Key outcomes" data-zh="關鍵成果">關鍵成果</h4>
             <div class="sp-out-row">
               <div class="sp-out-card"><strong>+12%</strong><span data-en="Account-linking conversion rate of new users" data-zh="新進使用者完成金融帳戶綁定轉換率">新進使用者完成金融帳戶綁定轉換率</span></div>

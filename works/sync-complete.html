@@ -333,6 +333,11 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 .sp-back svg { width: 16px; height: 16px; transition: transform .2s; }
 .sp-back:hover { color: var(--ink); }
 .sp-back:hover svg { transform: translateX(-3px); }
+/* 專案頁連回策略頁的連結：接在摘要／專案範疇段落最後方，字級與顏色沿用內文，hover 時變粗 */
+.sp-strat { font: inherit; font-size: .875em; color: var(--muted); white-space: nowrap; text-decoration: none; transition: color .2s; }
+.sp-strat-a { display: inline-block; margin-left: 4px; transition: transform .2s; }
+.sp-strat:hover, .sp-strat:focus-visible { font-weight: 700; color: var(--ink); }
+.sp-strat:hover .sp-strat-a, .sp-strat:focus-visible .sp-strat-a { transform: translateX(3px); }
 .sp-hero .panel-head { align-items: center; }
 .sp-title { margin-top: 2px; font-size: clamp(1.3rem, 2.6vw, 1.9rem); font-weight: 700; line-height: 1.3; letter-spacing: -0.015em; text-wrap: balance; }
 .sp-meta { margin-top: clamp(32px, 5vw, 56px); display: grid; grid-template-columns: minmax(0, 1fr) 215px; gap: 28px clamp(32px, 6vw, 96px); }
@@ -670,7 +675,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     </header>
     <div class="sp-meta">
       <div class="col">
-        <div><h4 data-en="Summary" data-zh="摘要">摘要</h4><p data-en="I redesigned the Moneybook sync-complete page, turning the static asset and liability totals into dynamic financial differences and a summary of transaction changes, so users can immediately grasp changes in their finances after syncing, raising their perception of the value of core financial information and their motivation to return." data-zh="重新設計 Moneybook 同步完成頁，將原本靜態呈現的資產與負債總額，轉化為動態財務差額與交易異動摘要，讓使用者在完成帳戶同步後，能立即掌握財務變化，提升核心財務資訊的價值感知與回訪動機。">重新設計 Moneybook 同步完成頁，將原本靜態呈現的資產與負債總額，轉化為動態財務差額與交易異動摘要，讓使用者在完成帳戶同步後，能立即掌握財務變化，提升核心財務資訊的價值感知與回訪動機。</p>
+        <div><h4 data-en="Summary" data-zh="摘要">摘要</h4><p data-en="I redesigned the Moneybook sync-complete page, turning the static asset and liability totals into dynamic financial differences and a summary of transaction changes, so users can immediately grasp changes in their finances after syncing, raising their perception of the value of core financial information and their motivation to return. &lt;a class=&quot;sp-strat&quot; href=&quot;moneybook-strategy.html&quot;&gt;View full strategy&lt;span class=&quot;sp-strat-a&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;&lt;/a&gt;" data-zh="重新設計 Moneybook 同步完成頁，將原本靜態呈現的資產與負債總額，轉化為動態財務差額與交易異動摘要，讓使用者在完成帳戶同步後，能立即掌握財務變化，提升核心財務資訊的價值感知與回訪動機。 &lt;a class=&quot;sp-strat&quot; href=&quot;moneybook-strategy.html&quot;&gt;查看策略全局&lt;span class=&quot;sp-strat-a&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;&lt;/a&gt;">重新設計 Moneybook 同步完成頁，將原本靜態呈現的資產與負債總額，轉化為動態財務差額與交易異動摘要，讓使用者在完成帳戶同步後，能立即掌握財務變化，提升核心財務資訊的價值感知與回訪動機。 <a class="sp-strat" href="moneybook-strategy.html">查看策略全局<span class="sp-strat-a" aria-hidden="true">→</span></a></p>
           <div class="sp-out"><h4 data-en="Key outcomes" data-zh="關鍵成果">關鍵成果</h4>
             <div class="sp-out-row">
               <div class="sp-out-card"><strong data-en="Higher long-term retention" data-zh="長尾留存較高">長尾留存較高</strong><span data-en="Users who viewed the sync-complete page vs. those who did not (observational comparison)" data-zh="有瀏覽同步完成頁 vs. 未瀏覽者（觀察性比較）">有瀏覽同步完成頁 vs. 未瀏覽者（觀察性比較）</span></div>
