@@ -433,8 +433,6 @@ main > .sp-hero { flex: 1 0 auto; }
 .logo-tile img { border-radius: 22.36%; box-shadow: 0 0 0 1px var(--line); }
 .gc-list { margin: 4px 0 0; padding-left: 1.1em; display: grid; gap: 8px; color: var(--ink); font-size: 15px; line-height: 1.8; }
 .gc-list li::marker { color: var(--muted); }
-.sp-card.gc-flash { animation: gc-flash 1.8s ease-out; }
-@keyframes gc-flash { 0%, 40% { border-color: var(--ink); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ink) 12%, transparent); } 100% { border-color: var(--line); box-shadow: none; } }
 
 /* ---- 密碼鎖 ---- */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
@@ -712,15 +710,6 @@ html[lang="en"] .mm-svg .llm-node-en, html[lang="en"] .mm-svg .llm-io-sub, html[
     content.hidden = false;
     if (window.trackUnlock) window.trackUnlock(method); else window.__pendingUnlock = method; // 追蹤程式還沒載入時先記下，載入後補送
     if (window.__applyLang) window.__applyLang();
-    // 從首頁小卡帶 #pillar-n 進來：解鎖後捲到對應的策略支柱並短暫標示
-    var target = location.hash && document.getElementById(location.hash.slice(1));
-    if (target) {
-      requestAnimationFrame(function () {
-        target.scrollIntoView({ block: 'center' });
-        target.classList.add('gc-flash');
-        setTimeout(function () { target.classList.remove('gc-flash'); }, 1800);
-      });
-    }
   }
 
   // 同一個分頁內已解鎖過：直接用暫存的金鑰（關閉分頁即失效）

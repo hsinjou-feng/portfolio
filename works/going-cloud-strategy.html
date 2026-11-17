@@ -428,8 +428,6 @@ main > .sp-hero { flex: 1 0 auto; }
 .logo-tile img { border-radius: 22.36%; box-shadow: 0 0 0 1px var(--line); }
 .gc-list { margin: 4px 0 0; padding-left: 1.1em; display: grid; gap: 8px; color: var(--ink); font-size: 15px; line-height: 1.8; }
 .gc-list li::marker { color: var(--muted); }
-.sp-card.gc-flash { animation: gc-flash 1.8s ease-out; }
-@keyframes gc-flash { 0%, 40% { border-color: var(--ink); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ink) 12%, transparent); } 100% { border-color: var(--line); box-shadow: none; } }
 
 /* ---- 密碼鎖 ---- */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
@@ -489,13 +487,11 @@ main > .sp-hero { flex: 1 0 auto; }
 .sp-card.gc-link:hover .gc-more-t, .sp-card.gc-link:focus-visible .gc-more-t { color: var(--ink); }
 .sp-card.gc-link:hover .gc-more-a, .sp-card.gc-link:focus-visible .gc-more-a { background: var(--ink); color: var(--surface); transform: translateX(3px); }
 @media (prefers-reduced-motion: reduce) { .sp-card.gc-link:hover { transform: none; } }
-/* 03 策略成果：專案一 11 個月為全長的共用時間軸，--x6 為第 6 個月起點的位置 */
 .gc-tl { --x6: calc(5 / 11 * 100%); }
 .gc-tl-grid { display: grid; gap: 12px; }
 .gc-tl-row, .gc-tl-head, .gc-tl-foot { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 6px 16px; align-items: center; }
 .gc-tl-area { position: relative; }
 .gc-tl-row .gc-tl-area { height: 44px; }
-/* 第 6 個月與上線的虛線，貫穿整張圖 */
 .gc-tl-row .gc-tl-area::before, .gc-tl-row .gc-tl-area::after { content: ""; position: absolute; top: -12px; bottom: -12px; border-left: 1.5px dashed var(--line); z-index: 0; }
 .gc-tl-row .gc-tl-area::before { left: var(--x6); }
 .gc-tl-row .gc-tl-area::after { right: 0; }
@@ -640,15 +636,6 @@ main > .sp-hero { flex: 1 0 auto; }
     content.hidden = false;
     if (window.trackUnlock) window.trackUnlock(method); else window.__pendingUnlock = method; // 追蹤程式還沒載入時先記下，載入後補送
     if (window.__applyLang) window.__applyLang();
-    // 從首頁小卡帶 #pillar-n 進來：解鎖後捲到對應的策略支柱並短暫標示
-    var target = location.hash && document.getElementById(location.hash.slice(1));
-    if (target) {
-      requestAnimationFrame(function () {
-        target.scrollIntoView({ block: 'center' });
-        target.classList.add('gc-flash');
-        setTimeout(function () { target.classList.remove('gc-flash'); }, 1800);
-      });
-    }
   }
 
   // 同一個分頁內已解鎖過：直接用暫存的金鑰（關閉分頁即失效）
