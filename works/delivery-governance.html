@@ -583,6 +583,7 @@ html[lang="en"] .mm-svg .llm-node-en, html[lang="en"] .mm-svg .llm-io-sub, html[
 .sp-next { margin-top: 28px; }
 #further-reading .invest-grid { margin-top: 0; } /* 延伸閱讀只放卡片，與左側段落標題對齊 */
 </style>
+<script src="../assets/analytics.js" defer></script>
 </head>
 
 <body>
@@ -703,12 +704,13 @@ html[lang="en"] .mm-svg .llm-node-en, html[lang="en"] .mm-svg .llm-io-sub, html[
   function decrypt(key) {
     return crypto.subtle.decrypt({ name: 'AES-GCM', iv: b(payload.iv) }, key, b(payload.ct)).then(function (buf) { return new TextDecoder().decode(buf); });
   }
-  function reveal(html) {
+  function reveal(html, method) {
     content.innerHTML = html;
     var meta = content.querySelector('.gc-meta');
     if (meta) document.getElementById('gcHero').appendChild(meta);
     lock.remove();
     content.hidden = false;
+    if (window.trackUnlock) window.trackUnlock(method); else window.__pendingUnlock = method; // 追蹤程式還沒載入時先記下，載入後補送
     if (window.__applyLang) window.__applyLang();
     // 從首頁小卡帶 #pillar-n 進來：解鎖後捲到對應的策略支柱並短暫標示
     var target = location.hash && document.getElementById(location.hash.slice(1));
@@ -725,7 +727,7 @@ html[lang="en"] .mm-svg .llm-node-en, html[lang="en"] .mm-svg .llm-io-sub, html[
   try {
     var saved = sessionStorage.getItem(KEY_STORE);
     if (saved) {
-      crypto.subtle.importKey('raw', b(saved), 'AES-GCM', false, ['decrypt']).then(decrypt).then(reveal)
+      crypto.subtle.importKey('raw', b(saved), 'AES-GCM', false, ['decrypt']).then(decrypt).then(function (html) { reveal(html, 'session'); })
         .catch(function () { sessionStorage.removeItem(KEY_STORE); });
     }
   } catch (e) {}
@@ -738,8 +740,9 @@ html[lang="en"] .mm-svg .llm-node-en, html[lang="en"] .mm-svg .llm-io-sub, html[
       crypto.subtle.exportKey('raw', key).then(function (raw) {
         try { sessionStorage.setItem(KEY_STORE, btoa(String.fromCharCode.apply(null, new Uint8Array(raw)))); } catch (e) {}
       });
-      reveal(html);
+      reveal(html, 'password');
     }).catch(function () {
+      if (window.trackUnlockFail) window.trackUnlockFail();
       btn.disabled = false;
       err.textContent = isZh() ? '密碼不正確，請再試一次。' : 'Incorrect password. Please try again.';
       lock.classList.remove('shake'); void lock.offsetWidth; lock.classList.add('shake');

@@ -520,6 +520,7 @@ main > .sp-hero { flex: 1 0 auto; }
   .gc-tl-bar { padding: 0 8px; font-size: 12.5px; }
 }
 </style>
+<script src="../assets/analytics.js" defer></script>
 </head>
 
 <body>
@@ -631,12 +632,13 @@ main > .sp-hero { flex: 1 0 auto; }
   function decrypt(key) {
     return crypto.subtle.decrypt({ name: 'AES-GCM', iv: b(payload.iv) }, key, b(payload.ct)).then(function (buf) { return new TextDecoder().decode(buf); });
   }
-  function reveal(html) {
+  function reveal(html, method) {
     content.innerHTML = html;
     var meta = content.querySelector('.gc-meta');
     if (meta) document.getElementById('gcHero').appendChild(meta);
     lock.remove();
     content.hidden = false;
+    if (window.trackUnlock) window.trackUnlock(method); else window.__pendingUnlock = method; // 追蹤程式還沒載入時先記下，載入後補送
     if (window.__applyLang) window.__applyLang();
     // 從首頁小卡帶 #pillar-n 進來：解鎖後捲到對應的策略支柱並短暫標示
     var target = location.hash && document.getElementById(location.hash.slice(1));
@@ -653,7 +655,7 @@ main > .sp-hero { flex: 1 0 auto; }
   try {
     var saved = sessionStorage.getItem(KEY_STORE);
     if (saved) {
-      crypto.subtle.importKey('raw', b(saved), 'AES-GCM', false, ['decrypt']).then(decrypt).then(reveal)
+      crypto.subtle.importKey('raw', b(saved), 'AES-GCM', false, ['decrypt']).then(decrypt).then(function (html) { reveal(html, 'session'); })
         .catch(function () { sessionStorage.removeItem(KEY_STORE); });
     }
   } catch (e) {}
@@ -666,8 +668,9 @@ main > .sp-hero { flex: 1 0 auto; }
       crypto.subtle.exportKey('raw', key).then(function (raw) {
         try { sessionStorage.setItem(KEY_STORE, btoa(String.fromCharCode.apply(null, new Uint8Array(raw)))); } catch (e) {}
       });
-      reveal(html);
+      reveal(html, 'password');
     }).catch(function () {
+      if (window.trackUnlockFail) window.trackUnlockFail();
       btn.disabled = false;
       err.textContent = isZh() ? '密碼不正確，請再試一次。' : 'Incorrect password. Please try again.';
       lock.classList.remove('shake'); void lock.offsetWidth; lock.classList.add('shake');
