@@ -8,7 +8,7 @@ import { createInterface } from 'node:readline';
 
 const [, , srcPath, pagePath] = process.argv;
 if (!srcPath || !pagePath) {
-  console.error('用法：node tools/encrypt-page.mjs <明文片段.html> <目標頁面.html>');
+  console.error('用法：node tools/encrypt-page.mjs <明文片段.html> <目標頁面.html> [沿用 salt 的頁面.html]');
   process.exit(1);
 }
 
